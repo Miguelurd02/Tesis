@@ -4,9 +4,9 @@
   <div class="app-brand demo">
     <a href="{{url('/')}}" class="app-brand-link">
       <span class="app-brand-logo demo">
-        @include('_partials.macros',["width"=>25,"withbg"=>'#870000'])
+        @include('_partials.macros',["width"=>25,"withbg"=>'#812020'])
       </span>
-      <span class="app-brand-text demo menu-text fw-bold ms-2">LARIA</span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">{{config('variables.templateName')}}</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-autod-block d-xl-none">
@@ -24,7 +24,7 @@
     {{-- menu headers --}}
     @if (isset($menu->menuHeader))
     <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Administrador</span>
+      <span class="menu-header-text">{{ $menu->menuHeader }}</span>
     </li>
 
     @else

@@ -29,7 +29,7 @@ const Helpers = {
 
   mainMenu: null,
 
-  // Internal 
+  // Internal variables
   _curStyle: null,
   _styleEl: null,
   _resizeTimeout: null,

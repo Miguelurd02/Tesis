@@ -77,5 +77,5 @@ $container = ($container ?? 'container-xxl');
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
   </div>
-  <!-- /  -->
+  <!-- / Layout wrapper -->
   @endsection
