@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
-use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +19,13 @@ use Illuminate\Support\Facades\Route;
 $controller_path = 'App\Http\Controllers';
 
 // Main Page Route
-Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+Route::group(['middleware' => 'auth'], function(){
+    Route::group(['middleware' => 'rol:inmobiliaria,usuario'], function(){
+         Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+    });
+   
+});
+
 
 // layout
 Route::get('/layouts/without-menu', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
@@ -36,10 +42,11 @@ Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->na
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
 
 // authentication
-Route::get('/auth/login-basic', [LoginBasic::class, 'index']);
+Route::get('/auth/login-basic', [LoginBasic::class, 'index']->middleware('guest'));
 Route::post('/auth/login-basic', [LoginBasic::class, 'login']);//name('auth-login-basic');
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index']);
 Route::post('/auth/register-basic', [RegisterBasic::class, 'register']); //name('auth-register-basic');
+Route::get('/logout', [LogoutController::class, 'logout']); //name('auth-register-basic');
 Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\ForgotPasswordBasic@index')->name('auth-reset-password-basic');
 
 // cards
