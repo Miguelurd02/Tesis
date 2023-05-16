@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\authentications\LoginBasic;
+use App\Http\Controllers\authentications\RegisterBasic;
+use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +36,10 @@ Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->na
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
 
 // authentication
-Route::get('/auth/login-basic', $controller_path . '\authentications\LoginBasic@index')->name('auth-login-basic');
-Route::get('/auth/register-basic', $controller_path . '\authentications\RegisterBasic@index')->name('auth-register-basic');
+Route::get('/auth/login-basic', [LoginBasic::class, 'index']);
+Route::post('/auth/login-basic', [LoginBasic::class, 'login']);//name('auth-login-basic');
+Route::get('/auth/register-basic', [RegisterBasic::class, 'index']);
+Route::post('/auth/register-basic', [RegisterBasic::class, 'register']); //name('auth-register-basic');
 Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\ForgotPasswordBasic@index')->name('auth-reset-password-basic');
 
 // cards

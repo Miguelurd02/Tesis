@@ -4,31 +4,37 @@
       "url": "/",
       "name": "Inicio",
       "icon": "menu-icon tf-icons bx bx-home-circle",
-      "slug": "dashboard-analytics"
+      "slug": "dashboard-analytics",
+      "admin": false
     },
     {
-      "menuHeader": "Administración"
+      "menuHeader": "Administración",
+      "admin": true
     },
     {
       "name": "Usuarios",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "cards-basic",
-      "url": "/cards/basic"
+      "url": "/cards/basic",
+      "admin": false
     },
     {
       "name": "Inmobiliarias",
       "icon": "menu-icon tf-icons bx bx-layout",
       "slug": "layouts",
+      "admin": true,
       "submenu": [
         {
           "url": "/layouts/without-menu",
           "name": "Empresas",
-          "slug": "layouts-without-menu"
+          "slug": "layouts-without-menu",
+          "admin": true
         },
         {
           "url": "/layouts/without-navbar",
           "name": "Agentes inmobiliarios",
-          "slug": "layouts-without-navbar"
+          "slug": "layouts-without-navbar",
+          "admin": true
         }
       ]
     },
@@ -37,16 +43,19 @@
       "name": "Localización",
       "icon": "menu-icon tf-icons bx bx bx-dock-top",
       "slug": "pages-account-settings",
+      "admin": true,
       "submenu": [
         {
           "url": "/pages/account-settings-account",
           "name": "Ciudad",
-          "slug": "pages-account-settings-account"
+          "slug": "pages-account-settings-account",
+          "admin": true
         },
         {
           "url": "/pages/account-settings-notifications",
           "name": "Sector",
-          "slug": "pages-account-settings-notifications"
+          "slug": "pages-account-settings-notifications",
+          "admin": true
         }
       ]
     },
@@ -54,7 +63,8 @@
       "url": "tables/basic",
       "icon": "menu-icon tf-icons bx bx-table",
       "name": "Propiedades",
-      "slug": "tables-basic"
+      "slug": "tables-basic",
+      "admin": true
     }
   ]
 }

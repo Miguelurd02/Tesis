@@ -22,10 +22,17 @@
     {{-- adding active and open class if child is active --}}
 
     {{-- menu headers --}}
+    <span class="menu-header-text">{{ $menu->admin }}</span>
+    
+
     @if (isset($menu->menuHeader))
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">{{ $menu->menuHeader }}</span>
-    </li>
+        @if (!$menu->admin) 
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">{{ $menu->menuHeader }}</span>
+            </li>  
+        @endif
+    
+    
 
     @else
 

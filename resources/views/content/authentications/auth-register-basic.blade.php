@@ -27,14 +27,15 @@
           <h4 class="mb-2">Adventure starts here 🚀</h4>
           <p class="mb-4">Make your app management easy and fun!</p>
 
-          <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
+          <form id="formAuthentication" class="mb-3" action="/auth/register-basic" method="POST">
+            @csrf
             <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus>
+              <label for="email" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
             </div>
             <div class="mb-3 form-password-toggle">
               <label class="form-label" for="password">Password</label>
@@ -43,7 +44,21 @@
                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
               </div>
             </div>
+            <div class="mb-3 form-password-toggle">
+              <label class="form-label" for="password">Password Confirmation</label>
+              <div class="input-group input-group-merge">
+                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+              </div>
+            </div>
 
+            <div class="mb-3">
+              <select class="form-select" aria-label="Default select example" name="rol">
+                <option selected>Seleccione un rol</option>
+                <option value="inmobiliaria">Inmobiliaria</option>
+                <option value="suscriptor">Suscriptor</option>
+              </select>
+            </div>
             <div class="mb-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms">
@@ -53,9 +68,7 @@
                 </label>
               </div>
             </div>
-            <button class="btn btn-primary d-grid w-100">
-              Sign up
-            </button>
+            <input type="submit" class="btn btn-primary d-grid w-100" value="Registrarse">
           </form>
 
           <p class="text-center">
