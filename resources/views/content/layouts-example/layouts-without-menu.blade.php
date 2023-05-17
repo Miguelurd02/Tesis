@@ -11,10 +11,10 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link rel="stylesheet" href="{{ asset(mix('assets/css/home/estilos.css')) }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/home/estilos.css') }}" />
         <!-- Estilos sin bootstrap -->
-        <link rel="stylesheet" href="{{ asset(mix('assets/css/home/estiloshome.css')) }}" />
-        <link rel="stylesheet" href="{{ asset(mix('assets/css/home/acordeon.css')) }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/home/estiloshome.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/home/acordeon.css') }}" />
         <!-- Animate AOS -->
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <!-- Estilos Acordeon -->
@@ -24,7 +24,7 @@
         <!-- Responsive navbar-->
         <nav class="barra--nav navbar navbar-expand-lg navbar-dark">
             <div class="container px-5">
-                <img class="icon" src="{{ asset(mix('assets/img/agente-inmobiliario.png')) }}" alt="">
+                <img class="icon" src="{{ asset('assets/img/img2/agente-inmobiliario.png') }}" alt="">
                 <a class="navbar-brand" href="#!">LARIA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="container" data-aos="fade-up">
-                <img class="image--guy" src="./assets/img/foto-de-laria.png" alt="">
+                <img class="image--guy" src="{{ asset('assets/img/img2/foto-de-laria.png') }}" alt="">
             </div>
         </section>
         <!-- Testimonials section-->
@@ -98,7 +98,7 @@
                         <!-- Testimonial 1-->
                         <div class="card">
                             <div class="header--card">
-                                <img src="./assets/img/testimonials-1.jpeg" alt="">
+                                <img src="{{ asset('assets/img/img2/testimonials-1.jpeg') }}" alt="">
                             </div>
                             <div class="body--card">
                                 <p class="subtitle">Maria Jose</p>
@@ -113,7 +113,7 @@
                         <!-- Testimonial 2-->
                         <div class="card">
                             <div class="header--card">
-                                <img src="./assets/img/testimonials-2.jpeg" alt="">
+                                <img src="{{ asset('assets/img/img2/testimonials-2.jpeg') }}" alt="">
                             </div>
                             <div class="body--card">
                                 <p class="subtitle">Carlos Rodriguez</p>
@@ -128,7 +128,7 @@
                         <!-- Testimonial 3-->
                         <div class="card">
                             <div class="header--card">
-                                <img src="./assets/img/testimonials-3.jpeg" alt="">
+                                <img src="{{ asset('assets/img/img2/testimonials-3.jpeg') }}" alt="">
                             </div>
                             <div class="body--card">
                                 <p class="subtitle">Andrea Sutherland</p>
