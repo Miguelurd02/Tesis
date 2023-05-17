@@ -12,7 +12,7 @@ class LoginBasic extends Controller
   public function index()
   {
     if(Auth::check()){
-      return redirect()->route('home');
+      return redirect()->route('layouts-without-menu');
     }
     return view('content.authentications.auth-login-basic');
   }
