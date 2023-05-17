@@ -14,7 +14,7 @@ $isNavbar = false;
     <img src="{{asset('assets/img/layouts/layout-without-navbar-light.png')}}" class="img-fluid" alt="Layout without navbar">
   </div>
   <div class="layout-demo-info">
-    <h4>{{auth()->user()->username}}</h4>
+    <h4>{{auth()->user()->rol}}</h4>
 
     <p>Layout does not contain Navbar component.</p>
   </div>
