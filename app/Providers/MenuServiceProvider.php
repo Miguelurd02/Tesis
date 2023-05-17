@@ -26,7 +26,11 @@ class MenuServiceProvider extends ServiceProvider
     $verticalMenuJson = file_get_contents(base_path('resources/menu/verticalMenu.json'));
     $verticalMenuData = json_decode($verticalMenuJson);
 
+    $menuUsuarioJson = file_get_contents(base_path('resources/menu/menuUsuario.json'));
+    $menuUsuarioData = json_decode($menuUsuarioJson);
+
     // Share all menuData to all the views
     \View::share('menuData', [$verticalMenuData]);
+    \View::share('menuUsuario', [$menuUsuarioData]);
   }
 }

@@ -17,6 +17,7 @@
   <div class="menu-inner-shadow"></div>
 
   <ul class="menu-inner py-1">
+    @if(auth()->user()->rol=='inmobiliaria')
     @foreach ($menuData[0]->menu as $menu)
 
     {{-- adding active and open class if child is active --}}
@@ -75,6 +76,7 @@
     </li>
     @endif
     @endforeach
+    @endif
   </ul>
 
 </aside>

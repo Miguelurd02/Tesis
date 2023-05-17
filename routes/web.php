@@ -22,7 +22,7 @@ $controller_path = 'App\Http\Controllers';
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'rol:inmobiliaria,usuario'], function(){
         $controller_path = 'App\Http\Controllers';
-         Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+         Route::get('/dashboard-analytics', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
          Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar@index')->name('layouts-without-navbar');
     });
    
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 // layout
-Route::get('/layouts/without-menu', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
+Route::get('/', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
 Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar@index')->name('layouts-without-navbar');
 Route::get('/layouts/fluid', $controller_path . '\layouts\Fluid@index')->name('layouts-fluid');
 Route::get('/layouts/container', $controller_path . '\layouts\Container@index')->name('layouts-container');
