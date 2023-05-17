@@ -21,7 +21,9 @@ $controller_path = 'App\Http\Controllers';
 // Main Page Route
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'rol:inmobiliaria,usuario'], function(){
+        $controller_path = 'App\Http\Controllers';
          Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+         Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar@index')->name('layouts-without-navbar');
     });
    
 });
@@ -42,7 +44,7 @@ Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->na
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
 
 // authentication
-Route::get('/auth/login-basic', [LoginBasic::class, 'index']->middleware('guest'));
+Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('login');
 Route::post('/auth/login-basic', [LoginBasic::class, 'login']);//name('auth-login-basic');
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index']);
 Route::post('/auth/register-basic', [RegisterBasic::class, 'register']); //name('auth-register-basic');

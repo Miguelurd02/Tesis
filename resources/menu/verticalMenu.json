@@ -4,37 +4,31 @@
       "url": "/",
       "name": "Inicio",
       "icon": "menu-icon tf-icons bx bx-home-circle",
-      "slug": "dashboard-analytics",
-      "admin": false
+      "slug": "dashboard-analytics"
     },
     {
-      "menuHeader": "Administración",
-      "admin": true
+      "menuHeader": "Administración"
     },
     {
       "name": "Usuarios",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "cards-basic",
-      "url": "/cards/basic",
-      "admin": false
+      "url": "/cards/basic"
     },
     {
       "name": "Inmobiliarias",
       "icon": "menu-icon tf-icons bx bx-layout",
       "slug": "layouts",
-      "admin": true,
       "submenu": [
         {
           "url": "/layouts/without-menu",
           "name": "Empresas",
-          "slug": "layouts-without-menu",
-          "admin": true
+          "slug": "layouts-without-menu"
         },
         {
           "url": "/layouts/without-navbar",
           "name": "Agentes inmobiliarios",
-          "slug": "layouts-without-navbar",
-          "admin": true
+          "slug": "layouts-without-navbar"
         }
       ]
     },
@@ -43,19 +37,16 @@
       "name": "Localización",
       "icon": "menu-icon tf-icons bx bx bx-dock-top",
       "slug": "pages-account-settings",
-      "admin": true,
       "submenu": [
         {
           "url": "/pages/account-settings-account",
           "name": "Ciudad",
-          "slug": "pages-account-settings-account",
-          "admin": true
+          "slug": "pages-account-settings-account"
         },
         {
           "url": "/pages/account-settings-notifications",
           "name": "Sector",
-          "slug": "pages-account-settings-notifications",
-          "admin": true
+          "slug": "pages-account-settings-notifications"
         }
       ]
     },
@@ -63,8 +54,7 @@
       "url": "tables/basic",
       "icon": "menu-icon tf-icons bx bx-table",
       "name": "Propiedades",
-      "slug": "tables-basic",
-      "admin": true
+      "slug": "tables-basic"
     }
   ]
 }
