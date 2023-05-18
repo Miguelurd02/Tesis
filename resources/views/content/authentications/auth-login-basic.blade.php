@@ -16,26 +16,26 @@
         <div class="card-body">
           <!-- Logo -->
           <div class="app-brand justify-content-center">
+          <img src="{{ asset('assets/img/img2/agente-inmobiliario.png')}}" width=30>
             <a href="{{url('/')}}" class="app-brand-link gap-2">
-              <span class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'#812020'])</span>
               <span class="app-brand-text demo text-body fw-bolder">{{config('variables.templateName')}}</span>
             </a>
           </div>
           <!-- /Logo -->
-          <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
-          <p class="mb-4">Please sign-in to your account and start the adventure</p>
+          <h4 class="mb-2">¡Bienvenido a {{config('variables.templateName')}}! </h4>
+          <p class="mb-4">Por favor inicia sesión para comenzar</p>
 
           <form id="formAuthentication" class="mb-3" action="/auth/login-basic" method="POST">
             @csrf
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Enter your email" autofocus>
+              <label for="email" class="form-label">Correo eletrónico / Nombre de usuario</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu correo eletrónico o usuario" autofocus>
             </div>
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">
-                <label class="form-label" for="password">Password</label>
+                <label class="form-label" for="password">Contraseña</label>
                 <a href="{{url('auth/forgot-password-basic')}}">
-                  <small>Forgot Password?</small>
+                  <small>¿Has olvidado tu contraseña?</small>
                 </a>
               </div>
               <div class="input-group input-group-merge">
@@ -47,7 +47,7 @@
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="remember-me">
                 <label class="form-check-label" for="remember-me">
-                  Remember Me
+                  Recuérdame
                 </label>
               </div>
             </div>
@@ -57,9 +57,9 @@
           </form>
 
           <p class="text-center">
-            <span>New on our platform?</span>
+            <span>¿Eres nuevo en nuestra plataforma?</span>
             <a href="{{url('auth/register-basic')}}">
-              <span>Create an account</span>
+              <span>Registrate</span>
             </a>
           </p>
         </div>
