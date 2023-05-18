@@ -1,0 +1,57 @@
+{
+  "menu": [
+    {
+      "url": "/inicio/inmobiliaria",
+      "name": "Inicio",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "forms-input-groups"
+    },
+    {
+      "menuHeader": "Inmobiliaria"
+    },
+    {
+      "name": "Perfil de empresa",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "forms-basic-inputs",
+      "url": "/perfil/inmobiliaria"
+    },
+    {
+      "name": "Publicaciones",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "slug": "ui",
+      "submenu": [
+        {
+          "url": "/publicacion/registrar",
+          "name": "Realizar publicación",
+          "slug": "ui-collapse"
+        },
+        {
+          "url": "/publicacion/ver",
+          "name": "Ver publicaciones",
+          "slug": "ui-dropdowns"
+        }
+      ]
+    },
+    {
+      "url": "/agentes/ver",
+      "icon": "menu-icon tf-icons bx bx-table",
+      "name": "Mis agentes",
+      "slug": "form-layouts-vertical"
+    },
+    {
+      "menuHeader": "Vista usuario"
+    },
+    {
+      "url": "/inicio/filtro",
+      "name": "Filtro de busqueda",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "icons-boxicons"
+    },
+    {
+      "url": "/catalogo/propiedades",
+      "name": "Propiedades",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "ui-accordion"
+    }
+  ]
+}
