@@ -59,6 +59,7 @@
                 <option selected>Seleccione un rol</option>
                 <option value="inmobiliaria">Inmobiliaria</option>
                 <option value="suscriptor">Suscriptor</option>
+                <option value="admin">Administrador</option>
               </select>
             </div>
         
