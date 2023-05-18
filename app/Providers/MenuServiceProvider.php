@@ -28,9 +28,13 @@ class MenuServiceProvider extends ServiceProvider
 
     $menuUsuarioJson = file_get_contents(base_path('resources/menu/menuUsuario.json'));
     $menuUsuarioData = json_decode($menuUsuarioJson);
+    
+    $menuInmobiliariaJson = file_get_contents(base_path('resources/menu/menuInmobiliaria.json'));
+    $menuInmobiliariaData = json_decode($menuInmobiliariaJson);
 
     // Share all menuData to all the views
     \View::share('menuData', [$verticalMenuData]);
     \View::share('menuUsuario', [$menuUsuarioData]);
+    \View::share('menuInmobiliaria', [$menuInmobiliariaData]);
   }
 }

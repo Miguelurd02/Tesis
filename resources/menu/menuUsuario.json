@@ -1,10 +1,10 @@
 {
   "menu": [
     {
-      "url": "/pages/account-settings-account",
+      "url": "/inicio/filtro",
       "name": "Inicio",
       "icon": "menu-icon tf-icons bx bx-home-circle",
-      "slug": "pages-account-settings-account"
+      "slug": "icons-boxicons"
     },
     {
       "menuHeader": "Menú"
@@ -12,24 +12,24 @@
     {
       "name": "Perfil",
       "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "ui-accordion",
-      "url": "/ui/accordion"
+      "slug": "pages-account-settings-account",
+      "url": "/perfil/usuario"
     },
     {
       "name": "Propiedades",
       "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "icons-boxicons",
-      "url": "/icons/boxicons"
+      "slug": "ui-accordion",
+      "url": "/catalogo/propiedades"
     },{
       "name": "Inmobiliarias",
       "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "tables-basic",
-      "url": "/cards/basic"
+      "slug": "ui-alerts",
+      "url": "/informacion/inmobiliarias"
     },{
       "name": "Agentes inmobiliarios",
       "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "form-layouts-vertical",
-      "url": "/cards/basic"
+      "slug": "ui-badges",
+      "url": "/informacion/agentes"
     }
   ]
 }

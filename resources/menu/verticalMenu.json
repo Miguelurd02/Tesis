@@ -1,7 +1,7 @@
 {
   "menu": [
     {
-      "url": "/dashboard-analytics",
+      "url": "/admin-inicio",
       "name": "Inicio",
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "dashboard-analytics"
@@ -13,7 +13,7 @@
       "name": "Usuarios",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "cards-basic",
-      "url": "/cards/basic"
+      "url": "/usuarios/listado"
     },
     {
       "name": "Inmobiliarias",
@@ -21,14 +21,14 @@
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/layouts/without-menu",
+          "url": "/inmobiliarias/empresas",
           "name": "Empresas",
-          "slug": "layouts-without-menu"
+          "slug": "layouts-fluid"
         },
         {
-          "url": "/layouts/without-navbar",
+          "url": "/inmobiliarias/agentes",
           "name": "Agentes inmobiliarios",
-          "slug": "layouts-without-navbar"
+          "slug": "layouts-container"
         }
       ]
     },
@@ -36,22 +36,22 @@
     {
       "name": "Localización",
       "icon": "menu-icon tf-icons bx bx bx-dock-top",
-      "slug": "pages-account-settings",
+      "slug": "extended",
       "submenu": [
         {
-          "url": "/pages/account-settings-account",
+          "url": "/localizacion/ciudad",
           "name": "Ciudad",
-          "slug": "pages-account-settings-account"
+          "slug": "extended-ui-perfect-scrollbar"
         },
         {
-          "url": "/pages/account-settings-notifications",
+          "url": "/localizacion/sector",
           "name": "Sector",
-          "slug": "pages-account-settings-notifications"
+          "slug": "extended-ui-text-divider"
         }
       ]
     },
     {
-      "url": "tables/basic",
+      "url": "/propiedades/registro",
       "icon": "menu-icon tf-icons bx bx-table",
       "name": "Propiedades",
       "slug": "tables-basic"

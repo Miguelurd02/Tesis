@@ -35,10 +35,13 @@ class LoginBasic extends Controller
   public function authenticated(Request $request, $user){
 
     if($user->rol=='inmobiliaria'){
-      return redirect('/layouts/without-navbar')->with('rol', $user->rol);
+      return redirect('/inicio/inmobiliaria')->with('rol', $user->rol);
     }
     elseif($user->rol=='suscriptor'){
-      return redirect('/icons/boxicons')->with('rol', $user->rol);
+      return redirect('/inicio/filtro')->with('rol', $user->rol);
+    }
+    elseif($user->rol=='admin'){
+      return redirect('/admin-inicio')->with('rol', $user->rol);
     }
     
   }
