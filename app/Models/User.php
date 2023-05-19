@@ -46,4 +46,9 @@ class User extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
+
+    //relacion uno a uno
+    public function suscriptor(){
+        return $this->hasOne('App\Models\Suscriptor');
+    }
 }
