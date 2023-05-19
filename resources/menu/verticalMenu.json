@@ -11,13 +11,13 @@
     },
     {
       "name": "Usuarios",
-      "icon": "menu-icon tf-icons bx bx-collection",
+      "icon": "menu-icon tf-icons bx bx-user",
       "slug": "cards-basic",
       "url": "/usuarios/listado"
     },
     {
       "name": "Inmobiliarias",
-      "icon": "menu-icon tf-icons bx bx-layout",
+      "icon": "menu-icon tf-icons bx bx-store-alt",
       "slug": "layouts",
       "submenu": [
         {
@@ -35,7 +35,7 @@
     
     {
       "name": "Localización",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-map",
       "slug": "extended",
       "submenu": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "url": "/propiedades/registro",
-      "icon": "menu-icon tf-icons bx bx-table",
+      "icon": "menu-icon tf-icons bx bx-layout",
       "name": "Propiedades",
       "slug": "tables-basic"
     }

@@ -3,9 +3,7 @@
   <!-- ! Hide app brand if navbar-full -->
   <div class="app-brand demo">
     <a href="{{url('/')}}" class="app-brand-link">
-      <span class="app-brand-logo demo">
-        @include('_partials.macros',["width"=>25,"withbg"=>'#812020'])
-      </span>
+      <img src="{{ asset('assets/img/img2/agente-inmobiliario.png')}}" width=30>
       <span class="app-brand-text demo menu-text fw-bold ms-2">{{config('variables.templateName')}}</span>
     </a>
 

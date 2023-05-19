@@ -11,23 +11,23 @@
     },
     {
       "name": "Perfil",
-      "icon": "menu-icon tf-icons bx bx-collection",
+      "icon": "menu-icon tf-icons bx bx-user",
       "slug": "pages-account-settings-account",
       "url": "/perfil/usuario"
     },
     {
       "name": "Propiedades",
-      "icon": "menu-icon tf-icons bx bx-collection",
+      "icon": "menu-icon tf-icons bx bx-building-house",
       "slug": "ui-accordion",
       "url": "/catalogo/propiedades"
     },{
       "name": "Inmobiliarias",
-      "icon": "menu-icon tf-icons bx bx-collection",
+      "icon": "menu-icon tf-icons bx bx-store-alt",
       "slug": "ui-alerts",
       "url": "/informacion/inmobiliarias"
     },{
       "name": "Agentes inmobiliarios",
-      "icon": "menu-icon tf-icons bx bx-collection",
+      "icon": "menu-icon tf-icons bx bx-user-pin",
       "slug": "ui-badges",
       "url": "/informacion/agentes"
     }
