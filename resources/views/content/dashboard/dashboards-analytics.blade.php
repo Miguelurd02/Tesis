@@ -46,14 +46,16 @@
           <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
             <div class="card-title">
               <h5 class="text-nowrap mb-2">Usuarios</h5>
-              <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+              <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> 68.2%</small>
+              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> Registrados</small>
               <h3 class="mb-0">$84,686k</h3>
             </div>
           </div>
-          <div id="profileReportChart"></div>
+          <div>
+          <img src="{{ asset('assets/img/img2/icons8-account-50.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -75,7 +77,9 @@
               <h3 class="mb-0">$84,686k</h3>
             </div>
           </div>
-          <div id="profileReportChart"></div>
+          <div>
+          <img src="{{ asset('assets/img/img2/icons8-empresa-50.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -97,7 +101,9 @@
               <h3 class="mb-0">$84,686k</h3>
             </div>
           </div>
-          <div id="profileReportChart"></div>
+          <div>
+          <img src="{{ asset('assets/img/img2/icons8-hombre-de-negocios-50.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -120,7 +126,9 @@
               <h3 class="mb-0">$84,686k</h3>
             </div>
           </div>
-          <div id="profileReportChart"></div>
+          <div>
+          <img src="{{ asset('assets/img/img2/icons8-ciudad-50.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -142,7 +150,9 @@
               <h3 class="mb-0">$84,686k</h3>
             </div>
           </div>
-          <div id="profileReportChart"></div>
+          <div>
+          <img src="{{ asset('assets/img/img2/icons8-paving-stone-walkway-50.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -164,7 +174,9 @@
               <h3 class="mb-0">$84,686k</h3>
             </div>
           </div>
-          <div id="profileReportChart"></div>
+          <div>
+          <img src="{{ asset('assets/img/img2/icons8-bank-building-50.png')}}" alt="">
+          </div>
         </div>
       </div>
     </div>
