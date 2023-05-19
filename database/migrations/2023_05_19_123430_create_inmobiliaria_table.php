@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('suscriptor', function (Blueprint $table) {
+        Schema::create('inmobiliaria', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellido');
-
+            $table->string('rif');
+            $table->string('telefono');
+            $table->string('direccion');
+            $table->text('descripcion');
+            $table->string('imagen');
+            
             $table->unsignedBigInteger('user_id')->unique();
 
             $table->foreign('user_id')
@@ -25,7 +29,7 @@ return new class extends Migration
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }
@@ -37,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suscriptor');
+        Schema::dropIfExists('inmobiliaria');
     }
 };

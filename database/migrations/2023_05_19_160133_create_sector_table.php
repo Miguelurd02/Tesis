@@ -13,19 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('suscriptor', function (Blueprint $table) {
+        Schema::create('sector', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellido');
 
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('ciudad_id')->unique();
 
-            $table->foreign('user_id')
+            $table->foreign('ciudad_id')
             ->references('id')
-            ->on('users')
+            ->on('ciudad')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suscriptor');
+        Schema::dropIfExists('sector');
     }
 };
