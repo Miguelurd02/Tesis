@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function suscriptor(){
         return $this->hasOne('App\Models\Suscriptor');
     }
+
+    public function inmobiliaria(){
+        return $this->hasOne('App\Models\Inmobiliaria');
+    }
 }

@@ -13,19 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('suscriptor', function (Blueprint $table) {
+        Schema::create('agentes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('email');
+            $table->string('telefono');
+            $table->string('imagen');
 
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('inmobiliaria_id')->unique();
 
-            $table->foreign('user_id')
+            $table->foreign('inmobiliaria_id')
             ->references('id')
-            ->on('users')
+            ->on('inmobiliaria')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }
@@ -37,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suscriptor');
+        Schema::dropIfExists('agentes');
     }
 };

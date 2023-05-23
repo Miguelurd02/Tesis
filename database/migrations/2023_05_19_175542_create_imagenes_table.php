@@ -13,19 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('suscriptor', function (Blueprint $table) {
+        Schema::create('imagenes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
+            $table->string('nombre_foto');
 
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('propiedad_id')->unique();
 
-            $table->foreign('user_id')
+            $table->foreign('propiedad_id')
             ->references('id')
-            ->on('users')
+            ->on('propiedades')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suscriptor');
+        Schema::dropIfExists('imagenes');
     }
 };
