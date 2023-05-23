@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('estado');
             $table->string('imagen');
 
-            $table->unsignedBigInteger('agentes_id')->unique();
+            $table->unsignedBigInteger('agentes_id');
 
             $table->foreign('agentes_id')
             ->references('id')
@@ -36,7 +36,7 @@ return new class extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('sector_id')->unique();
+            $table->unsignedBigInteger('sector_id');
 
             $table->foreign('sector_id')
             ->references('id')

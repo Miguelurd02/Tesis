@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
 
-            $table->unsignedBigInteger('ciudad_id')->unique();
+            $table->unsignedBigInteger('ciudad_id');
 
             $table->foreign('ciudad_id')
             ->references('id')
