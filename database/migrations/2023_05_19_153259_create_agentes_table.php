@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('imagen');
 
-            $table->unsignedBigInteger('inmobiliaria_id')->unique();
+            $table->unsignedBigInteger('inmobiliaria_id');
 
             $table->foreign('inmobiliaria_id')
             ->references('id')
