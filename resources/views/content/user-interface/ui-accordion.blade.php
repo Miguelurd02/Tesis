@@ -1,111 +1,178 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Accordion - UI elements')
+@section('title', 'Cards basic   - UI elements')
+
+@section('vendor-script')
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="{{ asset('assets/css/propiedades/cards.css') }}" />
+<script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
+@endsection
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Accordion</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Menú /</span> Propiedades</h4>
 
-<!-- Accordion -->
-<h5 class="mt-4">Accordion</h5>
-<div class="row">
-  <div class="col-md mb-4 mb-md-0">
-    <small class="text-light fw-semibold">Basic Accordion</small>
-    <div class="accordion mt-3" id="accordionExample">
-      <div class="card accordion-item active">
-        <h2 class="accordion-header" id="headingOne">
-          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
-            Accordion Item 1
-          </button>
-        </h2>
 
-        <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps icing marzipan gummi
-            bears macaroon dragée danish caramels powder. Bear claw dragée pastry topping soufflé. Wafer gummi bears
-            marshmallow pastry pie.
+<!-- Grid Card -->
+
+<!-- Estilo para ajustar el tamaño de las fotos -->
+<style>
+  .card-img-top {
+    object-fit: cover;
+    height: 300px; /* Ajusta la altura deseada para las imágenes */
+  }
+
+  .card {
+    height: 100%;
+  }
+</style>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+  <div class="col">
+    <a href="">
+    <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+      <img class="card-img-top" src="{{asset('assets/img/propiedades/casa-con-vista-al-mar.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Casa con vista a la playa</h5>
+        <p class="card-direccion">Maracaibo, El Milagro</p>
+        <p class="card-construccion">300m² de construcción</p>
+        <p class="card-description">Encantadora casa de playa ubicada en un pintoresco destino costero. Disfruta de vistas impresionantes al océano desde cada habitación. La casa cuenta con amplias áreas de estar, terraza privada frente al mar y acceso directo a la playa de arena blanca. Ideal para relajarse, disfrutar del sol y escuchar el sonido de las olas rompiendo en la orilla.</p>
+        <div class="property-details">
+          <div class="property-detail">
+            <span class="material-icons">bathtub</span> 3
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">bed</span> 4
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">apartment</span> 2
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">local_parking</span> 2
           </div>
         </div>
+        <div class="price">$250,000</div>
       </div>
-      <div class="card accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
-            Accordion Item 2
-          </button>
-        </h2>
-        <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat cake dragée ice
-            cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut gummies. Jelly beans candy canes
-            carrot cake. Fruitcake chocolate chupa chups.
+    </div>
+  </a>
+  </div>
+  <div class="col">
+    <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+      <img class="card-img-top" src="{{asset('assets/img/propiedades/casa-suburbio.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Casa en los suburbios</h5>
+        <p class="card-direccion">Maracaibo, El Milagro</p>
+        <p class="card-text">100m² de construcción</p>
+        <p class="card-description">Encantadora casa ubicada en un tranquilo vecindario de los suburbios. Esta casa familiar ofrece comodidad y funcionalidad con amplios espacios interiores y exteriores. Cuenta con un hermoso jardín, una terraza cubierta para disfrutar de barbacoas al aire libre y una zona de juegos para los niños. A pocos minutos de tiendas, parques y escuelas, esta propiedad es perfecta para una vida familiar cómoda y conveniente en los suburbios.</p>
+        <div class="property-details">
+          <div class="property-detail">
+            <span class="material-icons">bathtub</span> 3
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">bed</span> 4
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">apartment</span> 2
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">local_parking</span> 2
           </div>
         </div>
-      </div>
-      <div class="card accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="false" aria-controls="accordionThree">
-            Accordion Item 3
-          </button>
-        </h2>
-        <div id="accordionThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon gingerbread
-            marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake dragée caramels. Ice cream
-            wafer danish cookie caramels muffin.
-          </div>
-        </div>
+        <div class="price">$250,000</div>
       </div>
     </div>
   </div>
-  <div class="col-md">
-    <small class="text-light fw-semibold">Accordion Without Arrow</small>
-    <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
-      <div class="accordion-item card">
-        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
-          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-1" aria-controls="accordionIcon-1">
-            Accordion Item 1
-          </button>
-        </h2>
-
-        <div id="accordionIcon-1" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
-          <div class="accordion-body">
-            Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps icing marzipan gummi
-            bears macaroon dragée danish caramels powder. Bear claw dragée pastry topping soufflé. Wafer gummi bears
-            marshmallow pastry pie.
+  <div class="col">
+    <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+      <img class="card-img-top" src="{{asset('assets/img/propiedades/casa-de-campo.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Casa de Campo</h5>
+        <p class="card-direccion">Maracaibo, El Milagro</p>
+        <p class="card-text">400m² de construcción</p>
+        <p class="card-description">Bienvenido a esta encantadora casa de campo rodeada de exuberante vegetación y paisajes serenos. La propiedad ofrece un ambiente tranquilo y relajante, perfecto para escapar del bullicio de la ciudad. Disfruta de amplios jardines, una acogedora chimenea y una terraza privada con vistas panorámicas al campo. Ideal para aquellos que buscan paz y tranquilidad en medio de la naturaleza.</p>
+        <div class="property-details">
+          <div class="property-detail">
+            <span class="material-icons">bathtub</span> 3
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">bed</span> 4
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">apartment</span> 2
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">local_parking</span> 2
           </div>
         </div>
+        <div class="price">$250,000</div>
       </div>
-
-      <div class="accordion-item card">
-        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconTwo">
-          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-2" aria-controls="accordionIcon-2">
-            Accordion Item 2
-          </button>
-        </h2>
-        <div id="accordionIcon-2" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
-          <div class="accordion-body">
-            Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat cake dragée ice
-            cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut gummies. Jelly beans candy canes
-            carrot cake. Fruitcake chocolate chupa chups.
+    </div>
+  </div>
+  
+  <div class="col">
+    <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+      <img class="card-img-top" src="{{asset('assets/img/propiedades/casa-con-vista-al-mar.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Casa con vista a la playa</h5>
+        <p class="card-direccion">Maracaibo, El Milagro</p>
+        <p class="card-text">300m² de construcción</p>
+        <p class="card-description">Encantadora casa de playa ubicada en un pintoresco destino costero. Disfruta de vistas impresionantes al océano desde cada habitación. La casa cuenta con amplias áreas de estar, terraza privada frente al mar y acceso directo a la playa de arena blanca. Ideal para relajarse, disfrutar del sol y escuchar el sonido de las olas rompiendo en la orilla.</p>
+        <div class="property-details">
+          <div class="property-detail">
+            <span class="material-icons">bathtub</span> 3
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">bed</span> 4
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">apartment</span> 2
+          </div>
+          <div class="property-detail">
+            <span class="material-icons">local_parking</span> 2
           </div>
         </div>
+        <div class="price">$250,000</div>
       </div>
-
-      <div class="accordion-item card active">
-        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
-          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionIcon-3" aria-expanded="true" aria-controls="accordionIcon-3">
-            Accordion Item 3
-          </button>
-        </h2>
-        <div id="accordionIcon-3" class="accordion-collapse collapse show" data-bs-parent="#accordionIcon">
-          <div class="accordion-body">
-            Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon gingerbread
-            marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake dragée caramels. Ice cream
-            wafer danish cookie caramels muffin.
-          </div>
-        </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img class="card-img-top" src="{{asset('assets/img/elements/18.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img class="card-img-top" src="{{asset('assets/img/elements/19.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img class="card-img-top" src="{{asset('assets/img/elements/20.jpg')}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
   </div>
 </div>
-<!--/ Accordion -->
+
+
+<!--/ Card layout -->
 @endsection
+<script>
+  function addShadow(element) {
+  element.classList.add("shadow-effect");
+}
+
+function removeShadow(element) {
+  element.classList.remove("shadow-effect");
+}
+
+</script>
