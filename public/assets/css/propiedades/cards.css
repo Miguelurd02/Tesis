@@ -1,0 +1,66 @@
+
+.card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Establece el máximo número de líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:rgb(105, 122, 140);
+  }
+
+  .card-title{
+    text-transform: uppercase;
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; /* Establece el máximo número de líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:rgb(105, 122, 140);
+  }
+
+  .card-direccion{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; /* Establece el máximo número de líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:rgb(105, 122, 140);
+  }
+
+  .card-construccion{
+    color:rgb(105, 122, 140);
+  }
+  
+  .property-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color:rgb(105, 122, 140);
+  }
+  
+  .property-detail {
+    display: flex;
+    align-items: center;
+  }
+  
+  .property-detail i {
+    margin-right: 5px;
+  }
+  
+  .price {
+    text-align: right;
+    font-weight: bold;
+    font-size: 20px;
+    color: green;
+  }
+  
+  /*animacion de la card*/
+  .card:hover {
+    cursor: pointer;
+  }
+  
+  .shadow-effect {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
