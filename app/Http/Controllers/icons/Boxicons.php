@@ -17,6 +17,6 @@ class Boxicons extends Controller
     $ciudads = Ciudad::all();
     $sectors = Sector::with(['ciudad'])->get();
 
-    return view('content.icons.icons-boxicons', compact('propiedades'));
+    return view('content.icons.icons-boxicons', compact('propiedades','ciudads','sectors'));
   }
 }

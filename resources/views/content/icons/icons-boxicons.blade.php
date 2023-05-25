@@ -22,11 +22,8 @@
               <label for="tipo-busqueda" class="form-label">Tipo de búsqueda</label>
               <select id="tipo-busqueda" class="select2 form-select">
                 <option value="">Seleccionar</option>
-                @foreach ($propiedades as $propiedad)
-                <option value="{{$propiedad->contrato}}">{{$propiedad->contrato}}</option>
-                @endforeach
-                
-
+                <option value="venta">Venta</option>
+                <option value="alquiler">Alquiler</option>
               </select>
             </div>
 
@@ -44,12 +41,11 @@
 
             <div class="mb-3 col-md-3">
               <label for="ciudad" class="form-label">Ciudad</label>
-              <select id="ciudad" class="select2 form-select" onchange="updateSectores()">
+              <select id="ciudad" class="select2 form-select" onchange="mostrarSectores()">
                 <option value="">Seleccionar Ciudad</option>
-                <option value="caracas">Caracas</option>
-                <option value="valencia">Valencia</option>
-                <option value="maracaibo">Maracaibo</option>
-                <!-- Agregar más opciones de ciudades aquí -->
+                @foreach ($ciudads as $ciudad)
+                <option value="{{$ciudad->id}}">{{$ciudad->nombre}}</option>
+                @endforeach
               </select>
             </div>
 
@@ -57,10 +53,7 @@
               <label for="sector" class="form-label">Sector</label>
               <select id="sector" class="select2 form-select">
                 <option value="">Seleccionar Sector</option>
-                <option value="caracas">Caracas</option>
-                <option value="valencia">Valencia</option>
-                <option value="maracaibo">Maracaibo</option>
-                <!-- Agregar más opciones de ciudades aquí -->
+               
               </select>
             </div>
 
@@ -177,40 +170,19 @@
 
  <!-- SCRIPT.2 PARA MOSTRAR LOS SECTORES SEGUN LA CIUDAD -->
 <script>
-  function updateSectores() {
-    var ciudadSelector = document.getElementById("ciudad");
-    var sectorSelector = document.getElementById("sector");
-
-    // Limpiar opciones anteriores
-    sectorSelector.innerHTML = '<option value="">Seleccionar Sector</option>';
-
-    // Obtener la ciudad seleccionada
-    var ciudadSeleccionada = ciudadSelector.value;
-
-    // Verificar la ciudad seleccionada y agregar los sectores correspondientes
-    if (ciudadSeleccionada === "caracas") {
-      sectorSelector.innerHTML += `
-        <option value="chacao">Chacao</option>
-        <option value="altamira">Altamira</option>
-        <option value="las-mercedes">Las Mercedes</option>
-      `;
-    } else if (ciudadSeleccionada === "valencia") {
-      sectorSelector.innerHTML += `
-        <option value="naguanagua">Naguanagua</option>
-        <option value="el-quiz">El Quiz</option>
-        <option value="prebo">Prebo</option>
-      `;
-    } else if (ciudadSeleccionada === "maracaibo") {
-      sectorSelector.innerHTML += `
-        <option value="el-milagro">El Milagro</option>
-        <option value="la-limpia">La Limpia</option>
-        <option value="tierra-negra">Tierra Negra</option>
-      `;
-    }
-    // Agrega más condiciones según tus ciudades y sectores
-
-    // Opcional: Puedes deshabilitar el selector de sectores si no hay ciudad seleccionada
-    sectorSelector.disabled = ciudadSeleccionada === "";
+  function mostrarSectores() {
+      var ciudadId = document.getElementById('ciudad').value;
+      var sectorSelect = document.getElementById('sector');
+      sectorSelect.innerHTML = ''; // Limpiar opciones anteriores
+      sectorSelect.innerHTML = '<option value="">Seleccionar Sector</option>'; // Opción predeterminada
+      @foreach($ciudads as $ciudad)
+          if (ciudadId === "{{ $ciudad->id }}") {
+              @foreach($ciudad->sectores as $sector)
+                  sectorSelect.innerHTML += '<option value="{{ $sector->id }}">{{ $sector->nombre }}</option>';
+              @endforeach
+          }
+      @endforeach
   }
 </script>
+
 @endsection
