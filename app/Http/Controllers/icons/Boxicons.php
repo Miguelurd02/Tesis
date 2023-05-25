@@ -13,10 +13,10 @@ class Boxicons extends Controller
   public function index()
   {
 
-    $propiedadess = Propiedades::with(['sector','agentes'])->get();
+    $propiedades = Propiedades::with(['sector','agentes'])->get();
     $ciudads = Ciudad::all();
     $sectors = Sector::with(['ciudad'])->get();
 
-    return view('content.icons.icons-boxicons', compact('propiedadess','ciudads','sectors'));
+    return view('content.icons.icons-boxicons', compact('propiedades'));
   }
 }
