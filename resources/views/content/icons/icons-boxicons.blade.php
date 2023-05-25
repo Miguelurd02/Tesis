@@ -22,8 +22,11 @@
               <label for="tipo-busqueda" class="form-label">Tipo de búsqueda</label>
               <select id="tipo-busqueda" class="select2 form-select">
                 <option value="">Seleccionar</option>
-                <option value="venta">Venta</option>
-                <option value="alquiler">Alquiler</option>
+                @foreach ($propiedades as $propiedad)
+                <option value="{{$propiedad->contrato}}">{{$propiedad->contrato}}</option>
+                @endforeach
+                
+
               </select>
             </div>
 
@@ -124,6 +127,17 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5 o más</option>
+              </select>
+            </div>
+
+            <div class="mb-3 col-md-3">
+              <label for="inmobiliaria" class="form-label">Inmobiliaria</label>
+              <select id="inmobiliaria" class="select2 form-select">
+                <option value="">Seleccionar</option>
+                <option value="Remax">Remax</option>
+                <option value="Century 21">Century 21</option>
+                <option value="Rent-a-house">Rent a House</option>
+                <option value="Regalado">Regalado</option> 
               </select>
             </div>
           </div>
