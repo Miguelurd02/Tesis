@@ -13,19 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agentes', function (Blueprint $table) {
+        Schema::create('inmobiliarias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellido');
-            $table->string('email');
+            $table->string('rif');
             $table->string('telefono');
+            $table->string('direccion');
+            $table->text('descripcion');
             $table->string('imagen');
+            
+            $table->unsignedBigInteger('user_id')->unique();
 
-            $table->unsignedBigInteger('inmobiliaria_id');
-
-            $table->foreign('inmobiliaria_id')
+            $table->foreign('user_id')
             ->references('id')
-            ->on('inmobiliaria')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
@@ -40,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agentes');
+        Schema::dropIfExists('inmobiliarias');
     }
 };

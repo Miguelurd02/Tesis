@@ -13,9 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ciudad', function (Blueprint $table) {
+        Schema::create('agentess', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('apellido');
+            $table->string('email');
+            $table->string('telefono');
+            $table->string('imagen');
+
+            $table->unsignedBigInteger('inmobiliaria_id');
+
+            $table->foreign('inmobiliaria_id')
+            ->references('id')
+            ->on('inmobiliaria')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
@@ -27,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ciudad');
+        Schema::dropIfExists('agentess');
     }
 };
