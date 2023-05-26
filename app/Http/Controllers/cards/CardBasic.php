@@ -15,4 +15,18 @@ class CardBasic extends Controller
 
     return view('content.cards.cards-basic', compact('suscriptors'));
   }
+
+  public function editar(Request $request, $id)
+  {
+    $suscriptors = Suscriptor::with('user')->find($id);
+
+    $suscriptors->nombre = $request->nombre;
+    $suscriptors->apellido = $request->apellido;
+    $suscriptors->user->email = $request->email;
+
+    return $suscriptors;
+
+
+    return view('content.cards.cards-basic', compact('suscriptors'));
+  }
 }

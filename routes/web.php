@@ -26,7 +26,8 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/admin-inicio', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics'); // Inicio admin
          Route::get('/inmobiliarias/empresas', $controller_path . '\layouts\Fluid@index')->name('layouts-fluid'); //Inmobiliarias empresas tablas
          Route::get('/inmobiliarias/agentes', $controller_path . '\layouts\Container@index')->name('layouts-container'); //Agentes inmobiliarios tablas
-         Route::get('/usuarios/listado', $controller_path . '\cards\CardBasic@index')->name('cards-basic');//Usuarios tablas
+         Route::get('/usuarios/listado', [CardBasic::class, 'index'])->name('cards-basic');//Usuarios tablas
+         Route::put('/usuarios/{id}/listado',[CardBasic::class, 'editar']);//Usuarios tablas editar
          Route::get('/localizacion/ciudad', $controller_path . '\extended_ui\PerfectScrollbar@index')->name('extended-ui-perfect-scrollbar'); // Ciudades
          Route::get('/localizacion/sector', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider'); // Sectores
          Route::get('/propiedades/registro', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
