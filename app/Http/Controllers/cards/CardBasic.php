@@ -18,7 +18,7 @@ class CardBasic extends Controller
 
   public function editar(Request $request, $id)
   {
-    $suscriptors = Suscriptor::with('user')->find($id);
+    $suscriptors = Suscriptor::with('user')->findOrFail($id);
 
     $suscriptors->nombre = $request->nombre;
     $suscriptors->apellido = $request->apellido;
