@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         //Usuario pantallas
         Route::get('/inicio/filtro', $controller_path . '\icons\Boxicons@index')->name('icons-boxicons'); //Inicio usuario filtro
+        Route::get('/propiedades/buscar',$controller_path .'\icons\Boxicons@buscar')->name('propiedades.buscar');
         Route::get('/perfil/usuario', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account'); //Perfil usuario
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion'); //Propiedades
         Route::get('/informacion/inmobiliarias', $controller_path . '\user_interface\Alerts@index')->name('ui-alerts'); // Inmobiliarias información

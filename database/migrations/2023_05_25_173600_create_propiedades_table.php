@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->text('descripcion');
             $table->string('tipo');
-            $table->string('dimension');
+            $table->decimal('dimension',$presicion = 6, $scale = 2);
             $table->integer('banos');
             $table->integer('estacionamiento');
             $table->integer('plantas');

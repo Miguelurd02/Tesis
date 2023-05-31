@@ -36,7 +36,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$propiedad->titulo}}</h5>
       <p class="card-direccion">{{$propiedad->sector->nombre}}, {{$propiedad->sector->ciudad->nombre}}</p>
-      <p class="card-construccion">{{$propiedad->dimension}} de construcción</p>
+      <p class="card-construccion">{{$propiedad->dimension}}m<sup>2</sup> de construcción</p>
       <p class="card-description">{{$propiedad->descripcion}}</p>
       <div class="property-details">
         <div class="property-detail">
