@@ -20,13 +20,13 @@ class CardBasic extends Controller
   {
     $suscriptors = Suscriptor::with('user')->findOrFail($id);
 
-    $suscriptors->nombre = $request->nombre;
-    $suscriptors->apellido = $request->apellido;
-    $suscriptors->user->email = $request->email;
+    $suscriptors->nombre = $request->input('nombre');
+    $suscriptors->apellido = $request->input('apellido');
+    $suscriptors->user->email = $request->input('correo');
+    $suscriptors->telefono = $request->input('telefono');
+    $suscriptors->save();
 
-    return $suscriptors;
 
-
-    return view('content.cards.cards-basic', compact('suscriptors'));
+    return redirect()->back()->with('succes', 'registro actualizado');
   }
 }

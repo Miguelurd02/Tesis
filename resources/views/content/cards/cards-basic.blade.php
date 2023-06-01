@@ -52,10 +52,10 @@
                     <td>{{$suscriptor->user->email}}</td>
                     <td>
                         <center>
-                            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaldetalle">
+                            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaldetalle" data-id="{{$suscriptor->id}}">
                             <span class="tf-icons bx bx-detail"></span>
                             </button>
-                            <button type="button" class="btn btn-icon btn-primary"  data-bs-toggle="modal" data-bs-target="#modaleditar{{$suscriptor->id}}">
+                            <button type="button" class="btn btn-icon btn-primary"  data-bs-toggle="modal" data-bs-target="#modaleditar" data-id="{{$suscriptor->id}}">
                                 <span class="tf-icons bx bx-edit"></span>
                             </button>
                             <button type="button" class="btn btn-icon btn-primary">
@@ -123,9 +123,11 @@
       </div>
     </div>
 
-    <div class="modal fade" id="modaleditar{{$suscriptor->id}}" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal fade" id="modaleditar" data-bs-backdrop="static" tabindex="-1">
       <div class="modal-dialog">
-        <form class="modal-content" action="{{route('editar'), $suscriptor->id}}" method="POST">
+        <form class="modal-content" id="editform" action="{{route('cards-basic', ['id' => $suscriptor->id])}}" method="POST">
+          @csrf
+          @method('PUT')
           <div class="modal-header">
             <h5 class="modal-title" id="backDropModalTitle">Editar</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -134,33 +136,33 @@
             <div class="row">
               <div class="col mb-3">
               <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre de Usuario</label>
-              <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$suscriptor->user->username}}" readonly />
+              <input class="form-control" type="text" id="nombre_usuario" placeholder="{{$suscriptor->user->username}}" readonly />
               </div>
             </div>
             <div class="row g-2">
               <div class="col mb-0">
               <label for="defaultFormControlInput" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="defaultFormControlInput" placeholder="John Doe" aria-describedby="defaultFormControlHelp" />
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="John Doe" aria-describedby="defaultFormControlHelp" />
               </div>
               <div class="col mb-0">
               <label for="exampleFormControlReadOnlyInput1" class="form-label">Apellido</label>
-              <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$suscriptor->apellido}}" readonly />
+              <input class="form-control" type="text" id="apellido" name="apellido" placeholder="{{$suscriptor->apellido}}" readonly />
               </div>
             </div>
             <br>
             <div class="row g-2">
               <div class="col mb-0">
               <label for="exampleFormControlReadOnlyInput1" class="form-label">Email</label>
-              <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$suscriptor->user->email}}" readonly />
+              <input class="form-control" type="text" id="correo" name="correo" placeholder="{{$suscriptor->user->email}}" readonly />
               </div>
               <div class="col mb-0">
               <label for="exampleFormControlReadOnlyInput1" class="form-label">Teléfono</label>
-              <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="{{$suscriptor->telefono}}" readonly />
+              <input class="form-control" type="text" id="telefono" name="telefono" placeholder="{{$suscriptor->telefono}}" readonly />
               </div>
             </div>
           </div>
           <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" form="editform" class="btn btn-primary">Guardar cambios</button>
           </div>
         </form>
       </div>
