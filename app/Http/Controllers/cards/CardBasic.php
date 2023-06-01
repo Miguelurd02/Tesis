@@ -27,6 +27,6 @@ class CardBasic extends Controller
     $suscriptors->save();
 
 
-    return redirect()->back()->with('succes', 'registro actualizado');
+    return response()->json(['success' => true]);
   }
 }
