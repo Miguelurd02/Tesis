@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
+use App\Http\Controllers\cards\CardBasic;
 use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
