@@ -18,15 +18,17 @@ class CardBasic extends Controller
 
   public function editar(Request $request, $id)
   {
-    $suscriptors = Suscriptor::with('user')->findOrFail($id);
+    $suscriptors = Suscriptor::with('user')->find($id);
 
-    $suscriptors->nombre = $request->input('nombre');
-    $suscriptors->apellido = $request->input('apellido');
-    $suscriptors->user->email = $request->input('correo');
-    $suscriptors->telefono = $request->input('telefono');
-    $suscriptors->save();
+    $suscriptors->nombre = $request->nombre;
+    $suscriptors->apellido = $request->apellido;
+    $suscriptors->user->email = $request->email;
+    $suscriptors->telefono = $request->telefono;
 
-
-    return response()->json(['success' => true]);
+    if ($suscriptors->save()){
+      return redirect(to:'/usuarios/listado');
+    }else{
+      return view('content.cards.cards-basic', compact('suscriptors'));
+    }
   }
 }
