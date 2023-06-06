@@ -26,12 +26,10 @@
 
 <div class="row mb-5">
   <div class="demo-inline-spacing">
-    <button type="button" class="btn btn-primary">
-      <span class="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Primary
-    </button>
+    <H1>TABLA USUARIOS</H1>
+    <br><br>
   </div>
   <table id="example" class="ui celled table" style="width:100%">
-    <h1>{{$suscriptors[0]->user->username}}</h1>
     <thead>
       <tr>
         <th>ID</th>
@@ -58,7 +56,7 @@
             <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$suscriptor->id}}" data-id="{{$suscriptor->id}}">
               <span class="tf-icons bx bx-edit"></span>
             </button>
-            <button type="button" class="btn btn-icon btn-primary">
+            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$suscriptor->id}}" data-id="{{$suscriptor->id}}">
               <span class="tf-icons bx bx-trash"></span>
             </button>
           </center>
@@ -87,4 +85,4 @@
 
 
 
-@endsection
+@endsection 

@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/inmobiliarias/agentes', $controller_path . '\layouts\Container@index')->name('layouts-container'); //Agentes inmobiliarios tablas
          Route::get('/usuarios/listado', [CardBasic::class, 'index'])->name('cards-basic');//Usuarios tablas
          Route::put('/usuarios/listado/{id}', [CardBasic::class, 'editar'])->name('usuario.editar');//Usuarios tablas
+         Route::delete('/usuarios/borrar/{id}', [CardBasic::class, 'borrar'])->name('usuario.borrar');//Usuarios tablas
          Route::get('/localizacion/ciudad', $controller_path . '\extended_ui\PerfectScrollbar@index')->name('extended-ui-perfect-scrollbar'); // Ciudades
          Route::get('/localizacion/sector', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider'); // Sectores
          Route::get('/propiedades/registro', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
