@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/localizacion/sector', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider'); // Sectores
          Route::put('/localizacion/sector/{id}', $controller_path . '\extended_ui\TextDivider@editar')->name('sector.editar'); // Sectores
          Route::delete('/sector/borrar/{id}', $controller_path . '\extended_ui\TextDivider@borrar')->name('sector.borrar'); // Sectores
+         Route::post('/sector/registro', $controller_path . '\extended_ui\TextDivider@registrar')->name('sector.registrar'); // Sectores
          Route::get('/propiedades/registro', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
 
         //Usuario pantallas

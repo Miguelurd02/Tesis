@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\extended_ui;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SectorRequest;
 use App\Models\Ciudad;
 use App\Models\Sector;
 use Illuminate\Http\Request;
@@ -12,14 +13,22 @@ class TextDivider extends Controller
   public function index()
   {
     $sectors = Sector::with('ciudad')->get();
+    $ciudads = Ciudad::all();
 
-    return view('content.extended-ui.extended-ui-text-divider', compact('sectors'));
+    return view('content.extended-ui.extended-ui-text-divider', compact('sectors','ciudads'));
   }
 
-  public function register(RegistroRequest $request)
+  public function registrar(SectorRequest $request)
   {
-    $sectors = Sector::create($request->validated());
+    $data = $request->validated();
+
+    $sector = new Sector($data);
+    $sector->save();
+
+    return redirect(to: '/localizacion/sector');
+
   }
+
   public function editar(Request $request, $id)
   {
     $sectors = Sector::with('ciudad')->find($id);

@@ -30,13 +30,47 @@
   <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 3%">
 
     <!-- Place this tag where you want the button to render. -->
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalregistro">
       <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar sector
     </button>
     <!-- User -->
     <!--/ User -->
   </ul>
 </div>
+
+<div class="modal fade" id="modalregistro" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+      <form class="modal-content" action="{{route('sector.registrar')}}" method="POST">
+        @csrf
+        <div class="modal-header">
+          <h2 class="modal-title" id="backDropModalTitle">Registrar</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body form-group">
+          <div class="row">
+            <div class="col mb-3">
+              <label for="nombre" class="form-label">Nombre del sector</label>
+              <input class="form-control" style="width: 95%" type="text" id="nombre" name="nombre" placeholder="Introduzca el sector..." aria-describedby="defaultFormControlHelp" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3">
+            <label for="ciudad_id" class="form-label">Seleccione la ciudad donde pertenece</label>
+            <select id="ciudad_id" class="select2 form-select" name="ciudad_id">
+                <option value="">Seleccionar Ciudad</option>
+                @foreach ($ciudads as $ciudad)
+                <option value="{{$ciudad->id}}">{{$ciudad->nombre}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 <br>
 <div class="row mb-5" style="padding-left: 2%">
