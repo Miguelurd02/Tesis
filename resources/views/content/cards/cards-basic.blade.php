@@ -21,15 +21,15 @@
 @endsection
 
 @section('content')
+<h4 class="fw-bold py-3 mb-4">
+  <span class="text-muted fw-light">Tabla /</span> Usuario
+</h4>
 
 
-
-<div class="row mb-5">
+<div class="row mb-5" style="padding-left: 2%">
   <div class="demo-inline-spacing">
-    <H1>TABLA USUARIOS</H1>
-    <br><br>
   </div>
-  <table id="example" class="ui celled table" style="width:100%">
+  <table id="example" class="ui celled table" style="width:100% ">
     <thead>
       <tr>
         <th>ID</th>

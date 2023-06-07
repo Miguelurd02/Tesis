@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function(){
          Route::delete('/usuarios/borrar/{id}', [CardBasic::class, 'borrar'])->name('usuario.borrar');//Usuarios tablas
          Route::get('/localizacion/ciudad', $controller_path . '\extended_ui\PerfectScrollbar@index')->name('extended-ui-perfect-scrollbar'); // Ciudades
          Route::get('/localizacion/sector', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider'); // Sectores
+         Route::put('/localizacion/sector/{id}', $controller_path . '\extended_ui\TextDivider@editar')->name('sector.editar'); // Sectores
+         Route::delete('/sector/borrar/{id}', $controller_path . '\extended_ui\TextDivider@borrar')->name('sector.borrar'); // Sectores
          Route::get('/propiedades/registro', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
 
         //Usuario pantallas

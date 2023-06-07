@@ -1,136 +1,85 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Text Divider - Extended UI')
+@section('title', 'Tabla Sector - Extended UI')
 
+@section('vendor-script')
+<script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.semanticui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+  });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.semanticui.min.css">
+@endsection
 @section('content')
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Extended UI /</span> Text Divider
-</h4>
 
-<div class="row">
-  <!-- Basic -->
-  <div class="col-md-12 mb-4">
-    <div class="card">
-      <h5 class="card-header">Basic</h5>
-      <div class="card-body">
-        <div class="divider">
-          <div class="divider-text">Text</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Basic -->
+<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+  <!-- Search -->
+  <h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Tabla /</span> Sector
+  </h4>
+  <!-- /Search -->
+  <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 3%">
 
-  <!-- Text Alignment -->
-  <div class="col-md-12 mb-4">
-    <div class="card">
-      <h5 class="card-header">Alignment</h5>
-      <div class="card-body">
-        <div class="divider text-start">
-          <div class="divider-text">Start</div>
-        </div>
-        <div class="divider text-start-center">
-          <div class="divider-text">Start-Center</div>
-        </div>
-        <div class="divider">
-          <div class="divider-text">Center (Default)</div>
-        </div>
-        <div class="divider text-end-center">
-          <div class="divider-text">End-Center</div>
-        </div>
-        <div class="divider text-end">
-          <div class="divider-text">End</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Text Alignment -->
+    <!-- Place this tag where you want the button to render. -->
+    <button type="button" class="btn btn-primary">
+      <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar sector
+    </button>
+    <!-- User -->
+    <!--/ User -->
+  </ul>
+</div>
 
-  <!-- Divider Colors -->
-  <div class="col-md-12 mb-4">
-    <div class="card">
-      <h5 class="card-header">Colors</h5>
-      <div class="card-body">
-        <div class="divider divider-primary">
-          <div class="divider-text">Primary</div>
-        </div>
-        <div class="divider divider-success">
-          <div class="divider-text">Success</div>
-        </div>
-        <div class="divider divider-danger">
-          <div class="divider-text">Danger</div>
-        </div>
-        <div class="divider divider-warning">
-          <div class="divider-text">Warning</div>
-        </div>
-        <div class="divider divider-info">
-          <div class="divider-text">Info</div>
-        </div>
-        <div class="divider divider-dark">
-          <div class="divider-text">Dark</div>
-        </div>
-      </div>
-    </div>
+<br>
+<div class="row mb-5" style="padding-left: 2%">
+  <div class="demo-inline-spacing">
   </div>
-  <!-- /Divider Colors -->
-
-  <!-- Icons -->
-  <div class="col-md-12 mb-4">
-    <div class="card">
-      <h5 class="card-header">Icons</h5>
-      <div class="card-body">
-        <div class="divider text-start">
-          <div class="divider-text">
-            <i class="bx bx-sun"></i>
-          </div>
-        </div>
-        <div class="divider text-start-center">
-          <div class="divider-text">
-            <i class="bx bx-crown"></i>
-          </div>
-        </div>
-        <div class="divider">
-          <div class="divider-text">
-            <i class="bx bx-star"></i>
-          </div>
-        </div>
-        <div class="divider text-end-center">
-          <div class="divider-text">
-            <i class="bx bx-coffee-togo"></i>
-          </div>
-        </div>
-        <div class="divider text-end">
-          <div class="divider-text">
-            <i class="bx bx-cut bx-rotate-180"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Icons -->
-
-  <!-- Icons -->
-  <div class="col-md-12">
-    <div class="card">
-      <h5 class="card-header">Styles</h5>
-      <div class="card-body">
-        <div class="divider">
-          <div class="divider-text">
-            Solid (Default)
-          </div>
-        </div>
-        <div class="divider divider-dotted">
-          <div class="divider-text">
-            Dotted
-          </div>
-        </div>
-        <div class="divider divider-dashed">
-          <div class="divider-text">
-            Dashed
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Icons -->
-</div @endsection
+  <table id="example" class="ui celled table" style="width:100% ">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sector</th>
+        <th>Ciudad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($sectors as $sector)
+      <tr>
+        <td>{{$sector->id}}</td>
+        <td>{{$sector->nombre}}</td>
+        <td>{{$sector->ciudad->nombre}}</td>
+        <td>
+          <center>
+            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$sector->id}}" data-id="{{$sector->id}}">
+              <span class="tf-icons bx bx-edit"></span>
+            </button>
+            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$sector->id}}" data-id="{{$sector->id}}">
+              <span class="tf-icons bx bx-trash"></span>
+            </button>
+          </center>
+          @include('content.extended-ui.modal')
+          </td>
+        </tr>
+      
+      @endforeach
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>ID</th>
+        <th>Sector</th>
+        <th>Ciudad</th>
+        <th>Acciones</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+@endsection
