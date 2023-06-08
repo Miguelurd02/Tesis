@@ -1,97 +1,58 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Alerts - UI elements')
+@section('title', 'Inmobiliarias')
+
+@section('vendor-script')
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="{{ asset('assets/css/inmobiliarias/inmobiliarias.css') }}" />
+<script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
+@endsection
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">UI elements /</span> Alerts
-</h4>
-<div class="row mb-4">
-  <!-- Basic Alerts -->
-  <div class="col-md mb-4 mb-md-0">
-    <div class="card">
-      <h5 class="card-header">Basic Alerts</h5>
-      <div class="card-body">
-        <div class="alert alert-primary" role="alert">
-          This is a primary alert — check it out!
-        </div>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Menú /</span> Inmobiliarias</h4>
 
-        <div class="alert alert-secondary" role="alert">
-          This is a secondary alert — check it out!
-        </div>
 
-        <div class="alert alert-success" role="alert">
-          This is a success alert — check it out!
-        </div>
+<!-- Grid Card -->
+  <div class="row mb-5" bis_skin_checked="1">
 
-        <div class="alert alert-danger" role="alert">
-          This is a danger alert — check it out!
-        </div>
-
-        <div class="alert alert-warning" role="alert">
-          This is a warning alert — check it out!
-        </div>
-
-        <div class="alert alert-info" role="alert">
-          This is an info alert — check it out!
-        </div>
-
-        <div class="alert alert-dark mb-0" role="alert">
-          This is a dark alert — check it out!
+      @foreach ($inmobiliarias as $inmobiliaria)
+      <div class="col-md-6" bis_skin_checked="1" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+        <a href="">
+      <div class="card mb-3" bis_skin_checked="1">
+        <div class="row g-0" bis_skin_checked="1">
+          <div class="col-md-4" bis_skin_checked="1">
+            <img class="card-img card-img-left" src="{{ asset('assets/img/inmobiliarias/' . $inmobiliaria->imagen) }}" alt="Card image">
+          </div>
+          <div class="col-md-8" bis_skin_checked="1">
+            <div class="card-body" bis_skin_checked="1">
+              <h5 class="card-title">{{$inmobiliaria->nombre}}</h5>
+              <p class="card-description">{{$inmobiliaria->descripcion}}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!--/ Basic Alerts -->
-  <!-- Dismissible Alerts -->
-  <div class="col-md">
-    <div class="card">
-      <h5 class="card-header">Dismissible Alerts</h5>
-      <div class="card-body">
-        <div class="alert alert-primary alert-dismissible" role="alert">
-          This is a primary dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
-
-        <div class="alert alert-secondary alert-dismissible" role="alert">
-          This is a secondary dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
-
-        <div class="alert alert-success alert-dismissible" role="alert">
-          This is a success dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
-
-        <div class="alert alert-danger alert-dismissible" role="alert">
-          This is a danger dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
-
-        <div class="alert alert-warning alert-dismissible" role="alert">
-          This is a warning dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
-
-        <div class="alert alert-info alert-dismissible" role="alert">
-          This is an info dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
-
-        <div class="alert alert-dark alert-dismissible mb-0" role="alert">
-          This is a dark dismissible alert — check it out!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-        </div>
+      </a> 
       </div>
-    </div>
+      @endforeach
+    
   </div>
-  <!--/ Dismissible Alerts -->
-</div>
+
+  
+ 
+ 
+  
+ 
+
+<!--/ Card layout -->
 @endsection
+<script>
+  function addShadow(element) {
+  element.classList.add("shadow-effect");
+}
+
+function removeShadow(element) {
+  element.classList.remove("shadow-effect");
+}
+
+</script>
