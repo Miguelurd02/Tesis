@@ -21,23 +21,6 @@
 @endsection
 @section('content')
 
-<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-  <!-- Search -->
-  <h4 class="fw-bold py-3 mb-4">
-    <span class="text-muted fw-light">Tabla /</span> Sector
-  </h4>
-  <!-- /Search -->
-  <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 3%">
-
-    <!-- Place this tag where you want the button to render. -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalregistro">
-      <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar sector
-    </button>
-    <!-- User -->
-    <!--/ User -->
-  </ul>
-</div>
-
 <div class="modal fade" id="modalregistro" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
       <form class="modal-content" action="{{route('sector.registrar')}}" method="POST">
@@ -73,6 +56,25 @@
   </div>
 
 <br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+      <h1 class="card-header">Tabla de Usuarios</h1>
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+          <!-- Search -->
+          <!-- /Search -->
+          <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 4%">
+        
+            <!-- Place this tag where you want the button to render. -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalregistro">
+              <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar sector
+            </button>
+            <!-- User -->
+            <!--/ User -->
+          </ul>
+        </div>
+      <!-- FILTRO -->
+      <div class="card-body">
 <div class="row mb-5" style="padding-left: 2%">
   <div class="demo-inline-spacing">
   </div>
@@ -115,5 +117,10 @@
       </tr>
     </tfoot>
   </table>
+</div>
+
+</div>
+</div>
+</div>
 </div>
 @endsection

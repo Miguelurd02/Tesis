@@ -25,7 +25,12 @@
   <span class="text-muted fw-light">Tabla /</span> Usuario
 </h4>
 
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+      <h1 class="card-header">Tabla de Usuarios</h1>
+      <!-- FILTRO -->
+      <div class="card-body">
 <div class="row mb-5" style="padding-left: 2%">
   <div class="demo-inline-spacing">
   </div>
@@ -78,7 +83,10 @@
     </tfoot>
   </table>
 </div>
-
+</div>
+</div>
+</div>
+</div>
 </div>
 
 

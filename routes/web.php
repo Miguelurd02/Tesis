@@ -24,17 +24,33 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'rol:inmobiliaria,suscriptor,admin'], function(){
         $controller_path = 'App\Http\Controllers';
         //Administrador pantallas
+        //INICIO
          Route::get('/admin-inicio', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics'); // Inicio admin
+
+         //CRUD RUTAS INMOBILIARIAS
          Route::get('/inmobiliarias/empresas', $controller_path . '\layouts\Fluid@index')->name('layouts-fluid'); //Inmobiliarias empresas tablas
+         Route::put('/inmobiliarias/empresas/{id}', $controller_path . '\layouts\Fluid@editar')->name('empresa.editar'); // Sectores
+         Route::delete('/empresa/borrar/{id}', $controller_path . '\layouts\Fluid@borrar')->name('empresa.borrar'); // Sectores
+         Route::post('/empresa/registro', $controller_path . '\layouts\Fluid@registrar')->name('empresa.registrar'); // Sectores
+
+         //CRUD RUTAS AGENTES
          Route::get('/inmobiliarias/agentes', $controller_path . '\layouts\Container@index')->name('layouts-container'); //Agentes inmobiliarios tablas
+
+         //CRUD RUTAS USUARIO
          Route::get('/usuarios/listado', [CardBasic::class, 'index'])->name('cards-basic');//Usuarios tablas
          Route::put('/usuarios/listado/{id}', [CardBasic::class, 'editar'])->name('usuario.editar');//Usuarios tablas
          Route::delete('/usuarios/borrar/{id}', [CardBasic::class, 'borrar'])->name('usuario.borrar');//Usuarios tablas
+
+         //CRUD RUTAS CIUDAD
          Route::get('/localizacion/ciudad', $controller_path . '\extended_ui\PerfectScrollbar@index')->name('extended-ui-perfect-scrollbar'); // Ciudades
+
+         //CRUD RUTAS SECTOR
          Route::get('/localizacion/sector', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider'); // Sectores
          Route::put('/localizacion/sector/{id}', $controller_path . '\extended_ui\TextDivider@editar')->name('sector.editar'); // Sectores
          Route::delete('/sector/borrar/{id}', $controller_path . '\extended_ui\TextDivider@borrar')->name('sector.borrar'); // Sectores
          Route::post('/sector/registro', $controller_path . '\extended_ui\TextDivider@registrar')->name('sector.registrar'); // Sectores
+
+         //CRUD RUTAS PROPIEDADES
          Route::get('/propiedades/registro', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
 
         //Usuario pantallas
