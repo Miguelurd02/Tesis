@@ -27,6 +27,7 @@
 
           <form id="formAuthentication" class="mb-3" action="/auth/login-basic" method="POST">
             @csrf
+            @include('content.authentications.mensaje-error')
             <div class="mb-3">
               <label for="email" class="form-label">Correo eletrónico / Nombre de usuario</label>
               <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu correo eletrónico o usuario" autofocus>

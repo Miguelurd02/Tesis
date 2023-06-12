@@ -17,4 +17,9 @@ class Sector extends Model
     public function propiedades(){
         return $this->hasMany('App\Models\Propiedades');
     }
+
+    protected $fillable = [
+        'nombre',
+        'ciudad_id',
+    ];
 }
