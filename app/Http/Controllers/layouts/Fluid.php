@@ -34,18 +34,19 @@ class Fluid extends Controller
     if ($inmobiliarias->save() and $users->save()) {
       return redirect(to: '/inmobiliarias/empresas');
     } else {
-      return view('content.extended-ui.extended-ui-text-divider', compact('inmobiliarias'));
+      return view('content.layouts-example.layouts-fluid', compact('inmobiliarias'));
     }
   }
 
   public function borrar($id)
   {
     $inmobiliarias = Inmobiliaria::with('user')->find($id);
+    $userId = $inmobiliarias->user_id;
 
-    if (Inmobiliaria::destroy($id)) {
+    if (Inmobiliaria::destroy($id) and User::destroy($userId)) {
       return redirect(to: '/inmobiliarias/empresas');
     } else {
-      return view('content.extended-ui.extended-ui-text-divider', compact('inmobiliarias'));
+      return view('content.layouts-example.layouts-fluid', compact('inmobiliarias'));
     }
   }
 }

@@ -50,7 +50,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="padding-top: 4%" >
+            <div class="row" style="padding-top: 6.5%" >
               <div class="col mb-0">
                 <label for="nombre" class="form-label">Localización</label>
                   <input type="text" id="nombre" name="nombre" class="form-control"
@@ -157,7 +157,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar el usuario?</h1>
+                    <h1 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar la inmobiliaria?</h1>
                 </div>
                 <div class="modal-body">
                     <center>

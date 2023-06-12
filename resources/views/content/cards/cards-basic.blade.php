@@ -21,14 +21,11 @@
 @endsection
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Tabla /</span> Usuario
-</h4>
 
 <div class="row">
   <div class="col-md-12">
     <div class="card mb-4">
-      <h1 class="card-header">Tabla de Usuarios</h1>
+      <h1 class="card-header">Listado de Usuarios</h1>
       <!-- FILTRO -->
       <div class="card-body">
 <div class="row mb-5" style="padding-left: 2%">

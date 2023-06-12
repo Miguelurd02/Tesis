@@ -42,6 +42,9 @@ Route::group(['middleware' => 'auth'], function(){
 
          //CRUD RUTAS CIUDAD
          Route::get('/localizacion/ciudad', $controller_path . '\extended_ui\PerfectScrollbar@index')->name('extended-ui-perfect-scrollbar'); // Ciudades
+         Route::put('/localizacion/ciudad/{id}', $controller_path . '\extended_ui\PerfectScrollbar@editar')->name('ciudad.editar'); // Sectores
+         Route::delete('/ciudad/borrar/{id}', $controller_path . '\extended_ui\PerfectScrollbar@borrar')->name('ciudad.borrar'); // Sectores
+         Route::post('/ciudad/registro', $controller_path . '\extended_ui\PerfectScrollbar@registrar')->name('ciudad.registrar'); // Sectores
 
          //CRUD RUTAS SECTOR
          Route::get('/localizacion/sector', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider'); // Sectores

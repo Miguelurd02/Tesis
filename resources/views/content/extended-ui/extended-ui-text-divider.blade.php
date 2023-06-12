@@ -59,7 +59,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card mb-4">
-      <h1 class="card-header">Tabla de Usuarios</h1>
+      <h1 class="card-header">Listado de Sectores</h1>
         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
           <!-- Search -->
           <!-- /Search -->
