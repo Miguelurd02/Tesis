@@ -31,7 +31,6 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/inmobiliarias/empresas', $controller_path . '\layouts\Fluid@index')->name('layouts-fluid'); //Inmobiliarias empresas tablas
          Route::put('/inmobiliarias/empresas/{id}', $controller_path . '\layouts\Fluid@editar')->name('empresa.editar'); // Sectores
          Route::delete('/empresa/borrar/{id}', $controller_path . '\layouts\Fluid@borrar')->name('empresa.borrar'); // Sectores
-         Route::post('/empresa/registro', $controller_path . '\layouts\Fluid@registrar')->name('empresa.registrar'); // Sectores
 
          //CRUD RUTAS AGENTES
          Route::get('/inmobiliarias/agentes', $controller_path . '\layouts\Container@index')->name('layouts-container'); //Agentes inmobiliarios tablas

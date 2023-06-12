@@ -27,52 +27,7 @@ $containerNav = 'container-fluid';
 
 @section('content')
 
-<!--<div class="modal fade" id="modalregistro" data-bs-backdrop="static" tabindex="-1">
-  <div class="modal-dialog modal-lg" role="document">
-    <form class="modal-content" action="{{route('empresa.registrar')}}" method="POST">
-      @csrf
-      <div class="modal-header">
-        <h2 class="modal-title" id="backDropModalTitle">Registrar</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body form-group">
-        <div class="row g-2">
-          <div class="col mb-0">
-            <label for="nombre" class="form-label">Nombre de la organización</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese el nombre de la inmobiliaria...">
-          </div>
-          <div class="col mb-0">
-            <label for="dobLarge" class="form-label">DOB</label>
-            <input type="text" id="dobLarge" class="form-control" placeholder="DD / MM / YY">
-          </div>
-          <div class="col mb-0">
-            <label for="dobLarge" class="form-label">DOB</label>
-            <input type="text" id="dobLarge" class="form-control" placeholder="DD / MM / YY">
-          </div>
-        </div> <br>
-        <div class="row g-2">
-          <div class="col mb-0">
-            <label for="emailLarge" class="form-label">Email</label>
-            <input type="text" id="emailLarge" class="form-control" placeholder="xxxx@xxx.xx">
-          </div>
-          <div class="col mb-0">
-            <label for="dobLarge" class="form-label">DOB</label>
-            <input type="text" id="dobLarge" class="form-control" placeholder="DD / MM / YY">
-          </div>
-          <div class="col mb-0">
-            <label for="dobLarge" class="form-label">DOB</label>
-            <input type="text" id="dobLarge" class="form-control" placeholder="DD / MM / YY">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Registrar</button>
-      </div>
-    </form>
-  </div>
-</div>
--->
-<br>
+
 <div class="row">
 <div class="col-md-12">
   <div class="card mb-4">
@@ -102,6 +57,7 @@ $containerNav = 'container-fluid';
       <th>Logo</th>
       <th>Nombre</th>
       <th>Rif</th>
+      <th>Correo Electrónico</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -109,11 +65,15 @@ $containerNav = 'container-fluid';
     @foreach ($inmobiliarias as $inmobiliaria)
     <tr>
       <td>{{$inmobiliaria->id}}</td>
-      <td><img class="card-img-top" src="{{ asset('assets/img/propiedades/' . $inmobiliaria->imagen) }}" alt="Card image cap" /></td>
+      <td class="col-2"><img class="img-fluid" src="{{ asset('assets/img/propiedades/' . $inmobiliaria->imagen) }}" alt="Card image cap" /></td>
       <td>{{$inmobiliaria->nombre}}</td>
       <td>{{$inmobiliaria->rif}}</td>
+      <td>{{$inmobiliaria->user->email}}</td>
       <td>
         <center>
+          <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaldetalle{{$inmobiliaria->id}}" data-id="{{$inmobiliaria->id}}">
+            <span class="tf-icons bx bx-detail"></span>
+          </button>
           <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$inmobiliaria->id}}" data-id="{{$inmobiliaria->id}}">
             <span class="tf-icons bx bx-edit"></span>
           </button>
@@ -121,7 +81,7 @@ $containerNav = 'container-fluid';
             <span class="tf-icons bx bx-trash"></span>
           </button>
         </center>
-        @include('content.extended-ui.modal')
+        @include('content.layouts-example.modales')
         </td>
       </tr>
     
@@ -133,6 +93,7 @@ $containerNav = 'container-fluid';
       <th>Logo</th>
       <th>Nombre</th>
       <th>Rif</th>
+      <th>Correo Electrónico</th>
       <th>Acciones</th>
     </tr>
   </tfoot>
