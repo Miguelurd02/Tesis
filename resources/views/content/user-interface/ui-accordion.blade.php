@@ -12,20 +12,6 @@
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Menú /</span> Propiedades</h4>
 
 
-<!-- Grid Card -->
-
-<!-- Estilo para ajustar el tamaño de las fotos -->
-<style>
-  .card-img-top {
-    object-fit: cover;
-    height: 300px; /* Ajusta la altura deseada para las imágenes */
-  }
-
-  .card {
-    height: 100%;
-  }
-</style>
-
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
 
   @foreach ($propiedades as $propiedad)
@@ -57,6 +43,7 @@
   </div>
 </a>
 </div>
+
 @endforeach
   
  

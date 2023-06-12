@@ -64,4 +64,12 @@
   .shadow-effect {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
+  
+  .card-img-top {
+    object-fit: cover;
+    height: 300px; /* Ajusta la altura deseada para las imágenes */
+  }
 
+  .card {
+    height: 100%;
+  }

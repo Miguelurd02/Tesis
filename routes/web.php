@@ -90,6 +90,7 @@ Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index
 Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');
 Route::get('/ui/tooltips-popovers', $controller_path . '\user_interface\TooltipsPopovers@index')->name('ui-tooltips-popovers');
 Route::get('/ui/typography', $controller_path . '\user_interface\Typography@index')->name('ui-typography');
+Route::get('/ui/typography/{id}', $controller_path . '\user_interface\Typography@show')->name('ui-typography.show');
 
 // extended ui
 

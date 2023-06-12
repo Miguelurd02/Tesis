@@ -13,30 +13,29 @@
 
 
 <!-- Grid Card -->
-  <div class="row mb-5" bis_skin_checked="1">
-
-      @foreach ($inmobiliarias as $inmobiliaria)
-      <div class="col-md-6" bis_skin_checked="1" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
-        <a href="">
-      <div class="card mb-3" bis_skin_checked="1">
-        <div class="row g-0" bis_skin_checked="1">
-          <div class="col-md-4" bis_skin_checked="1">
+ <div class="row mb-5">
+  @foreach ($inmobiliarias as $inmobiliaria)
+  <div class="col-md-6" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+    <a href="{{ route('ui-typography.show', ['id' => $inmobiliaria->id]) }}">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
             <img class="card-img card-img-left" src="{{ asset('assets/img/inmobiliarias/' . $inmobiliaria->imagen) }}" alt="Card image">
           </div>
-          <div class="col-md-8" bis_skin_checked="1">
-            <div class="card-body" bis_skin_checked="1">
+          <div class="col-md-8">
+            <div class="card-body">
               <h5 class="card-title">{{$inmobiliaria->nombre}}</h5>
-              <p class="card-description">{{$inmobiliaria->descripcion}}
-              </p>
+              <p class="card-description">{{$inmobiliaria->descripcion}}</p>
             </div>
           </div>
         </div>
       </div>
-      </a> 
-      </div>
-      @endforeach
-    
+    </a> 
   </div>
+  @endforeach
+</div>
+<br>
+
 
   
  
