@@ -12,7 +12,8 @@ class LoginBasic extends Controller
   public function index()
   {
     if(Auth::check()){
-      return redirect()->route('dashboard-analytics');
+      $user = Auth::user();
+      return $this->authenticated(request(), $user);
     }
     return view('content.authentications.auth-login-basic');
   }
