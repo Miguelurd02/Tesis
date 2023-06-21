@@ -40,7 +40,7 @@ return new class extends Migration
 
             $table->foreign('sector_id')
             ->references('id')
-            ->on('sector')
+            ->on('sectors')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
@@ -55,6 +55,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('propiedadess');
+        Schema::dropIfExists('propiedades');
     }
 };

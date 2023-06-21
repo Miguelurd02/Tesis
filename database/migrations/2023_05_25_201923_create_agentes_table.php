@@ -13,15 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sectors', function (Blueprint $table) {
+        Schema::create('agentes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('apellido');
+            $table->string('email');
+            $table->string('telefono');
+            $table->string('imagen');
 
-            $table->unsignedBigInteger('ciudad_id');
+            $table->unsignedBigInteger('inmobiliaria_id');
 
-            $table->foreign('ciudad_id')
+            $table->foreign('inmobiliaria_id')
             ->references('id')
-            ->on('ciudad')
+            ->on('inmobiliarias')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
@@ -36,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sectors');
+        Schema::dropIfExists('agentes');
     }
 };

@@ -12,4 +12,8 @@ class Ciudad extends Model
     public function sectores(){
         return $this->hasMany('App\Models\Sector');
     }
+
+    protected $fillable = [
+        'nombre',
+    ];
 }
