@@ -2,75 +2,78 @@
 
 @section('title', 'Tooltips and popovers - UI elements')
 
-@section('page-script')
-<script src="{{asset('assets/js/ui-popover.js')}}"></script>
+@section('vendor-script')
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="{{ asset('assets/css/propiedades/cards.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/inmobiliarias/vistaagente.css') }}" />
+<script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
 @endsection
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">UI elements /</span> Tooltips & popovers
-</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Menú /</span> <span class="text-muted fw-light">Agentes</span> / {{$agentes->nombre}} {{$agentes->apellido}}</h4>
 
-<!-- Tooltips -->
-<div class="card mb-4">
-  <h5 class="card-header">Tooltips</h5>
-  <div class="card-body">
-    <div class="text-light small fw-semibold">Directions</div>
-    <div class="row demo-vertical-spacing">
-      <div class="col">
-        <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title="<i class='bx bx-trending-up bx-xs' ></i> <span>Tooltip on right</span>">
-          Right
-        </button>
+
+
+<div class="container">
+   <div class="row">
+    <div class="col-md-4">
+      <div class="card-body-profile text-center" bis_skin_checked="1">
+        <img src="{{ asset('assets/img/agentes/' . $agentes->imagen) }}" alt="inmobiliaria imagen" class="rounded-circle img-fluid" style="width: 200px;">
+        <h2 class="my-3">{{$agentes->nombre}} {{$agentes->apellido}}</h2>
+        <p class="text-muted mb-1"></p>
+        <p class="text-muted mb-4"> 
+    
+        <p>{{$agentes->inmobiliaria->nombre}}</p>
+        <div class="d-flex justify-content-center mb-2" bis_skin_checked="1">
+          <a href="#propiedades" type="button" class="btn btn-primary ms-1" fdprocessedid="zcv1ay">Ver propiedades</a>
+        </div>
+  
       </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-bell bx-xs' ></i> <span>Tooltip on top</span>">
-          Top
-        </button>
+    </div>  
+    <div class="col-md-8">
+      <div class="card-body" bis_skin_checked="1">
+        <div class="row" bis_skin_checked="1">
+          <h3>Informacion del perfil</h3>
+          <div class="col-sm-3" bis_skin_checked="1">
+            <p class="mb-0">Correo Electronico</p>
+          </div>
+          <div class="col-sm-9" bis_skin_checked="1">
+            <p class="text-muted mb-0">{{$agentes->email}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row" bis_skin_checked="1">
+          <div class="col-sm-3" bis_skin_checked="1">
+            <p class="mb-0">Teléfono</p>
+          </div>
+          <div class="col-sm-9" bis_skin_checked="1">
+            <p class="text-muted mb-0">{{$agentes->telefono}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row" bis_skin_checked="1">
+          <div class="col-sm-3" bis_skin_checked="1">
+            <p class="mb-0">Sobre mi</p>
+          </div>
+          <div class="col-sm-9" bis_skin_checked="1">
+            <p class="text-muted mb-0">{{$agentes->descripcion}}</p>
+          </div>
+        </div>
       </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<i class='bx bx-heart bx-xs' ></i> <span>Tooltip on bottom</span>">
-          Bottom
-        </button>
-      </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="<i class='bx bx-dollar bx-xs' ></i> <span>Tooltip on left</span>">
-          Left
-        </button>
-      </div>
+      <br>
+     
     </div>
-  </div>
 </div>
-<!--/ Tooltips -->
+<hr>
 
-<!-- Popovers -->
-<div class="card">
-  <h5 class="card-header">Popovers</h5>
-  <div class="card-body">
-    <div class="text-light small fw-semibold">Directions</div>
-    <div class="row demo-vertical-spacing">
-      <div class="col">
-        <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-placement="right" data-bs-html="true" data-bs-content="<p>This is a very beautiful popover, show some love.</p> <div class='d-flex justify-content-between'><button type='button' class='btn btn-sm btn-outline-secondary'>Skip</button><button type='button' class='btn btn-sm btn-primary'>Read More</button></div>" title="Popover Title">
-          Popover on right
-        </button>
-
-      </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-placement="top" data-bs-html="true" data-bs-content="<p>This is a very beautiful popover, show some love.</p> <div class='d-flex justify-content-between'><button type='button' class='btn btn-sm btn-outline-secondary'>Skip</button><button type='button' class='btn btn-sm btn-primary'>Read More</button></div>" title="Popover Title">
-          Popover on top
-        </button>
-      </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-placement="bottom" data-bs-html="true" data-bs-content="<p>This is a very beautiful popover, show some love.</p> <div class='d-flex justify-content-between'><button type='button' class='btn btn-sm btn-outline-secondary'>Skip</button><button type='button' class='btn btn-sm btn-primary'>Read More</button></div>" title="Popover Title">
-          Popover on bottom
-        </button>
-      </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-placement="left" data-bs-html="true" data-bs-content="<p>This is a very beautiful popover, show some love.</p> <div class='d-flex justify-content-between'><button type='button' class='btn btn-sm btn-outline-secondary'>Skip</button><button type='button' class='btn btn-sm btn-primary'>Read More</button></div>" title="Popover Title">
-          Popover on left
-        </button>
-      </div>
-    </div>
-  </div>
 </div>
-<!--/ Popovers -->
+
+
+
+
+
+
+
+
 @endsection
