@@ -16,7 +16,7 @@
  <div class="row mb-5">
   @foreach ($agentes as $agente)
   <div class="col-md-6" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
-    <a href="">
+    <a href="{{ route('ui-tooltips-popovers.show', ['id' => $agente->id]) }}">
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">

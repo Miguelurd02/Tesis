@@ -34,7 +34,7 @@
         <div class="row" bis_skin_checked="1">
           <h3>Informacion del perfil</h3>
           <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Correo Electronico</p>
+            <p class="mb-0">Correo electrónico</p>
           </div>
           <div class="col-sm-9" bis_skin_checked="1">
             <p class="text-muted mb-0">{{$inmobiliaria->user->email}}</p>
