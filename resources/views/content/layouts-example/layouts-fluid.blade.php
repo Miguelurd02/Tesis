@@ -65,7 +65,7 @@ $containerNav = 'container-fluid';
     @foreach ($inmobiliarias as $inmobiliaria)
     <tr>
       <td>{{$inmobiliaria->id}}</td>
-      <td class="col-2"><img class="img-fluid" src="{{ asset('assets/img/propiedades/' . $inmobiliaria->imagen) }}" alt="Card image cap" /></td>
+      <td class="col-2"><img class="img-fluid" src="{{ asset('assets/img/inmobiliarias/' . $inmobiliaria->imagen) }}" alt="Card image cap" /></td>
       <td>{{$inmobiliaria->nombre}}</td>
       <td>{{$inmobiliaria->rif}}</td>
       <td>{{$inmobiliaria->user->email}}</td>

@@ -15,7 +15,7 @@
           <div class="col-3">
             <label for="nombre" class="form-label">Logo</label>
             <img class="img-fluid rounded"
-              src="{{ asset('assets/img/propiedades/' . $inmobiliaria->imagen) }}" alt="Card image cap" />
+              src="{{ asset('assets/img/inmobiliarias/' . $inmobiliaria->imagen) }}" alt="Card image cap" />
             <br><br>
             <label for="nombre" class="form-label">Nombre de la empresa</label>
             <input type="text" id="nombre" style="width: 85%" name="nombre" class="form-control"
