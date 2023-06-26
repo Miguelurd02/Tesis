@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
 
          //CRUD RUTAS AGENTES
          Route::get('/inmobiliarias/agentes', $controller_path . '\layouts\Container@index')->name('layouts-container'); //Agentes inmobiliarios tablas
+         Route::post('/agente/registro', $controller_path . '\layouts\Container@registrar')->name('agente.registrar'); // Sectores
 
          //CRUD RUTAS USUARIO
          Route::get('/usuarios/listado', [CardBasic::class, 'index'])->name('cards-basic');//Usuarios tablas

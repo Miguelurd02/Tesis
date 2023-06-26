@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col mb-3">
               <label for="nombre" class="form-label">Nombre del sector</label>
-              <input class="form-control" style="width: 95%" type="text" id="nombre" name="nombre" placeholder="Introduzca el sector..." aria-describedby="defaultFormControlHelp" />
+              <input class="form-control" style="width: 100%" type="text" id="nombre" name="nombre" placeholder="Introduzca el sector..." aria-describedby="defaultFormControlHelp" />
             </div>
           </div>
           <div class="row">

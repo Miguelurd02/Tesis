@@ -17,4 +17,13 @@ class Agentes extends Model
     public function propiedades(){
         return $this->hasMany('App\Models\Propiedades');
     }
+
+    protected $fillable = [
+            'nombre',
+            'apellido',
+            'email',
+            'telefono',
+            'imagen',
+            'inmobiliaria_id',
+    ];
 }
