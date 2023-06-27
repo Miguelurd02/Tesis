@@ -59,33 +59,33 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body form-group">
-        <div class="row" style="width: 95%;">
+        <div class="row" style="width: 100%;">
           <div class="col mb-3">
             <label for="imagen" class="form-label">Foto de perfil</label>
             <input class="form-control" name="imagen"  type="file" id="formFile">
           </div>
         </div>
         <div class="row g-2">
-          <div class="col mb-0">
+          <div class="col mb-0" >
             <label for="nombre" class="form-label">Nombre</label>
-            <input class="form-control" type="text" name="nombre" id="nombre" />
+            <input class="form-control" type="text" name="nombre" id="nombre" style="width: 90%;" value="{{$agente->nombre}}"/>
           </div>
           <div class="col mb-0">
             <label for="apellido" class="form-label">Apellido</label>
-            <input class="form-control" type="text" name="apellido" id="apellido" />
+            <input class="form-control" type="text" name="apellido" id="apellido" style="width: 89.5%;" value="{{$agente->apellido}}" />
           </div>
         </div>
         <br>
         <div class="row g-2">
           <div class="col mb-0">
             <label for="email" class="form-label">Email</label>
-            <input class="form-control" type="text" name="email" id="email" />
+            <input class="form-control" type="text" name="email" id="email" style="width: 90%;" value="{{$agente->email}}"/>
           </div>
           <div class="col mb-0">
             <label for="telefono" class="form-label">Teléfono</label>
-            <div class="input-group">
+            <div class="input-group" style="width: 101.5%;">
               <span class="input-group-text" id="basic-addon11">+58</span>
-              <input type="text" class="form-control" name="telefono" id="telefono" aria-label="Username"  />
+              <input type="text" class="form-control" name="telefono" id="telefono" aria-label="Username" value="{{$agente->telefono}}"/>
             </div>
           </div>
         </div>
@@ -93,8 +93,8 @@
         <div class="row">
           <div class="col mb-3">
             <label for="inmobiliaria_id" class="form-label">Seleccione la inmobiliaria donde pertenece</label>
-            <select id="inmobiliaria_id" class="select2 form-select" name="inmobiliaria_id">
-              <option value="">Seleccionar Ciudad</option>
+            <select id="inmobiliaria_id" class="select2 form-select" name="inmobiliaria_id" style="width: 92%;">
+              <option value="">Seleccionar Inmobiliaria</option>
               @foreach ($inmobiliarias as $inmobiliaria)
               <option value="{{$inmobiliaria->id}}">{{$inmobiliaria->nombre}}</option>
               @endforeach
@@ -109,14 +109,14 @@
   </div>
 </div>
 
-<div class="modal fade" id="modalborrar{{ $inmobiliaria->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modalborrar{{ $agente->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <form class="modal-content" action="{{ route('empresa.borrar', $inmobiliaria->id) }}" method="POST">
+      <form class="modal-content" action="{{ route('empresa.borrar', $agente->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <div class="modal-header">
-          <h1 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar la inmobiliaria?</h1>
+          <h1 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar el agente?</h1>
         </div>
         <div class="modal-body">
           <center>
