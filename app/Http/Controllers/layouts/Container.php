@@ -41,8 +41,8 @@ class Container extends Controller
     if ($request->hasFile('imagen')) {
       $archivo = $request->file('imagen');
       $nuevoNombreFoto = time() . '_' . $archivo->getClientOriginalName();
-      $rutaDestino = public_path('img/agentes') . $nuevoNombreFoto;
-      $archivo->move(public_path('img/agentes'), $nuevoNombreFoto);
+      $rutaDestino = public_path('assets/img/agentes') . $nuevoNombreFoto;
+      $archivo->move(public_path('assets/img/agentes'), $nuevoNombreFoto);
 
       // Guardar la nueva foto en la base de datos
       $agentes->imagen = $nuevoNombreFoto;
