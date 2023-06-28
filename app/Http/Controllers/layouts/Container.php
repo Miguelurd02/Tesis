@@ -32,7 +32,21 @@ class Container extends Controller
   {
     $agentes = Agentes::with('inmobiliaria')->find($id);
 
-    $agentes->nombre = $request->sector;
+    $agentes->nombre = $request->nombre;
+    $agentes->apellido = $request->apellido;
+    $agentes->telefono = $request->telefono;
+    $agentes->email = $request->email;
+    $agentes->inmobiliaria_id = $request->inmobiliaria_id;
+
+    if ($request->hasFile('imagen')) {
+      $archivo = $request->file('imagen');
+      $nuevoNombreFoto = time() . '_' . $archivo->getClientOriginalName();
+      $rutaDestino = public_path('img/agentes') . $nuevoNombreFoto;
+      $archivo->move(public_path('img/agentes'), $nuevoNombreFoto);
+
+      // Guardar la nueva foto en la base de datos
+      $agentes->imagen = $nuevoNombreFoto;
+  }
 
     if ($agentes->save()) {
       return redirect(to: '/inmobiliarias/agentes');
@@ -43,12 +57,12 @@ class Container extends Controller
 
   public function borrar($id)
   {
-    $sectors = Agentes::with('ciudad')->find($id);
+    $agentes = Agentes::with('inmobiliaria')->find($id);
 
     if (Agentes::destroy($id)) {
       return redirect(to: '/inmobiliarias/agentes');
     } else {
-      return view('content.layouts-example.layouts-container', compact('sectors'));
+      return view('content.layouts-example.layouts-container', compact('agentes'));
     }
   }
 }

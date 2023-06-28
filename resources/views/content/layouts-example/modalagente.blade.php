@@ -34,7 +34,7 @@
         <div class="row g-2">
           <div class="col mb-0" style="padding-right: 4.5%;">
             <label for="inmobiliaria" class="form-label">Inmobiliaria</label>
-            <input class="form-control" type="text" name="inmobiliaria" style="width: 85%;" id="inmobiliaria" value="{{$agente->inmobiliaria->nombre}}"/>
+            <input class="form-control" type="text" name="inmobiliaria" style="width: 85%;" id="inmobiliaria" value="{{$agente->inmobiliaria->nombre}}" readonly/>
           </div>
           <div class="col mb-0">
             <label for="email" class="form-label">Email</label>
@@ -49,9 +49,9 @@
 </div>
 
 <!-- Modal Editar-->
-<div class="modal fade" id="modaleditar{{ $inmobiliaria->id }}" data-bs-backdrop="static" tabindex="-1">
+<div class="modal fade" id="modaleditar{{ $agente->id }}" data-bs-backdrop="static" tabindex="-1">
   <div class="modal-dialog">
-    <form class="modal-content" action="{{ route('empresa.editar', $inmobiliaria->id) }}" method="POST">
+    <form class="modal-content" action="{{ route('agente.editar', $agente->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="modal-header">
@@ -62,7 +62,7 @@
         <div class="row" style="width: 100%;">
           <div class="col mb-3">
             <label for="imagen" class="form-label">Foto de perfil</label>
-            <input class="form-control" name="imagen"  type="file" id="formFile">
+            <input class="form-control" name="imagen"  type="file" id="imagen">
           </div>
         </div>
         <div class="row g-2">
@@ -112,7 +112,7 @@
 <div class="modal fade" id="modalborrar{{ $agente->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <form class="modal-content" action="{{ route('empresa.borrar', $agente->id) }}" method="POST">
+      <form class="modal-content" action="{{ route('agente.borrar', $agente->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <div class="modal-header">
