@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/propiedades/buscar',$controller_path .'\icons\Boxicons@buscar')->name('propiedades.buscar');
         Route::get('/perfil/usuario', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account'); //Perfil usuario
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion'); //Propiedades
+        Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@buscar')->name('propiedades-catalogo.buscar');
         Route::get('/informacion/inmobiliarias', $controller_path . '\user_interface\Alerts@index')->name('ui-alerts'); // Inmobiliarias información
         Route::get('/informacion/agentes', $controller_path . '\user_interface\Badges@index')->name('ui-badges'); // Agentes informacion
 
@@ -112,13 +113,14 @@ Route::get('/ui/progress', $controller_path . '\user_interface\Progress@index')-
 Route::get('/ui/spinners', $controller_path . '\user_interface\Spinners@index')->name('ui-spinners');
 Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills');
 Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');
+Route::get('/ui/toasts/{id}', $controller_path . '\user_interface\Toasts@show')->name('ui-toasts.show');
 Route::get('/ui/tooltips-popovers', $controller_path . '\user_interface\TooltipsPopovers@index')->name('ui-tooltips-popovers');
 Route::get('/ui/tooltips-popovers/{id}', $controller_path . '\user_interface\TooltipsPopovers@show')->name('ui-tooltips-popovers.show');
 Route::get('/ui/typography', $controller_path . '\user_interface\Typography@index')->name('ui-typography');
 Route::get('/ui/typography/{id}', $controller_path . '\user_interface\Typography@show')->name('ui-typography.show');
 
 // extended ui
-
+    
 
 // icons
 
