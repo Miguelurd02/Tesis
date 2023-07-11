@@ -34,8 +34,8 @@
                 <option value="apartamento">Apartamento</option>
                 <option value="casa">Casa</option>
                 <option value="terreno">Terreno</option>
-                <option value="local_comercial">Local Comercial</option>
-                <option value="oficinas">Oficina</option>  
+                <option value="local">Local Comercial</option>
+                <option value="oficina">Oficina</option>  
               </select>
             </div>
 
