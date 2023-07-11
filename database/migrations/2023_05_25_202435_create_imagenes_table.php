@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_foto');
 
-            $table->unsignedBigInteger('propiedad_id')->unique();
+            $table->unsignedBigInteger('propiedades_id');
 
-            $table->foreign('propiedad_id')
+            $table->foreign('propiedades_id')
             ->references('id')
             ->on('propiedades')
             ->onDelete('cascade')

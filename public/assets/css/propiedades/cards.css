@@ -73,3 +73,11 @@
   .card {
     height: 100%;
   }
+
+
+  /*PAGINACION*/
+  .pagination {
+    text-align: center; /* Alinear al centro */
+    margin-top: 20px; /* Espacio superior */
+    /* Otros estilos según sea necesario */
+}
