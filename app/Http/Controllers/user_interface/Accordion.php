@@ -104,10 +104,10 @@ class Accordion extends Controller
         ) DESC"
     );
  
-   
-    $propiedades = $query->get();
- 
-    return view('content.user-interface.ui-accordion', compact('propiedades','ciudads','sectors','inmobiliarias'));
+
+        $propiedades = $query->get();
+
+return view('content.user-interface.ui-accordion', compact('propiedades', 'ciudads', 'sectors', 'inmobiliarias'));       
 } 
 }
 

@@ -107,15 +107,23 @@
         <h2 class="card-title-agente">{{$propiedades->agentes->nombre}} {{$propiedades->agentes->apellido}}</h2>
         <p class="mb-4 inmo-detail"><span class="material-symbols-outlined">apartment</span> {{$propiedades->agentes->inmobiliaria->nombre}}</p>
         <div class="d-flex flex-column align-items-center">
-          <form method="POST" action="/enviar-correo">
+          <form action="{{ route('ui-toasts.send', ['id' => $propiedades->id]) }}" method="GET">
+            <input type="hidden" name="propiedadId" value="{{ $propiedades->id }}">
             <div class="text-center">
               <label for="mensaje">Mensaje:</label>
             </div>
             <div class="d-flex flex-column align-items-center">
               <textarea id="mensaje" name="mensaje" rows="5" readonly>Hola! Estoy interesado en esta propiedad.</textarea>
-              <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+              <button id="btnEnviar" type="submit" class="btn btn-primary mt-3">Enviar</button>
             </div>
           </form>
+            <!--Mensaje de exito -->
+          @if(session()->has('success'))
+          <div class="alert alert-success">
+        {{ session('success') }}
+           </div>
+        @endif
+
         </div>
       </div>
     </div>
@@ -185,6 +193,8 @@
 
 @endsection
 
+<!-- SCRIPTS UTILIZADOS -->
+
 
 <script>
   $(document).ready(function() {
@@ -205,13 +215,14 @@
 
 </script>
 
-
+<!-- CAROUSEL -->
 <script>
   $(document).ready(function () {
       $('#property-carousel').carousel();
   });
 </script>
 
+<!-- MODAL -->
 <script>
   $(document).ready(function() {
       $('.image-link').on('click', function(event) {
@@ -236,6 +247,7 @@
 });
 
 </script>
+
 
 
 
