@@ -1,5 +1,12 @@
+
 @section('page-script')
-<script src="{{asset('assets/js/ui-modals.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
+<script src="{{ asset('assets/js/ui-modals.js') }}"></script>
+<!-- Include Styles -->
+@include('layouts/sections/styles')
+
+<!-- Include Scripts for customizer, helper, analytics, config -->
+@include('layouts/sections/scriptsIncludes')
 @endsection
 
 <!-- Modal Editar-->
@@ -14,9 +21,9 @@
       </div>
       <div class="modal-body form-group">
         <div class="row">
-          <div class="col mb-3">
-            <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre del sector</label>
-            <input class="form-control" style="width: 95%" type="text" id="nombre" name="nombre" value="{{$ciudad->nombre}}" aria-describedby="defaultFormControlHelp" />
+          <div class="col-12 col-sm-12 mb-3 d-flex flex-column">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre de la ciudad</label>
+            <input class="form-control" type="text" id="nombre" name="nombre" value="{{$ciudad->nombre}}" aria-describedby="defaultFormControlHelp" />
           </div>
         </div>
       </div>

@@ -12,7 +12,22 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable(
+      {
+        "language": {
+            "lengthMenu": "Muestra _MENU_ registros por página",
+            "zeroRecords": "No se han encontrado registros",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(Filtrado de _MAX_ registros en total)",
+            "search": "Buscar:",
+            "paginate":{
+              "next": "Siguiente",
+              "previous": "Anterior"
+            }
+        }
+    }
+    );
   });
 </script>
 
@@ -27,11 +42,11 @@
     <div class="card mb-4">
       <h1 class="card-header">Listado de Usuarios</h1>
       <!-- FILTRO -->
-      <div class="card-body">
+      <div class="card-body"  style="overflow-x:scroll">
 <div class="row mb-5" style="padding-left: 2%">
   <div class="demo-inline-spacing">
   </div>
-  <table id="example" class="ui celled table" style="width:100% ">
+  <table id="example" class="celled table nowrap table-bordered" style="width:100% ">
     <thead>
       <tr>
         <th>ID</th>

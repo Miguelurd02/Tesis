@@ -1,6 +1,14 @@
+
 @section('page-script')
-<script src="{{asset('assets/js/ui-modals.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
+<script src="{{ asset('assets/js/ui-modals.js') }}"></script>
+<!-- Include Styles -->
+@include('layouts/sections/styles')
+
+<!-- Include Scripts for customizer, helper, analytics, config -->
+@include('layouts/sections/scriptsIncludes')
 @endsection
+
 <!-- Modal Detalle-->
 <div class="modal fade" id="modaldetalle{{$suscriptor->id}}" data-bs-backdrop="static" tabindex="-1">
   <div class="modal-dialog">
@@ -11,32 +19,31 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col mb-3">
+          <div class="col-12 col-sm-12 mb-3 d-flex flex-column">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre de Usuario</label>
-            <input class="form-control" style="width: 95%" type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->user->username}}" readonly />
+            <input class="form-control"  type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->user->username}}" readonly />
           </div>
         </div>
         <div class="row g-2">
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column ">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre</label>
-            <input class="form-control" style="width: 89%" type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->nombre}}" readonly />
+            <input class="form-control"  type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->nombre}}" readonly />
           </div>
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column ">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Apellido</label>
-            <input class="form-control" style="width: 89%" type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->apellido}}" readonly />
+            <input class="form-control"  type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->apellido}}" readonly />
           </div>
         </div>
-        <br>
         <div class="row g-2">
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column ">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Email</label>
-            <input class="form-control" style="width: 89%" type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->user->email}}" readonly />
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" value="{{$suscriptor->user->email}}" readonly />
           </div>
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column ">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Teléfono</label>
             <div class="input-group">
-              <span class="input-group-text" style="width: 10%" id="basic-addon11">+58</span>
-              <input type="text" class="form-control" style="width: 51%" value="{{$suscriptor->telefono}}" aria-label="Username" readonly />
+              <span class="input-group-text"  id="basic-addon11">+58</span>
+              <input type="text" class="form-control"  value="{{$suscriptor->telefono}}" aria-label="Username" readonly />
             </div>
           </div>
         </div>
@@ -58,32 +65,31 @@
       </div>
       <div class="modal-body form-group">
         <div class="row">
-          <div class="col mb-3">
+          <div class="col-12 col-sm-12 mb-3 d-flex flex-column">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre de Usuario</label>
-            <input class="form-control" style="width: 95%" type="text" id="nombre_usuario" value="{{$suscriptor->user->username}}" readonly />
+            <input class="form-control" type="text" id="nombre_usuario" value="{{$suscriptor->user->username}}" readonly />
           </div>
         </div>
         <div class="row g-2">
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" style="width: 89%" id="nombre" name="nombre" value="{{$suscriptor->nombre}}" aria-describedby="defaultFormControlHelp" />
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$suscriptor->nombre}}" aria-describedby="defaultFormControlHelp" />
           </div>
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="apellido" class="form-label">Apellido</label>
-            <input class="form-control" type="text" style="width: 89%" id="apellido" name="apellido" value="{{$suscriptor->apellido}}" aria-describedby="defaultFormControlHelp" />
+            <input class="form-control" type="text" id="apellido" name="apellido" value="{{$suscriptor->apellido}}" aria-describedby="defaultFormControlHelp" />
           </div>
         </div>
-        <br>
         <div class="row g-2">
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="email" class="form-label">Email</label>
-            <input class="form-control" type="text" style="width: 89%" id="email" name="email" value="{{$suscriptor->user->email}}" aria-describedby="defaultFormControlHelp" />
+            <input class="form-control" type="text" id="email" name="email" value="{{$suscriptor->user->email}}" aria-describedby="defaultFormControlHelp" />
           </div>
-          <div class="col mb-0">
+          <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="telefono" class="form-label">Teléfono</label>
             <div class="input-group">
-              <span class="input-group-text" style="width: 10%" id="basic-addon11">+58</span>
-              <input type="text" class="form-control" style="width: 51%" name="telefono" value="{{$suscriptor->telefono}}" aria-label="Username" aria-describedby="basic-addon11" />
+              <span class="input-group-text"  id="basic-addon11">+58</span>
+              <input type="text" class="form-control" name="telefono" value="{{$suscriptor->telefono}}" aria-label="Username" aria-describedby="basic-addon11" />
             </div>
           </div>
         </div>
@@ -101,8 +107,8 @@
       <form class="modal-content" action="{{route('usuario.borrar',$suscriptor->id)}}" method="POST">
         @csrf
         @method('DELETE')
-        <div class="modal-header">
-          <h1 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar el usuario?</h1>
+        <div class="modal-header justify-content-center">
+          <h2 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar el usuario?</h2>
         </div>
         <div class="modal-body">
           <center>

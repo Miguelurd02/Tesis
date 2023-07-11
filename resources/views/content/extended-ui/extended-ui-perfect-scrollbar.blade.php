@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Perfect Scrollbar - Extended UI')
+@section('title', 'Tabla ciudad - Administrador')
 
 @section('vendor-style')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
@@ -16,7 +16,22 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable(
+      {
+        "language": {
+            "lengthMenu": "Muestra _MENU_ registros por página",
+            "zeroRecords": "No se han encontrado registros",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(Filtrado de _MAX_ registros en total)",
+            "search": "Buscar:",
+            "paginate":{
+              "next": "Siguiente",
+              "previous": "Anterior"
+            }
+        }
+    }
+    );
   });
 </script>
 
@@ -37,7 +52,7 @@
           <div class="row">
             <div class="col mb-3">
               <label for="nombre" class="form-label">Nombre de la ciudad</label>
-              <input class="form-control" style="width: 95%" type="text" id="nombre" name="nombre" placeholder="Introduzca la ciudad..." aria-describedby="defaultFormControlHelp" />
+              <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Introduzca la ciudad..." aria-describedby="defaultFormControlHelp" />
             </div>
           </div>
         </div>
@@ -67,11 +82,11 @@
           </ul>
         </div>
       <!-- FILTRO -->
-      <div class="card-body">
+      <div class="card-body" style="overflow-x:scroll">
 <div class="row mb-5" style="padding-left: 2%">
   <div class="demo-inline-spacing">
   </div>
-  <table id="example" class="ui celled table" style="width:100% ">
+  <table id="example" class="celled table nowrap table-bordered" style="width:100% ">
     <thead>
       <tr>
         <th>ID</th>
