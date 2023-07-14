@@ -87,10 +87,26 @@
   </div>
 @endforeach
 
-      
-    
-        <div class="card-body">
+        <!-- INICIO DE LA CARD -->
+     <div class="card-body">
+       <div class="row">
+         <div class="col col-md-10">
           <h5 class="propierty-title">{{$propiedades->titulo}}</h5>
+              </div>
+              <div class="col">
+                <form id="form-marcar-desmarcar-favorito" action="{{ route('ui-toasts.marcarDesmarcarFavorito', ['propiedades_id' => $propiedades->id]) }}" method="POST">
+                  @csrf
+                  <button class="btnfav" id="boton-favorito" type="submit" class="btn-favorito {{ $esFavorita ? 'seleccionado' : '' }}">
+                    <span class="material-symbols-outlined">
+                      {{ $esFavorita ? 'heart_check' : 'favorite' }}
+                    </span>
+                  </button>
+                </form>
+                
+              
+              
+                    </div>
+         </div>
           <div class="price">{{$propiedades->precio}}</div>
           <br>
           <div class="descripcion" style="height: 200px; overflow-y: auto;">
@@ -247,7 +263,4 @@
 });
 
 </script>
-
-
-
 

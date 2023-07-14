@@ -13,4 +13,9 @@ class Suscriptor extends Model
         
         return $this->belongsTo('App\Models\User');
     }
+
+    public function favoritos()
+    {
+        return $this->hasMany('App\Models\Favorito');
+    }
 }

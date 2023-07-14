@@ -1,0 +1,102 @@
+.card-body-profile {
+  padding: 20px;
+  background-color: #ffffff;
+  height: 450px;
+}
+
+.card-title{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+    color:rgb(105, 122, 140);
+  }
+
+.card-description {
+    font-size: 20px;
+    text-align: justify;
+    color:rgb(105, 122, 140);
+    margin: 20px;
+    line-height:1.5;
+  }
+
+
+.card-body {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+
+.inmos-details {
+    margin-top: 20px;
+    background-color: #f3f3f3f3;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden; /* Para corregir el espaciado */
+  }
+
+.inmo-detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.inmo-detail .material-icons {
+  margin-right: 5px;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.detail-value {
+  font-weight: normal;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+
+/* Estilo para ajustar el tamaño de las fotos */
+  .card-img-left {
+    object-fit: cover;
+    height: 285px; /* Ajusta la altura deseada para las imágenes */
+    margin: 7px;
+  }
+
+/*AGENTES*/
+.card-body-agentes {
+  padding: 20px;
+  background-color: #ffffff;
+  height: fit-content;
+  align-items: center;
+}
+.agent-container {
+  border-radius: 8px;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+.agent-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  align-items: center;
+  border-style: groove;
+  border-color: #920606;
+}
+
+.agent-name {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.center {
+  text-align: center;
+}
+ 
+

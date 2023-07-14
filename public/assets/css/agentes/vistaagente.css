@@ -1,0 +1,72 @@
+.card-body-profile {
+    padding: 20px;
+    background-color: #ffffff;
+    height: 400px;
+  }
+  
+  .card-title-agente{
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 30px;
+      padding-top: 10px;
+      color:rgb(105, 122, 140);
+    }
+  
+  .card-description {
+      font-size: 20px;
+      text-align: justify;
+      color:rgb(105, 122, 140);
+      margin: 20px;
+      line-height:1.5;
+    }
+  
+  
+  .card-body {
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .inmo-detail {
+    margin-top: 0px;
+    font-size: 30px;
+    align-items: center;
+    margin-bottom: 5px;
+    color:#920606;
+  }
+  
+  .inmo-detail .material-icons {
+    margin-right: 5px;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .detail-value {
+    font-weight: normal;
+  }
+  
+  .contact-info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+
+    }
+    
+  
+  /* Estilo para ajustar el tamaño de las fotos */
+  .card-img-top-agente {
+    height: 150px; /* Ajusta la altura deseada para la imagen */
+    object-fit: cover;
+    border-radius: 50%; /* Ajusta el radio de borde deseado */
+  }
+  
+  
+
+    
+    
+   
+  
+  
+  

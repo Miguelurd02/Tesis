@@ -1,131 +1,70 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('title', 'Account settings - Pages')
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="{{ asset('assets/css/favoritos/favoritos.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/propiedades/cards.css') }}" />
 @section('content')
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Account Settings /</span> Notifications
+  <span class="text-muted fw-light">Configuración de la Cuenta /</span> Favoritos
 </h4>
 
 <div class="row">
   <div class="col-md-12">
     <ul class="nav nav-pills flex-column flex-md-row mb-3">
-      <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-account')}}"><i class="bx bx-user me-1"></i> Account</a></li>
-      <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-bell me-1"></i> Notifications</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-connections')}}"><i class="bx bx-link-alt me-1"></i> Connections</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{url('/perfil/usuario')}}"><i class="bx bx-user me-1"></i> Cuenta</a></li>
+      <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-heart me-1"></i> Favoritos</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-connections')}}"><i class='bx bx-shield-quarter me-1'></i> Seguridad</a></li>
     </ul>
-    <div class="card">
-      <!-- Notifications -->
-      <h5 class="card-header">Recent Devices</h5>
-      <div class="card-body">
-        <span>We need permission from your browser to show notifications. <span class="notificationRequest"><strong>Request Permission</strong></span></span>
-        <div class="error"></div>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-striped table-borderless border-bottom">
-          <thead>
-            <tr>
-              <th class="text-nowrap">Type</th>
-              <th class="text-nowrap text-center">✉️ Email</th>
-              <th class="text-nowrap text-center">🖥 Browser</th>
-              <th class="text-nowrap text-center">👩🏻‍💻 App</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-nowrap">New for you</td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck1" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck2" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck3" checked />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-nowrap">Account activity</td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck4" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck5" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck6" checked />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-nowrap">A new browser used to sign in</td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck7" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck8" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck9" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-nowrap">A new device is linked</td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck10" checked />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck11" />
-                </div>
-              </td>
-              <td>
-                <div class="form-check d-flex justify-content-center">
-                  <input class="form-check-input" type="checkbox" id="defaultCheck12" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-body">
-        <h6>When should we send you notifications?</h6>
-        <form action="javascript:void(0);">
-          <div class="row">
-            <div class="col-sm-6">
-              <select id="sendNotification" class="form-select" name="sendNotification">
-                <option selected>Only when I'm online</option>
-                <option>Anytime</option>
-              </select>
-            </div>
-            <div class="mt-4">
-              <button type="submit" class="btn btn-primary me-2">Save changes</button>
-              <button type="reset" class="btn btn-outline-secondary">Discard</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <!-- /Notifications -->
-    </div>
   </div>
 </div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+  @if (count($propiedades) > 0)
+    @foreach ($propiedades as $propiedad)
+    <div class="col">
+      <a href="{{ route('ui-toasts.show', ['id' => $propiedad->id]) }}">
+        <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
+          <img class="card-img-top" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">{{$propiedad->titulo}}</h5>
+            <p class="card-direccion">{{$propiedad->sector->nombre}}, {{$propiedad->sector->ciudad->nombre}}</p>
+            <p class="card-construccion">{{$propiedad->dimension}}m<sup>2</sup> de construcción</p>
+            <p class="card-description">{{$propiedad->descripcion}}</p>
+            <div class="property-details">
+              <div class="property-detail">
+                <span class="material-icons">bathtub</span> {{$propiedad->banos}}
+              </div>
+              <div class="property-detail">
+                <span class="material-icons">bed</span> {{$propiedad->habitaciones}}
+              </div>
+              <div class="property-detail">
+                <span class="material-icons">apartment</span> {{$propiedad->plantas}}
+              </div>
+              <div class="property-detail">
+                <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
+              </div>
+            </div>
+            <div class="price">{{$propiedad->precio}}</div>
+            <div class="delete-button">
+              <a href="{{ route('pages-account-settings-notifications.eliminarFavoritos', ['id' => $propiedad->id]) }}" class="btn-delete">
+                <span class="material-icons">delete</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    @endforeach
+  @else
+  <div class="center-text row">
+    <div class="col md-12">
+   <h3 class="no-favoritos">Aún no tienes ninguna propiedad agregada a favoritos</h3>
+   
+  </div>
+  </div>
+  @endif
+</div>
+
 @endsection
+
