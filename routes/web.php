@@ -72,10 +72,13 @@ Route::group(['middleware' => 'auth'], function(){
 
         //Inmobiliaria pantallas
         Route::get('/inicio/inmobiliaria', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups'); //Inicio inmobiliarias
+        Route::get('/inicio/inmobiliaria', $controller_path . '\form_elements\InputGroups@show')->name('forms-input-groups.show'); //Inicio inmobiliarias
         Route::get('/perfil/inmobiliaria', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs'); //Perfil inmobiliaria
         Route::get('/publicacion/registrar', $controller_path . '\user_interface\Collapse@index')->name('ui-collapse'); //Registrar propiedad
         Route::get('/publicacion/ver', $controller_path . '\user_interface\Dropdowns@index')->name('ui-dropdowns'); //Ver propiedades
+        Route::get('/publicacion/ver', $controller_path . '\user_interface\Dropdowns@publicacionesPorAgente')->name('ui-dropdowns.publicacionesPorAgente'); //Ver propiedades
         Route::get('/agentes/ver', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');
+        Route::get('/agentes/ver', $controller_path . '\form_layouts\VerticalForm@agentesPorPropiedad')->name('form-layouts-vertical.agentesPorPropiedad');
 
     });
    
