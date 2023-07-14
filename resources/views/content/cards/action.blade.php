@@ -54,11 +54,18 @@
   </div>
 </div>
 <!-- Modal Editar-->
-<div class="modal fade" id="modaleditar{{$suscriptor->id}}" data-bs-backdrop="static" tabindex="-1">
+<div
+      class="modal fade {{ $errors->hasAny('nombre', 'apellido', 'email', 'telefono') && old('suscriptor_id') == $suscriptor->id ? 'show' : '' }}"
+      id="modaleditar{{$suscriptor->id}}"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      style="display: @if($errors->hasAny('nombre', 'apellido', 'email', 'telefono') && old('suscriptor_id') == $suscriptor->id) block @else none @endif"
+      >
   <div class="modal-dialog">
-    <form class="modal-content" action="{{route('usuario.editar',$suscriptor->id)}}" method="POST">
+    <form class="modal-content" id="editarForm" action="{{route('usuario.editar',$suscriptor->id)}}" method="POST">
       @csrf
       @method('PUT')
+      <input type="hidden" name="suscriptor_id" value="{{ $suscriptor->id}}">
       <div class="modal-header">
         <h2 class="modal-title" id="backDropModalTitle">Editar</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -74,28 +81,40 @@
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="{{$suscriptor->nombre}}" aria-describedby="defaultFormControlHelp" />
+            @error('nombre')
+            <label class="mensaje-error">{{ $message }}</label>
+            @enderror
           </div>
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="apellido" class="form-label">Apellido</label>
             <input class="form-control" type="text" id="apellido" name="apellido" value="{{$suscriptor->apellido}}" aria-describedby="defaultFormControlHelp" />
+            @error('apellido')
+            <label class="mensaje-error">{{ $message }}</label>
+            @enderror
           </div>
         </div>
         <div class="row g-2">
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="email" class="form-label">Email</label>
-            <input class="form-control" type="text" id="email" name="email" value="{{$suscriptor->user->email}}" aria-describedby="defaultFormControlHelp" />
+            <input class="form-control" type="email" id="email" name="email" value="{{$suscriptor->user->email}}" aria-describedby="defaultFormControlHelp" />
+            @error('email')
+            <label class="mensaje-error">{{ $message }}</label>
+            @enderror
           </div>
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="telefono" class="form-label">Teléfono</label>
             <div class="input-group">
               <span class="input-group-text"  id="basic-addon11">+58</span>
               <input type="text" class="form-control" name="telefono" value="{{$suscriptor->telefono}}" aria-label="Username" aria-describedby="basic-addon11" />
+              @error('telefono')
+              <label class="mensaje-error">{{ $message }}</label>
+              @enderror
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <button type="submit" onclick="guardarCambios()" class="btn btn-primary">Guardar cambios</button>
       </div>
     </form>
   </div>
@@ -126,3 +145,41 @@
   </div>
 </div>
 </div>
+
+<script>
+  function guardarCambios() {
+    $('#editarForm').submit(function(e) {
+        e.preventDefault(); // Evita el comportamiento predeterminado del formulario
+
+        var form = $(this); // Obtiene el formulario actual
+        var formData = new FormData(form[0]); // Crea un objeto FormData con los datos del formulario
+
+        $.ajax({
+            url: form.attr('action'), // Obtiene la URL del formulario
+            type: form.attr('method'), // Obtiene el método del formulario (PUT en este caso)
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log(response); // Maneja la respuesta exitosa del servidor
+
+                // Cierra el modal si es necesario
+                $('#modaleditar{{$suscriptor->id}}').modal('hide');
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText); // Maneja el error de la solicitud Ajax
+
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+
+                    // Muestra los mensajes de error en el formulario
+                    for (var field in errors) {
+                        var errorMessages = errors[field].join(', ');
+                        form.find('#' + field).after('<span class="mensaje-error">' + errorMessages + '</span>');
+                    }
+                }
+            }
+        });
+    });
+  }
+</script>

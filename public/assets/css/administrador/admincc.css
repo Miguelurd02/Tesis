@@ -1,0 +1,48 @@
+.img-modal{
+    width: 100% !important ;
+    height: 227px !important;
+    object-fit: cover;
+}
+
+.img-tabla{
+    width: 80px;
+    height: 80px;
+    padding: 5px !important;
+    margin: 0;
+    object-fit: cover;
+    border-radius: 15% !important;
+    display: flex;
+}
+
+.columna-tamano{
+    width: 60px;
+    padding: 0 !important;
+    margin: 0;
+}
+
+.modal-inmo{
+    width: 100% !important ;
+    height: 179px !important;
+    object-fit: cover;
+}
+
+.modal-propiedad{
+    width: 100% !important ;
+    height: 200px !important;
+    object-fit: cover;
+}
+
+.imagenes{
+    width: 100% !important ;
+    height: 150px !important;
+    object-fit: cover;
+}
+
+.mensaje-error{
+    display: block;
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    width: 100% !important;
+    white-space: normal;
+}

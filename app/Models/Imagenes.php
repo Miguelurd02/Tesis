@@ -12,4 +12,8 @@ class Imagenes extends Model
     public function propiedades(){
         return $this->belongsTo('App\Models\Propiedades');
     }
+
+    protected $fillable = [
+        'imagenes'  
+    ];
 }

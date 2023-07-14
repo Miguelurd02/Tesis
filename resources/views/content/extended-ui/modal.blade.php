@@ -46,7 +46,7 @@
       <form class="modal-content" action="{{route('sector.borrar',$sector->id)}}" method="POST">
         @csrf
         @method('DELETE')
-        <div class="modal-header">
+        <div class="modal-header col-12 col-sm-12 mb-3 d-flex flex-column">
           <h2 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar el sector?</h2>
         </div>
         <div class="modal-body">

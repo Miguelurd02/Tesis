@@ -23,4 +23,21 @@ class Propiedades extends Model
         
         return $this->belongsTo('App\Models\Sector');
     }
+
+    protected $fillable = [
+            'titulo',
+            'imagen',
+            'contrato',
+            'tipo',
+            'descripcion',
+            'sector_id',
+            'dimension',
+            'banos',
+            'habitaciones',
+            'estacionamiento',
+            'precio',
+            'agentes_id',
+            'plantas',
+            'imagenes'  
+    ];
 }
