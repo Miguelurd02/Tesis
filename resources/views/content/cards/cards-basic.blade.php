@@ -70,7 +70,7 @@
             <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaldetalle{{$suscriptor->id}}" data-id="{{$suscriptor->id}}">
               <span class="tf-icons bx bx-detail"></span>
             </button>
-            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$suscriptor->id}}" data-id="{{$suscriptor->id}}">
+            <button type="button" class="btn btn-icon btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$suscriptor->id}}" data-id="{{$suscriptor->id}}">
               <span class="tf-icons bx bx-edit"></span>
             </button>
             <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$suscriptor->id}}" data-id="{{$suscriptor->id}}">
