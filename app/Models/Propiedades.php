@@ -23,4 +23,10 @@ class Propiedades extends Model
         
         return $this->belongsTo('App\Models\Sector');
     }
+
+    public function favoritos()
+    {
+        return $this->hasMany('App\Models\Favorito');
+    }
+    
 }

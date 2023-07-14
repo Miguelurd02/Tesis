@@ -64,7 +64,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/inicio/filtro', $controller_path . '\icons\Boxicons@index')->name('icons-boxicons'); //Inicio usuario filtro
         Route::get('/propiedades/buscar',$controller_path .'\icons\Boxicons@buscar')->name('propiedades.buscar');
         Route::get('/perfil/usuario', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account'); //Perfil usuario
-
+        Route::get('/perfil/usuario/favoritos', $controller_path . '\pages\AccountSettingsNotifications@mostrarFavoritos')->name('pages-account-settings-notifications.mostrarFavoritos'); 
+        Route::get('/favoritos/eliminar/{id}', $controller_path . '\pages\AccountSettingsNotifications@eliminarFavoritos')->name('pages-account-settings-notifications.eliminarFavoritos');
           //VISTA DE PROPIEDADES Y SUS FUNCIONES
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion'); //Propiedades
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@buscar')->name('propiedades-catalogo.buscar'); //FUNCION BUSCAR PROPIEDADES
@@ -92,7 +93,7 @@ Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('l
 
 // pages
 
-Route::get('/pages/account-settings-notifications', $controller_path . '\pages\AccountSettingsNotifications@index')->name('pages-account-settings-notifications'); 
+
 Route::get('/pages/account-settings-connections', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
 Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
@@ -126,7 +127,10 @@ Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->nam
 Route::get('/ui/toasts/{id}', $controller_path . '\user_interface\Toasts@show')->name('ui-toasts.show');//FUNCION PARA QUE SE MUESTRE LA PROPIEDAD SEGUN EL ID PASADO
 //ENVIAR CORREO
 Route::get('/enviar-mensaje', $controller_path . '\user_interface\Toasts@send')->name('ui-toasts.send')->middleware('web');//FUNCION PARA ENVIAR CORREO
-  
+//AGREGAR O QUITAR FAVORITO
+  Route::post('/marcar-desmarcar-favorito', $controller_path . '\user_interface\Toasts@marcarDesmarcarFavorito')->name('ui-toasts.marcarDesmarcarFavorito');//FUNCION PARA MARCAR O DESMARCAR FAVORITOS
+
+
 
 Route::get('/ui/tooltips-popovers', $controller_path . '\user_interface\TooltipsPopovers@index')->name('ui-tooltips-popovers');
 Route::get('/ui/tooltips-popovers/{id}', $controller_path . '\user_interface\TooltipsPopovers@show')->name('ui-tooltips-popovers.show');

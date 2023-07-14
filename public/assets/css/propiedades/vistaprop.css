@@ -1,0 +1,275 @@
+/*ESTILOS CARD PROPIEDAD*/
+
+.carousel1 .carousel-item img {
+  max-height: 350px; /* Ajusta el valor según tus necesidades */
+  object-fit: cover;
+}
+
+.carousel2 .carousel-item img {
+  object-fit: cover;
+}
+
+.modal-lg-custom .modal-dialog {
+  max-width: 1200px; /* Ancho máximo del modal */
+  max-height: 500px;
+  width: 90%; /* Ancho relativo del modal */
+  margin: 1.75rem auto; /* Margen vertical y centrado horizontalmente */
+}
+
+.modal-lg-custom .carousel-item img {
+  object-fit: cover; /* La imagen se ajustará para cubrir todo el contenedor */
+  width: 100%;
+  height: 100%;
+}
+
+/*ESTILOS BOTON DE FAVORITOS*/
+
+
+
+
+
+/*FIN DE ESTILOS BOTON DE FAVORITOS*/
+.price {
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+  color: green;
+}
+
+.propierty-title {
+  text-transform: uppercase;
+  font-size: 30px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color:rgb(105, 122, 140);
+}
+
+.descripcion {
+    display: -webkit-box;
+    font-size: 18px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:rgb(105, 122, 140);
+  }
+
+  /* DETALLES DE PROPIEDAD CARD*/
+  .card-body-prop {
+    background-color: #ffffff;
+ 
+  }
+
+  .card-title {
+    text-align: center;
+    color: #800606;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 25px;
+  }
+
+  .detalles-container {
+    padding-bottom: 20px;
+  
+  }
+  .detail-label {
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 30px;
+    color: #800606;
+    padding-left: 10px;
+    
+  }
+
+ h3 {
+ color:rgb(105, 122, 140)
+}
+
+.detalles {
+  text-align: center;
+  
+}
+.detallesrow2 {
+  font-size: 20px;
+  color: #800606;
+  font-weight: bold;
+}
+
+.detalles-fecha {
+  color: #800606;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+  .icon-label {
+    font-weight: bold;
+    margin-right: 5px;
+    size: 5px;
+    color: #800606;
+    align-items: center;
+  }
+
+  .property-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color:rgb(105, 122, 140);
+  }
+  
+  .property-detail {
+    display: flex;
+    align-items: center;
+  }
+  
+  .property-detail i {
+    margin-right: 5px;
+  }
+/*FIN DE DETALLES DE PROPIEDAD CARD*/ 
+
+/*ESTILOS CARD AGENTE*/
+.container{
+  position: relative;
+}
+
+.fixed-element {
+  position: fixed;
+  top: 58px;
+  right: 20px;
+  width: 450px;
+}
+@media (max-width: 767px) {
+  .fixed-element {
+    position: relative;
+    top: auto;
+    left: 2px;
+    bottom: 0;
+    width: 100%;
+    
+  }
+}
+
+.card-body-profile {
+    padding: 20px;
+    background-color: #ffffff;
+    height: 692px;
+  }
+  
+  .card-title-agente{
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 30px;
+      padding-top: 10px;
+      color:rgb(105, 122, 140);
+    }
+  
+  .card-description {
+      font-size: 20px;
+      text-align: justify;
+      color:rgb(105, 122, 140);
+      margin: 20px;
+      line-height:1.5;
+    }
+  
+  .card-body {
+    padding: 20px;
+    background-color: #ffffff;
+  }
+
+  .inmo-detail {
+    margin-top: 0px;
+    font-size: 30px;
+    align-items: center;
+    margin-bottom: 5px;
+    color:#920606;
+  }
+  
+  .inmo-detail .material-icons {
+    margin-right: 5px;
+  }
+  
+  .detail-value {
+    font-weight: normal;
+  }
+  
+    
+  label[for="mensaje"] {
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+    
+    textarea#mensaje {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    textarea#mensaje::placeholder {
+      color: #999;
+    }
+    
+    button[type="submit"] {
+      background-color: #920606;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #800606;
+    }
+    
+  /* Estilo para ajustar el tamaño de las fotos */
+  .card-img-top-agente {
+    height: 150px; /* Ajusta la altura deseada para la imagen */
+    object-fit: cover;
+    border-radius: 50%; /* Ajusta el radio de borde deseado */
+  }
+ /* FIN ESTILOS CARD AGENTE*/
+
+  /*ESTILOS DEL SCROLLBAR*/
+  .descripcion::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+  }
+  
+  .descripcion::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color del fondo del track */
+  }
+  
+  .descripcion::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color del thumb */
+    border-radius: 5px; /* Radio de borde del thumb */
+  }
+  
+  .descripcion::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color del thumb al pasar el cursor */
+  }
+  
+  /*FIN DEL SCROLLBAR*/  
+   
+  /*LIGHTBOX*/
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    text-align: center;
+  }
+  
+  .lightbox img {
+    max-height: 80vh;
+    max-width: 80vw;
+    margin: 10% auto;
+  }
+  
+  

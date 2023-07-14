@@ -1,0 +1,46 @@
+
+.card-rif {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Establece el máximo número de líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:rgb(105, 122, 140);
+  }
+
+  .card-title{
+    text-transform: uppercase;
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; /* Establece el máximo número de líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:#920606
+  }
+
+  
+/* Estilo para ajustar el tamaño de las fotos */
+  .card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  /*animacion de la card*/
+   .card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+

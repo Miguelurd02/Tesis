@@ -8,6 +8,7 @@ use App\Models\Propiedades;
 use App\Models\Suscriptor;
 use App\Models\User;
 use App\Mail\EnviarMensaje;
+use App\Models\Favorito;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,10 @@ class Toasts extends Controller
     {
         $propiedades = Propiedades::with('agentes', 'imagenes')->findOrFail($id);
 
-        return view('content.user-interface.ui-toasts', compact('propiedades'));
+        // Verifica si la propiedad está agregada a favoritos para el usuario actual
+        $esFavorita = $propiedades->favoritos->contains('users_id', auth()->user()->id);
+
+        return view('content.user-interface.ui-toasts', compact('propiedades', 'esFavorita'));
     }
 
     public function send(Request $request)
@@ -61,4 +65,36 @@ class Toasts extends Controller
 
         return redirect()->back();
     }
+
+        public function marcarDesmarcarFavorito(Request $request)
+        {
+            $propiedadId = $request->input('propiedades_id');
+            $usuarioId = auth()->user()->id;
+          
+            // Verificar si la propiedad ya está marcada como favorita para el usuario actual
+            $favorito = Favorito::where('propiedades_id', $propiedadId)
+                ->where('users_id', $usuarioId)
+                ->first();
+    
+            if ($favorito) {
+                // La propiedad ya está marcada como favorita, entonces la eliminamos
+                $favorito->delete();
+                $mensaje = 'La propiedad se ha desmarcado como favorita.';
+                $accion = 'desmarcar';
+            } else {
+                // La propiedad no está marcada como favorita, entonces la agregamos
+                $favorito = new Favorito();
+                $favorito->propiedades_id = $propiedadId;
+                $favorito->users_id = $usuarioId;
+                $favorito->save();
+                $mensaje = 'La propiedad se ha marcado como favorita.';
+                $accion = 'marcar';
+            }
+            return redirect()->back();
+        
+        
+    }
+    
+
+
 }

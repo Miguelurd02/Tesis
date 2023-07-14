@@ -1,0 +1,43 @@
+
+.card-inmo {
+  font-size: 20px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color:#920606
+}
+
+.card-title{
+  font-size: 35px;
+  text-transform: uppercase;
+  font-size: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* Establece el máximo número de líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color:rgb(105, 122, 140);
+}
+
+.card-construccion{
+  color:rgb(105, 122, 140);
+}
+
+
+/*animacion de la card*/
+.card:hover {
+  cursor: pointer;
+}
+
+.shadow-effect {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 300px; /* Ajusta la altura deseada para las imágenes */
+}
+
+.card {
+  height: 100%;
+}
