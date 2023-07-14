@@ -4,6 +4,9 @@ namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User; 
+
+use App\Models\Suscriptor;
 
 class AccountSettingsAccount extends Controller
 {
@@ -11,4 +14,6 @@ class AccountSettingsAccount extends Controller
   {
     return view('content.pages.pages-account-settings-account');
   }
+
+ 
 }

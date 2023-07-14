@@ -40,4 +40,11 @@ class Propiedades extends Model
             'plantas',
             'imagenes'  
     ];
+
+  public function favoritos()
+    {
+        return $this->hasMany('App\Models\Favorito');
+    }
+    
+
 }

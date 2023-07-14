@@ -1,0 +1,24 @@
+    .card-body {
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .inmo-detail {
+    margin-top: 0px;
+    font-size: 30px;
+    align-items: center;
+    margin-bottom: 5px;
+    color:#920606;
+  }
+  
+
+    
+  
+  /* Estilo para ajustar el tamaño de las fotos */
+  .card-img-top-agente {
+    height: 206px; /* Ajusta la altura deseada para la imagen */
+    object-fit: contain;
+  
+  }
+  
+  

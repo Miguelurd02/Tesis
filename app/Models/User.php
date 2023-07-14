@@ -55,4 +55,5 @@ class User extends Authenticatable
     public function inmobiliaria(){
         return $this->hasOne('App\Models\Inmobiliaria');
     }
+    
 }
