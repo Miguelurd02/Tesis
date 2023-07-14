@@ -51,7 +51,7 @@
       ]
     },
     {
-      "url": "/propiedades/registro",
+      "url": "/propiedades/listado",
       "icon": "menu-icon tf-icons bx bx-layout",
       "name": "Propiedades",
       "slug": "tables-basic"

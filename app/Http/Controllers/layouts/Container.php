@@ -21,6 +21,16 @@ class Container extends Controller
   {
     $data = $request->validated();
 
+    if ($request->hasFile('imagen')) {
+      $archivo = $request->file('imagen');
+      $nuevoNombreFoto = time() . '_' . $archivo->getClientOriginalName();
+      $rutaDestino = public_path('assets/img/agentes') . $nuevoNombreFoto;
+      $archivo->move(public_path('assets/img/agentes'), $nuevoNombreFoto);
+
+      // Guardar la nueva foto en la base de datos
+      $data['imagen'] = $nuevoNombreFoto;
+    }
+
     $agente = new Agentes($data);
     $agente->save();
 

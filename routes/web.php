@@ -58,7 +58,11 @@ Route::group(['middleware' => 'auth'], function(){
          Route::post('/sector/registro', $controller_path . '\extended_ui\TextDivider@registrar')->name('sector.registrar'); // Sectores
 
          //CRUD RUTAS PROPIEDADES
-         Route::get('/propiedades/registro', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
+         Route::get('/propiedades/listado', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
+         Route::post('/propiedades/registro', $controller_path . '\tables\Basic@registrar')->name('propiedad.registrar'); // propiedades tablas
+         Route::put('/propiedades/editar', $controller_path . '\tables\Basic@editar')->name('propiedad.editar'); // propiedades tablas
+         Route::delete('/propiedades/borrar', $controller_path . '\tables\Basic@borrar')->name('propiedad.borrar'); // propiedades tablas
+         Route::delete('/eliminar/imagen/{id}', $controller_path . '\tables\Basic@eliminar')->name('eliminar.imagen');
 
         //Usuario pantallas
         Route::get('/inicio/filtro', $controller_path . '\icons\Boxicons@index')->name('icons-boxicons'); //Inicio usuario filtro

@@ -25,7 +25,6 @@ return new class extends Migration
             $table->integer('habitaciones');
             $table->decimal('precio', $presicion = 10, $scale = 2);
             $table->string('contrato');
-            $table->string('estado');
             $table->string('imagen');
 
             $table->unsignedBigInteger('agentes_id');

@@ -24,12 +24,21 @@ class Fluid extends Controller
     $users = User::find($userId);
 
     $inmobiliarias->nombre = $request->nombre;
-    $inmobiliarias->imagen = $request->imagen;
     $inmobiliarias->rif = $request->rif;
     $users->email = $request->email;
     $inmobiliarias->telefono = $request->telefono;
     $inmobiliarias->direccion = $request->direccion;
     $inmobiliarias->descripcion = $request->descripcion;
+
+    if ($request->hasFile('imagen')) {
+      $archivo = $request->file('imagen');
+      $nuevoNombreFoto = time() . '_' . $archivo->getClientOriginalName();
+      $rutaDestino = public_path('assets/img/inmobiliarias') . $nuevoNombreFoto;
+      $archivo->move(public_path('assets/img/inmobiliarias'), $nuevoNombreFoto);
+
+      // Guardar la nueva foto en la base de datos
+      $inmobiliarias->imagen = $nuevoNombreFoto;
+  }
 
     if ($inmobiliarias->save() and $users->save()) {
       return redirect(to: '/inmobiliarias/empresas');

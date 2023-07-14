@@ -24,9 +24,27 @@ class Propiedades extends Model
         return $this->belongsTo('App\Models\Sector');
     }
 
-    public function favoritos()
+    protected $fillable = [
+            'titulo',
+            'imagen',
+            'contrato',
+            'tipo',
+            'descripcion',
+            'sector_id',
+            'dimension',
+            'banos',
+            'habitaciones',
+            'estacionamiento',
+            'precio',
+            'agentes_id',
+            'plantas',
+            'imagenes'  
+    ];
+
+  public function favoritos()
     {
         return $this->hasMany('App\Models\Favorito');
     }
     
+
 }
