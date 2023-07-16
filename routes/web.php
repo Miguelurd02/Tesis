@@ -66,7 +66,6 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/favoritos/eliminar/{id}', $controller_path . '\pages\AccountSettingsNotifications@eliminarFavoritos')->name('pages-account-settings-notifications.eliminarFavoritos');
           //VISTA DE PROPIEDADES Y SUS FUNCIONES
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion'); //Propiedades
-        Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@buscar')->name('propiedades-catalogo.buscar'); //FUNCION BUSCAR PROPIEDADES
 
         Route::get('/informacion/inmobiliarias', $controller_path . '\user_interface\Alerts@index')->name('ui-alerts'); // Inmobiliarias información
         Route::get('/informacion/agentes', $controller_path . '\user_interface\Badges@index')->name('ui-badges'); // Agentes informacion
