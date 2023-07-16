@@ -28,9 +28,10 @@ class Dropdowns extends Controller
     $propiedadesPorAgente = [];
 
     foreach ($agentes as $agente) {
-        $propiedades = Propiedades::where('agentes_id', $agente->id)->get();
-        $propiedadesPorAgente[$agente->nombre] = $propiedades;
-    }
+      $nombreCompleto = $agente->nombre . ' ' . $agente->apellido;
+      $propiedades = Propiedades::where('agentes_id', $agente->id)->get();
+      $propiedadesPorAgente[$nombreCompleto] = $propiedades;
+  }
 
     return view('content.user-interface.ui-dropdowns', compact('propiedadesPorAgente'));
 }

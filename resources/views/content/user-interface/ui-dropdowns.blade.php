@@ -15,7 +15,7 @@
 
 @foreach($propiedadesPorAgente as $nombreAgente => $propiedades)
 @if($propiedades->count() > 0)
-    <h2>{{ $nombreAgente }}</h2>
+    <h2>{{ $nombreAgente }} </h2>
     <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
       @foreach ($propiedades as $propiedad)
       <div class="col">
@@ -41,7 +41,20 @@
                 <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
               </div>
             </div>
-            <div class="price">{{$propiedad->precio}}</div>
+            <div class="price">{{$propiedad->precio}} U$S</div>
+            <div class="row">
+              <div class="col-md-1 delete-button">
+                <a href="" class="btn-delete">
+                  <span class="material-icons">delete</span>
+                </a>
+                </div>
+                <div class="col-md-1 edit-button">
+                  <a href="" class="btn-edit">
+                    <span class="material-icons">
+                      edit_note</span>
+                  </a>
+              </div>
+            </div>
           </div>
         </div>
       </a>
