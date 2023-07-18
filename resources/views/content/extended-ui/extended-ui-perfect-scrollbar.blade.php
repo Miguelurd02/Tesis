@@ -44,21 +44,24 @@
     <div class="modal-dialog">
       <form class="modal-content" action="{{route('ciudad.registrar')}}" method="POST">
         @csrf
-        <input type="hidden" name="ciudad_id">
+
+        <input type="hidden" name="crear_ciudad" value="1">
+
         <div class="modal-header">
           <h2 class="modal-title" id="backDropModalTitle">Registrar</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body form-group">
           <div class="row">
             <div class="col mb-3">
               <label for="nombre" class="form-label">Nombre de la ciudad</label>
               <input class="form-control" type="text" value="{{old('nombre')}}" id="nombre" name="nombre" placeholder="Introduzca la ciudad..." aria-describedby="defaultFormControlHelp" />
               @error('nombre')
-                      @if(old('ciudad_id'))
-                        <label class="mensaje-error">{{ $message }}</label>
-                      @endif
-                    @enderror
+                @if(old('crear_ciudad'))
+                  <label class="mensaje-error">{{ $message }}</label>
+                @endif
+              @enderror
             </div>
           </div>
         </div>
@@ -67,16 +70,14 @@
         </div>
       </form>
     </div>
-  </div>
+</div>
 
-@if($errors->hasAny('nombre') && old('ciudad_id'))
+@if($errors->hasAny('nombre') && old('crear_ciudad'))
   {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-      // Se busca el value contenido en el input hidden (el id del inmobiliaria)
-
-      // Se busca el botón con la clase "editar" y el atributo data-id con el id del inmobiliaria y se aprieta
-      document.querySelector(`button.crear[data-id="${target.value}"]`).click();
+      // Se busca el botón con el id "create-button" para volver a abrir el modal
+      document.querySelector('#create-button').click();
     });
   </script>
 @endif
@@ -92,7 +93,7 @@
           <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 4%">
         
             <!-- Place this tag where you want the button to render. -->
-            <button type="button" class="btn btn-primary crear" data-bs-toggle="modal" data-bs-target="#modalregistro">
+            <button type="button" class="btn btn-primary crear" id="create-button" data-bs-toggle="modal" data-bs-target="#modalregistro">
               <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar ciudad
             </button>
             <!-- User -->
@@ -101,49 +102,53 @@
         </div>
       <!-- FILTRO -->
       <div class="card-body" style="overflow-x:scroll">
-<div class="row mb-5" style="padding-left: 2%">
-  <div class="demo-inline-spacing">
-  </div>
-  <table id="example" class="celled table nowrap table-bordered" style="width:100% ">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Ciudad</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($ciudads as $ciudad)
-      <tr>
-        <td>{{$ciudad->id}}</td>
-        <td>{{$ciudad->nombre}}</td>
-        <td>
-          <center>
-            <button type="button" class="btn btn-icon btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$ciudad->id}}" data-id="{{$ciudad->id}}">
-              <span class="tf-icons bx bx-edit"></span>
-            </button>
-            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$ciudad->id}}" data-id="{{$ciudad->id}}">
-              <span class="tf-icons bx bx-trash"></span>
-            </button>
-          </center>
-          @include('content.extended-ui.modalciudad')
-          </td>
-        </tr>
-      
-      @endforeach
-    </tbody>
-    <tfoot>
-      <tr>
-        <th>ID</th>
-        <th>Ciudad</th>
-        <th>Acciones</th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+        <div class="row mb-5" style="padding-left: 2%">
+          <div class="demo-inline-spacing"></div>
 
-</div>
-</div>
-</div>
+          <table id="example" class="celled table nowrap table-bordered" style="width:100%">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Ciudad</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @foreach ($ciudads as $ciudad)
+              <tr>
+                <td>{{$ciudad->id}}</td>
+
+                <td>{{$ciudad->nombre}}</td>
+
+                <td>
+                  <center>
+                    <button type="button" class="btn btn-icon btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$ciudad->id}}" data-id="{{$ciudad->id}}">
+                      <span class="tf-icons bx bx-edit"></span>
+                    </button>
+
+                    <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$ciudad->id}}" data-id="{{$ciudad->id}}">
+                      <span class="tf-icons bx bx-trash"></span>
+                    </button>
+                  </center>
+
+                  @include('content.extended-ui.modalciudad')
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>Ciudad</th>
+                <th>Acciones</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
