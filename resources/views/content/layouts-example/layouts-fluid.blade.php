@@ -90,7 +90,7 @@ $containerNav = 'container-fluid';
           <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaldetalle{{$inmobiliaria->id}}" data-id="{{$inmobiliaria->id}}">
             <span class="tf-icons bx bx-detail"></span>
           </button>
-          <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$inmobiliaria->id}}" data-id="{{$inmobiliaria->id}}">
+          <button type="button" class="btn btn-icon btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$inmobiliaria->id}}" data-id="{{$inmobiliaria->id}}">
             <span class="tf-icons bx bx-edit"></span>
           </button>
           <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$inmobiliaria->id}}" data-id="{{$inmobiliaria->id}}">

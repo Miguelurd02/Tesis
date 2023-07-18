@@ -27,8 +27,8 @@ class CardBasic extends Controller
     $rules = [
       'nombre' => ['required', 'min:2', 'max:12', 'regex:/^[A-Z][A-Za-z]+$/', 'alpha'],
       'apellido' => ['required', 'min:2', 'max:12', 'regex:/^[A-Z][A-Za-z]+$/', 'alpha'],
-      'telefono' => ['required', 'numeric', 'digits:9'],
-      'email' => ['required', 'email'],
+      'telefono' => ['required', 'numeric', 'digits:10'],
+      'email' => ['required', 'email','ends_with:.com'],
       // Resto de las reglas de validación para otros campos
   ];
 
@@ -49,8 +49,9 @@ class CardBasic extends Controller
       'telefono.numeric' => 'El campo Teléfono debe ser numérico.',
       'telefono.digits' => 'El campo Teléfono debe tener :digits dígitos.',
 
-      'email.required' => 'El campo Email es obligatorio.',
-      'email.email' => 'El campo Email debe ser una dirección de correo válida.',
+      'email.required' => 'El campo Correo electrónico es obligatorio.',
+      'email.email' => 'El campo Correo electrónico debe ser una dirección de correo válida.',
+      'email.ends_with' => 'El campo Correo electrónico debe terminar con ".com".',
   ];
 
   $validator = Validator::make($request->all(), $rules, $messages);

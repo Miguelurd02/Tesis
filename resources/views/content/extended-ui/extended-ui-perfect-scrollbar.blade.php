@@ -44,6 +44,7 @@
     <div class="modal-dialog">
       <form class="modal-content" action="{{route('ciudad.registrar')}}" method="POST">
         @csrf
+        <input type="hidden" name="ciudad_id">
         <div class="modal-header">
           <h2 class="modal-title" id="backDropModalTitle">Registrar</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -52,7 +53,12 @@
           <div class="row">
             <div class="col mb-3">
               <label for="nombre" class="form-label">Nombre de la ciudad</label>
-              <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Introduzca la ciudad..." aria-describedby="defaultFormControlHelp" />
+              <input class="form-control" type="text" value="{{old('nombre')}}" id="nombre" name="nombre" placeholder="Introduzca la ciudad..." aria-describedby="defaultFormControlHelp" />
+              @error('nombre')
+                      @if(old('ciudad_id'))
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
           </div>
         </div>
@@ -62,6 +68,18 @@
       </form>
     </div>
   </div>
+
+@if($errors->hasAny('nombre') && old('ciudad_id'))
+  {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Se busca el value contenido en el input hidden (el id del inmobiliaria)
+
+      // Se busca el botón con la clase "editar" y el atributo data-id con el id del inmobiliaria y se aprieta
+      document.querySelector(`button.crear[data-id="${target.value}"]`).click();
+    });
+  </script>
+@endif
 
 <br>
 <div class="row">
@@ -74,7 +92,7 @@
           <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 4%">
         
             <!-- Place this tag where you want the button to render. -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalregistro">
+            <button type="button" class="btn btn-primary crear" data-bs-toggle="modal" data-bs-target="#modalregistro">
               <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar ciudad
             </button>
             <!-- User -->
@@ -101,7 +119,7 @@
         <td>{{$ciudad->nombre}}</td>
         <td>
           <center>
-            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$ciudad->id}}" data-id="{{$ciudad->id}}">
+            <button type="button" class="btn btn-icon btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$ciudad->id}}" data-id="{{$ciudad->id}}">
               <span class="tf-icons bx bx-edit"></span>
             </button>
             <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$ciudad->id}}" data-id="{{$ciudad->id}}">

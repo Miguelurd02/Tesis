@@ -2,7 +2,6 @@
 @section('page-script')
 <link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
 <script src="{{ asset('assets/js/ui-modals.js') }}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Include Styles -->
 @include('layouts/sections/styles')
 

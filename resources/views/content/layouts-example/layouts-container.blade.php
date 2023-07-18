@@ -156,7 +156,7 @@
                                                     data-id="{{ $agente->id }}">
                                                     <span class="tf-icons bx bx-detail"></span>
                                                 </button>
-                                                <button type="button" class="btn btn-icon btn-primary"
+                                                <button type="button" class="btn btn-icon btn-primary editar"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#modaleditar{{ $agente->id }}"
                                                     data-id="{{ $agente->id }}">

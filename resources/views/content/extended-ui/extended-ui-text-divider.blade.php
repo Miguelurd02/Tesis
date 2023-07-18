@@ -110,7 +110,7 @@
         <td>{{$sector->ciudad->nombre}}</td>
         <td>
           <center>
-            <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar{{$sector->id}}" data-id="{{$sector->id}}">
+            <button type="button" class="btn btn-icon btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$sector->id}}" data-id="{{$sector->id}}">
               <span class="tf-icons bx bx-edit"></span>
             </button>
             <button type="button" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$sector->id}}" data-id="{{$sector->id}}">
