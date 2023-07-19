@@ -11,15 +11,51 @@ $containerNav = 'container-fluid';
 <link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
 <script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.semanticui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 
 <script>
   $(document).ready(function() {
     $('#example').DataTable(
       {
+        "dom":'<"ui grid"' +
+    '<"eight wide column"l>' +
+    '<"eight wide column"B>' +
+    '<"eight wide right aligned column"f>' +
+    '>' +
+    '<"row dt-table"' +
+    '<"sixteen wide column"t>' +
+    '>' +
+    '<"row-footer"' +
+    '<"seven wide column"i>' +
+    '<"nine wide RIGHT aligned column"p>' +
+    '>',
+        buttons: [
+            {
+                extend: 'excel',
+                text: 'Excel',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdf',
+                text: 'PDF',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+        ],
         "language": {
             "lengthMenu": "Muestra _MENU_ registros por página",
             "zeroRecords": "No se han encontrado registros",

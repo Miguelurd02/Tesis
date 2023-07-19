@@ -25,7 +25,7 @@ class CiudadRequest extends FormRequest
     {
         return [
             //
-            'nombre' => ['required', 'min:2', 'max:20', 'regex:/^[A-Z][A-Za-z\s]+$/', 'alpha','unique:ciudads'],
+            'nombre' => ['required', 'min:2', 'max:20', 'regex:/^[A-Z][A-Za-z\s]+$/','unique:ciudads'],
         ];
     }
     
@@ -36,7 +36,6 @@ class CiudadRequest extends FormRequest
             'nombre.min' => 'El campo Ciudad debe tener al menos :min caracteres.',
             'nombre.max' => 'El campo Ciudad no puede tener más de :max caracteres.',
             'nombre.regex' => 'El campo Ciudad debe comenzar con una letra mayúscula y solo puede contener letras y espacios.',
-            'nombre.alpha' => 'El campo Ciudad solo puede contener letras y espacios.',
             'nombre.unique' => 'La ciudad ingresada ya existe en la base de datos.',
         ];
     }

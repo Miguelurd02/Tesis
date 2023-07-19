@@ -49,7 +49,7 @@ class Container extends Controller
       'telefono' => ['required', 'numeric', 'digits:10'],
       'email' => ['required', 'email','ends_with:.com'],
       'inmobiliaria_id' => ['required'],
-      'imagen' => ['image', 'mimes:jpeg,png'],
+      'imagen' => ['image', 'mimes:jpeg,png,jpg'],
       // Resto de las reglas de validación para otros campos
   ];
 
@@ -64,7 +64,7 @@ class Container extends Controller
       'apellido.min' => 'El campo Apellido debe tener al menos :min caracteres.',
       'apellido.max' => 'El campo Apellido no puede tener más de :max caracteres.',
       'apellido.regex' => 'El campo Apellido debe comenzar con una letra mayúscula y no admite espacios, números o caractéres especiales',
-      // Resto de los mensajes de error para otras reglas de validación
+      
 
       'telefono.required' => 'El campo Teléfono es obligatorio.',
       'telefono.numeric' => 'El campo Teléfono debe ser numérico.',
@@ -78,7 +78,7 @@ class Container extends Controller
 
       'imagen.required' => 'El campo Imagen es obligatorio.',
       'imagen.image' => 'El archivo debe ser una imagen válida.',
-      'imagen.mimes' => 'El archivo debe tener una de las siguientes extensiones: jpeg, png.',
+      'imagen.mimes' => 'El archivo debe tener una de las siguientes extensiones: JPEG, PNG o JPG.',
   ];
 
   $validator = Validator::make($request->all(), $rules, $messages);

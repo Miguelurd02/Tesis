@@ -7,6 +7,7 @@ use App\Http\Requests\SectorRequest;
 use App\Models\Ciudad;
 use App\Models\Sector;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TextDivider extends Controller
 {
@@ -33,7 +34,30 @@ class TextDivider extends Controller
   {
     $sectors = Sector::with('ciudad')->find($id);
 
-    $sectors->nombre = $request->sector;
+    $rules = [
+      'nombre' => ['required', 'min:2', 'max:20', 'regex:/^[A-Z0-9][A-Za-z0-9\s]+$/', 'unique:sectors'],
+      'ciudad_id' => ['required'],
+      // Resto de las reglas de validación para otros campos
+  ];
+
+  $messages = [
+      'nombre.required' => 'El campo Sector es obligatorio.',
+      'nombre.min' => 'El campo Sector debe tener al menos :min caracteres.',
+      'nombre.max' => 'El campo Sector no puede tener más de :max caracteres.',
+      'nombre.regex' => 'El campo Sector debe comenzar con una letra mayúscula y no admite caractéres especiales',
+      'nombre.unique' => 'La Sector ingresado ya existe en la base de datos.',
+      // Resto de los mensajes de error para otras reglas de validación
+      'ciudad_id.required' => 'El campo Ciudad es obligatorio.',
+  ];
+
+  $validator = Validator::make($request->all(), $rules, $messages);
+
+  if ($validator->fails()) {
+      return redirect()->back()->withErrors($validator)->withInput();
+  }
+
+    $sectors->nombre = $request->nombre;
+    $sectors->ciudad_id = $request->ciudad_id;
 
     if ($sectors->save()) {
       return redirect(to: '/localizacion/sector');

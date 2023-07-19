@@ -123,7 +123,7 @@
           <div class="col mb-3">
             <label for="inmobiliaria_id" class="form-label">Seleccione la inmobiliaria donde pertenece</label>
             <select id="inmobiliaria_id" class="select2 form-select" name="inmobiliaria_id" >
-              <option value="">Seleccionar Inmobiliaria</option>
+              <option value="{{$agente->inmobiliaria_id}}">Seleccionar Inmobiliaria</option>
               @foreach ($inmobiliarias as $inmobiliaria)
               <option value="{{$inmobiliaria->id}}">{{$inmobiliaria->nombre}}</option>
               @endforeach

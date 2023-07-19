@@ -40,7 +40,7 @@ class PerfectScrollbar extends Controller
       'nombre.required' => 'El campo Ciudad es obligatorio.',
       'nombre.min' => 'El campo Ciudad debe tener al menos :min caracteres.',
       'nombre.max' => 'El campo Ciudad no puede tener más de :max caracteres.',
-      'nombre.regex' => 'El campo Ciudad debe comenzar con una letra mayúscula y no admite espacios, números o caractéres especiales',
+      'nombre.regex' => 'El campo Ciudad debe comenzar con una letra mayúscula y no admite números o caractéres especiales',
       'nombre.unique' => 'La ciudad ingresada ya existe en la base de datos.',
       'nombre.alpha' => 'El campo Ciudad solo puede contener letras.',
       // Resto de los mensajes de error para otras reglas de validación

@@ -26,7 +26,7 @@ class Fluid extends Controller
 
     $rules = [
       'nombre' => ['required', 'min:2', 'max:25', 'regex:/^[A-Z].*$/'],
-      'imagen' => ['image', 'mimes:jpeg,png'],
+      'imagen' => ['image', 'mimes:jpeg,png,jpg'],
       'telefono' => ['required', 'numeric', 'digits:10'],
       'rif' => ['required', 'numeric', 'digits:9'],
       'email' => ['required', 'email', 'ends_with:.com'],
@@ -40,7 +40,7 @@ class Fluid extends Controller
       'nombre.min' => 'El campo Nombre debe tener al menos :min caracteres.',
       'nombre.max' => 'El campo Nombre no puede tener más de :max caracteres.',
       'nombre.regex' => 'El campo Nombre debe comenzar con una letra mayúscula.',
-      // Resto de los mensajes de error para otras reglas de validación
+   
 
       'telefono.required' => 'El campo Teléfono es obligatorio.',
       'telefono.numeric' => 'El campo Teléfono debe ser numérico.',
@@ -52,7 +52,8 @@ class Fluid extends Controller
 
       'imagen.required' => 'El campo Imagen es obligatorio.',
       'imagen.image' => 'El archivo debe ser una imagen válida.',
-      'imagen.mimes' => 'El archivo debe tener una de las siguientes extensiones: jpeg, png.',
+      'imagen.mimes' => 'El archivo debe tener una de las siguientes extensiones: JPEG, PNG o JPG.',
+
 
       'rif.required' => 'El campo RIF es obligatorio.',
       'rif.numeric' => 'El campo RIF debe ser un número.',

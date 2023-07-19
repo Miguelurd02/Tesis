@@ -46,3 +46,69 @@
     width: 100% !important;
     white-space: normal;
 }
+
+.ui.grid  {
+    display: flex ; 
+    justify-content: space-around ;
+    flex-direction: row ;
+    flex-wrap: nowrap;
+    margin-bottom: 0.5rem;
+}
+
+
+
+.dt-buttons {
+    display: flex !important;
+    justify-content: center;
+}
+
+.buttons-excel {
+    margin-right: 0.5rem !important;
+}
+
+.row-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.seven {
+    margin-right: 1rem !important;
+}
+
+.dataTables_length{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+
+@media screen and  (max-width: 450px) {
+    .ui.grid  {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+    .row-footer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin-top: 1rem;
+        align-items: center;
+    }
+
+    .ui.input {
+        width: 100%;
+    }
+
+    .ui.column.grid>[class*="eight wide"].column, .ui.grid>.column.row>[class*="eight wide"].column, .ui.grid>.row>[class*="eight wide"].column, .ui.grid>[class*="eight wide"].column {
+        width: 100%!important;
+    }
+    
+}

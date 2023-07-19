@@ -11,15 +11,51 @@
 <link rel="stylesheet" href="{{ asset('assets/css/propiedades/cards.css') }}" />
 <script src="{{asset('assets/vendor/libs/masonry/masonry.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.semanticui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 
 <script>
   $(document).ready(function() {
     $('#example').DataTable(
       {
+        "dom":'<"ui grid"' +
+    '<"eight wide column"l>' +
+    '<"eight wide column"B>' +
+    '<"eight wide right aligned column"f>' +
+    '>' +
+    '<"row dt-table"' +
+    '<"sixteen wide column"t>' +
+    '>' +
+    '<"row-footer"' +
+    '<"seven wide column"i>' +
+    '<"nine wide RIGHT aligned column"p>' +
+    '>',
+        buttons: [
+            {
+                extend: 'excel',
+                text: 'Excel',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdf',
+                text: 'PDF',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+        ],
         "language": {
             "lengthMenu": "Muestra _MENU_ registros por página",
             "zeroRecords": "No se han encontrado registros",
@@ -48,55 +84,84 @@
             <form class="modal-content" action="{{ route('agente.registrar') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="crear_agente" value="1">
                 <div class="modal-header">
                     <h2 class="modal-title" id="backDropModalTitle">Registro</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row" >
                         <div class="col mb-3">
-                            <label for="imagen" class="form-label">Foto de perfil</label>
-                            <input class="form-control" name="imagen" type="file" id="formFile">
+                          <label for="imagen" class="form-label">Foto de perfil</label>
+                          <input class="form-control" name="imagen"  type="file" id="imagen">
+                          @error('imagen')
+                                    @if(old('crear_agente'))
+                                      <label class="mensaje-error">{{ $message }}</label>
+                                    @endif
+                                  @enderror
                         </div>
-                    </div>
-                    <div class="row g-2">
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0" >
+                          <label for="nombre" class="form-label">Nombre</label>
+                          <input class="form-control" type="text" name="nombre" id="nombre" value="{{old('nombre')}}"/>
+                          @error('nombre')
+                                    @if(old('crear_agente'))
+                                      <label class="mensaje-error">{{ $message }}</label>
+                                    @endif
+                                  @enderror
+                        </div>
                         <div class="col mb-0">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nombre" id="nombre" />
+                          <label for="apellido" class="form-label">Apellido</label>
+                          <input class="form-control" type="text" name="apellido" id="apellido" value="{{old('apellido')}}" />
+                          @error('apellido')
+                                    @if(old('crear_agente'))
+                                      <label class="mensaje-error">{{ $message }}</label>
+                                    @endif
+                                  @enderror
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="email" class="form-label">Email</label>
+                          <input class="form-control" type="text" name="email" id="email"  value="{{old('email')}}"/>
+                          @error('email')
+                                    @if(old('crear_agente'))
+                                      <label class="mensaje-error">{{ $message }}</label>
+                                    @endif
+                                  @enderror
                         </div>
                         <div class="col mb-0">
-                            <label for="apellido" class="form-label">Apellido</label>
-                            <input class="form-control" type="text" name="apellido" id="apellido" />
+                          <label for="telefono" class="form-label">Teléfono</label>
+                          <div class="input-group">
+                            <span class="input-group-text" id="basic-addon11">+58</span>
+                            <input type="text" class="form-control" name="telefono" id="telefono" aria-label="Username" value="{{old('telefono')}}"/>
+                            @error('telefono')
+                                    @if(old('crear_agente'))
+                                      <label class="mensaje-error">{{ $message }}</label>
+                                    @endif
+                                  @enderror
+                          </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="row g-2">
-                        <div class="col mb-0">
-                            <label for="email" class="form-label">Email</label>
-                            <input class="form-control" type="text" name="email" id="email" />
-                        </div>
-                        <div class="col mb-0">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon11">+58</span>
-                                <input type="text" class="form-control" name="telefono" id="telefono"
-                                    aria-label="Username" />
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
+                      </div>
+                      <br>
+                      <div class="row">
                         <div class="col mb-3">
-                            <label for="inmobiliaria_id" class="form-label">Seleccione la inmobiliaria donde
-                                pertenece</label>
-                            <select id="inmobiliaria_id" class="select2 form-select" name="inmobiliaria_id">
-                                <option value="">Seleccionar Inmobiliaria</option>
-                                @foreach ($inmobiliarias as $inmobiliaria)
-                                    <option value="{{ $inmobiliaria->id }}">{{ $inmobiliaria->nombre }}</option>
-                                @endforeach
-                            </select>
+                          <label for="inmobiliaria_id" class="form-label">Seleccione la inmobiliaria donde pertenece</label>
+                          <select id="inmobiliaria_id" class="select2 form-select" name="inmobiliaria_id" >
+                            <option value="">Seleccionar Inmobiliaria</option>
+                            @foreach ($inmobiliarias as $inmobiliaria)
+                            <option value="{{$inmobiliaria->id}}">{{$inmobiliaria->nombre}}</option>
+                            @endforeach
+                          </select>
+                          @error('inmobiliaria_id')
+                                    @if(old('crear_agente'))
+                                      <label class="mensaje-error">{{ $message }}</label>
+                                    @endif
+                                  @enderror
                         </div>
-                    </div>
+                      </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Registrar</button>
@@ -104,6 +169,16 @@
             </form>
         </div>
     </div>
+
+    @if($errors->hasAny('nombre','apellido','imagen','email','telefono','inmobiliaria_id') && old('crear_agente'))
+    {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+        // Se busca el botón con el id "create-button" para volver a abrir el modal
+        document.querySelector('#create-button').click();
+      });
+    </script>
+  @endif
 
     <br>
     <div class="row ">
@@ -116,7 +191,7 @@
                     <ul class="navbar-nav flex-row align-items-center ms-auto" style="padding-right: 4%">
 
                         <!-- Place this tag where you want the button to render. -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary crear" id="create-button" data-bs-toggle="modal"
                             data-bs-target="#modalregistro">
                             <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Agregar agente
                         </button>
