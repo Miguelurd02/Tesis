@@ -45,7 +45,7 @@
                 <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
               </div>
             </div>
-            <div class="price">{{$propiedad->precio}}</div>
+            <div class="price">{{$propiedad->precio}} U$S</div>
             <div class="delete-button">
               <a href="{{ route('pages-account-settings-notifications.eliminarFavoritos', ['id' => $propiedad->id]) }}" class="btn-delete">
                 <span class="material-icons">delete</span>

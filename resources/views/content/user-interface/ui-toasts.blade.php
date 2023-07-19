@@ -107,7 +107,7 @@
               
                     </div>
          </div>
-          <div class="price">{{$propiedades->precio}}</div>
+          <div class="price">{{$propiedades->precio}} U$S</div>
           <br>
           <div class="descripcion" style="height: 200px; overflow-y: auto;">
             {!! nl2br($propiedades->descripcion) !!}
