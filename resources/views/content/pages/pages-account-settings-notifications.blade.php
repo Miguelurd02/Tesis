@@ -14,7 +14,7 @@
     <ul class="nav nav-pills flex-column flex-md-row mb-3">
       <li class="nav-item"><a class="nav-link" href="{{url('/perfil/usuario')}}"><i class="bx bx-user me-1"></i> Cuenta</a></li>
       <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-heart me-1"></i> Favoritos</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-connections')}}"><i class='bx bx-shield-quarter me-1'></i> Seguridad</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{url('/perfil/usuario/seguridad')}}"><i class='bx bx-shield-quarter me-1'></i> Seguridad</a></li>
     </ul>
   </div>
 </div>

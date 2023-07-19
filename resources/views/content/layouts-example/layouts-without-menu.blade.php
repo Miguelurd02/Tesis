@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>LARIA</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/agente-inmobiliario.png" />
+        <link rel="icon" type="image/x-icon" href="assets/img/img2/agente-inmobiliario.png" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -46,7 +46,7 @@
                             <h1 class="display-5 fw-bolder text-white mb-2">para tu propiedad de ensueño</h1>
                             <p class="text--hero lead text-white mb-4">Encuentra la propiedad de tus sueños, y la inmobiliaria que mejor se adapte a ti.</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-start">
-                                <a class="btn btn--inscribete btn-primary btn-lg px-4 me-sm-3" href="iniciarsesionusuario.html">Comenzar</a>
+                                <a class="btn btn--inscribete btn-primary btn-lg px-4 me-sm-3" href="/auth/login-basic">Comenzar</a>
                                 <a class="btn btn-outline-light btn-lg px-4" href="#features">Descubre Laria</a>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                     <div class="col-lg-4 d-flex flex-column align-items-center">
                         <div class="icons--features feature text-white rounded-3 mb-3"><i class="icons--features bi bi-star"></i></div>
                         <h2 class="h4 fw-bolder">Perfil Propio</h2>
-                        <p class="text-center">La página te hará recomendaciones de acuerdo a lo que busques para que elijas la mejor opción posible, además cuentas con un apartado en el perfil en donde se guardarán las que marques como favoritas</p>
+                        <p class="text-center">Contarás con un apartado en donde podrás visualizar la información de tu perfil y además, tendrás una sección en donde podrás acceder a tus favoritos</p>
                     </div>
                 </div>
             </div>
@@ -186,7 +186,7 @@
                         <input id="tab-four" type="checkbox" name="tabs">
                         <label for="tab-four">¿Qué necesito para utilizar la plataforma Laria?</label>
                         <div class="tab-content">
-                          <p>Solo necesitas una computadora, o tablet, y conexión a Internet.</p>
+                          <p>Solo necesitas una computadora, teléfono o tablet, y conexión a Internet.</p>
                         </div>
                       </div>
                       <!-- question 5 -->
@@ -194,7 +194,7 @@
                         <input id="tab-five" type="checkbox" name="tabs">
                         <label for="tab-five">¿Cómo puedo registrarme como inmobiliaria?</label>
                         <div class="tab-content">
-                          <p>Para registrarte como inmobiliaria, comunícate con nosotros en nuestra información de contacto</p>
+                          <p>Para registrarte como inmobiliaria ingresa los datos de la empresa en el formulario de registro de nuestra web y espera que validemos la información</p>
                         </div>
                       </div>
                       <!-- question 6 -->
