@@ -91,7 +91,7 @@ Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar
 Route::get('/', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
 Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar@index')->name('layouts-without-navbar');
 
-Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank');
+
 
 // pages
 
@@ -122,7 +122,10 @@ Route::get('/ui/offcanvas', $controller_path . '\user_interface\Offcanvas@index'
 Route::get('/ui/pagination-breadcrumbs', $controller_path . '\user_interface\PaginationBreadcrumbs@index')->name('ui-pagination-breadcrumbs');
 Route::get('/ui/progress', $controller_path . '\user_interface\Progress@index')->name('ui-progress');
 Route::get('/ui/spinners', $controller_path . '\user_interface\Spinners@index')->name('ui-spinners');
-Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills');
+
+//DETALLES
+Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills'); //DETALLES INMOBILIARIAS
+Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank'); //DETALLES USUARIO
 
 //PERFIL DE PROPIEDAD
 Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');

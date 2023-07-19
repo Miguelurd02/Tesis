@@ -70,6 +70,15 @@
           </div>
         </div>
         <hr>
+        <div class="row" bis_skin_checked="1">
+          <div class="col-sm-3" bis_skin_checked="1">
+            <p class="mb-0">Descripción</p>
+          </div>
+          <div class="col-sm-9" bis_skin_checked="1">
+            <p class="text-muted mb-0"></p>
+          </div>
+        </div>
+        <hr>
       </div>
       <br>
      
@@ -119,8 +128,17 @@
                         <label for="direccion" class="form-label">Dirección</label>
                         <input class="form-control" type="text" id="direccion" name="direccion" value="" placeholder="" />
                       </div>
-
-                      
+                      <div class="col col-md-6">
+                        <label class="form-label" for="imagen">Seleccionar imagen de perfil:</label>
+                        <input class="form-control mb-3" type="file" id="imagen" name="imagen" accept="image/*" multiple>
+                      </div>
+                    </div>
+                      <div class="col col-md-6">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <textarea name="descripcion" class="form-control mb-3" rows="10" cols="80">
+                         </textarea>
+                      </div>
+       
                     </div>
                     <div class="mt-2">
                       <button type="submit" class="btn btn-primary me-2">Guardar cambios</button>
