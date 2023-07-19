@@ -3,6 +3,7 @@
 @section('title', 'Account settings - Account')
 
 @section('page-script')
+<link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 <link rel="stylesheet" href="{{ asset('assets/css/perfil/perfil.css') }}" />
 @endsection
@@ -27,7 +28,7 @@
       <div class="card mb-4 card-body text-center" bis_skin_checked="1">
         <img src="{{asset('assets/img/avatars/user-image.png')}}" alt="user imagen" class="card-img-top-agente">
         <h2 class="card-title-agente"> </h2>
-          <p class=" mb-4 inmo-detail">vicky.bellomo</p>
+          <p class=" mb-4 inmo-detail">{{$user->username}}</p>
       </div>
     </div> 
 
@@ -36,38 +37,26 @@
       <div class="card-body" bis_skin_checked="1">
         <div class="row" bis_skin_checked="1">
           <h3>Información del perfil</h3>
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Nombre</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Nombre: {{$user->suscriptor->nombre}}</p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Apellido</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Apellido: {{$user->suscriptor->apellido}}</p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Correo electrónico</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Correo electrónico: {{$user->email}}</p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Teléfono</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Teléfono: {{$user->suscriptor->telefono}}</p>
           </div>
         </div>
         <hr>
@@ -90,7 +79,7 @@
             <h3>Cambiar información del perfil</h3>
             </div>
             <div class="col col-md-2">
-            <button class="btn btn-primary me-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-primary me-1 collapsed editar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-id="{{$user->suscriptor->id}}">
               Editar Cuenta
             </button>
           </div>
@@ -103,26 +92,49 @@
           
                 <!-- Account -->
                 <div>
-                  <form id="formAccountSettings" method="POST" onsubmit="return false">
+                  <form id="formAccountSettings"id="editarForm" action="{{route('suscriptor.editar',$user->suscriptor->id)}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="editar_suscriptor" value="{{$user->suscriptor->id}}">
                     <div class="row">
                       <div class="mb-3 col-md-6">
-                        <label for="firstName" class="form-label">Nombre</label>
-                        <input class="form-control" type="text" id="firstName" name="firstName" value="" autofocus />
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input class="form-control" type="text" id="nombre" name="nombre" value="{{ old('nombre',$user->suscriptor->nombre)}}" autofocus />
+                        @error('nombre')
+                          @if(old('editar_suscriptor') == $user->suscriptor->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label for="lastName" class="form-label">Apellido</label>
-                        <input class="form-control" type="text" name="lastName" id="lastName" value="" />
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input class="form-control" type="text" name="apellido" id="apellido" value="{{ old('apellido',$user->suscriptor->apellido)}}" />
+                        @error('apellido')
+                          @if(old('editar_suscriptor') == $user->suscriptor->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input class="form-control" type="text" id="email" name="email" value="" placeholder="" />
+                        <input class="form-control" type="text" id="email" name="email" value="{{ old('email',$user->email)}}" placeholder="" />
+                        @error('email')
+                          @if(old('editar_suscriptor') == $user->suscriptor->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label class="form-label" for="phoneNumber">Teléfono</label>
+                        <label class="form-label" for="telefono">Teléfono</label>
                         <div class="input-group input-group-merge">
                           <span class="input-group-text">VE (+58)</span>
-                          <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="" />
+                          <input type="text" id="telefono" name="telefono" value="{{ old('telefono',$user->suscriptor->telefono)}}" class="form-control" placeholder="" />
                         </div>
+                        @error('telefono')
+                          @if(old('editar_suscriptor') == $user->suscriptor->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       
                     </div>
@@ -139,5 +151,20 @@
       </div>
     </div>
   </div>
+
+  @if($errors->hasAny('nombre', 'apellido', 'email', 'telefono') && old('editar_suscriptor') == $user->suscriptor->id)
+  {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+  <input type='hidden' id="error-handler" value="{{$user->suscriptor->id}}">
+
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Se busca el value contenido en el input hidden (el id del suscriptor)
+      const target = document.querySelector('#error-handler');
+
+      // Se busca el botón con la clase "editar" y el atributo data-id con el id del suscriptor y se aprieta
+      document.querySelector(`button.editar[data-id="${target.value}"]`).click();
+    });
+  </script>
+@endif
 
 @endsection

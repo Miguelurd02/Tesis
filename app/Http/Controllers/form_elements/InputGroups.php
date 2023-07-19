@@ -29,6 +29,6 @@ class InputGroups extends Controller
      ->latest()
      ->take(4)
      ->get();
-    return view('content.form-elements.forms-input-groups', compact('propiedades', 'inmobiliaria'));
+    return view('content.form-elements.forms-input-groups', compact('propiedades', 'inmobiliaria','user'));
   }
 }

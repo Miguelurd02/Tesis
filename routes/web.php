@@ -68,6 +68,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/inicio/filtro', $controller_path . '\icons\Boxicons@index')->name('icons-boxicons'); //Inicio usuario filtro
         Route::get('/propiedades/buscar',$controller_path .'\icons\Boxicons@buscar')->name('propiedades.buscar');
         Route::get('/perfil/usuario', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account'); //Perfil usuario
+
+        Route::put('/editar/usuario/{id}', $controller_path . '\pages\AccountSettingsAccount@editar')->name('suscriptor.editar'); //Perfil usuario
+
         Route::get('/perfil/usuario/favoritos', $controller_path . '\pages\AccountSettingsNotifications@mostrarFavoritos')->name('pages-account-settings-notifications.mostrarFavoritos'); 
         Route::get('/perfil/usuario/seguridad', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
         Route::get('/favoritos/eliminar/{id}', $controller_path . '\pages\AccountSettingsNotifications@eliminarFavoritos')->name('pages-account-settings-notifications.eliminarFavoritos');
@@ -131,8 +134,9 @@ Route::get('/ui/progress', $controller_path . '\user_interface\Progress@index')-
 Route::get('/ui/spinners', $controller_path . '\user_interface\Spinners@index')->name('ui-spinners');
 
 //DETALLES
-Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills'); //DETALLES INMOBILIARIAS
-Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank'); //DETALLES USUARIO
+Route::get('/detalles/inmobiliarias', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills'); //DETALLES INMOBILIARIAS
+Route::get('/detalles/suscriptor', $controller_path . '\layouts\Blank@index')->name('layouts-blank'); //DETALLES USUARIO
+Route::post('/detalles/suscriptor/suscriptor', $controller_path . '\layouts\Blank@registrar')->name('detalles.suscriptor'); //DETALLES USUARIO
 
 //PERFIL DE PROPIEDAD
 Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');

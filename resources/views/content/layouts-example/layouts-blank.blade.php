@@ -29,22 +29,32 @@
           <p class="mb-4">Proporciona la información a continuación, esta será necesaria para poder ser contactado por nuestros agentes inmobiliarios.</p>
          
 
-          <form id="formAuthentication" class="mb-3" action="/auth/register-basic" method="POST">
+          <form id="formAuthentication" class="mb-3" action="{{route('detalles.suscriptor')}}" method="POST">
             @csrf
+            <input type="hidden" name="user_id" id="user_id" value="{{$user->id}}">
             <div class="mb-3">
-              <label for="name" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa tu nombre">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" value="{{old('nombre')}}" placeholder="Ingresa tu nombre">
+              @error('nombre')
+                <label class="mensaje-error" style="color:darkred">{{ $message }}</label>
+              @enderror
             </div>
             <div class="mb-3">
-                <label for="lastname" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Ingresa tu apellido">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" value="{{old('apellido')}}" placeholder="Ingresa tu apellido">
+                @error('apellido')
+                <label class="mensaje-error" style="color:darkred">{{ $message }}</label>
+              @enderror
               </div>
             <div class="mb-3">
-                <label class="form-label" for="phoneNumber">Teléfono</label>
+                <label class="form-label" for="telefono">Teléfono</label>
                 <div class="input-group input-group-merge">
                   <span class="input-group-text">VE (+58)</span>
-                  <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="" />
+                  <input type="text" id="telefono" name="telefono" value="{{old('telefono')}}" class="form-control" placeholder="" />
                 </div>
+                @error('telefono')
+                    <label class="mensaje-error" style="color:darkred">{{ $message }}</label>
+                  @enderror
             </div>
     
             <input type="submit" class="btn btn-primary d-grid w-100" value="Guardar Información">

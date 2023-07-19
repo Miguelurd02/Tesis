@@ -18,4 +18,11 @@ class Suscriptor extends Model
     {
         return $this->hasMany('App\Models\Favorito');
     }
+
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'telefono',
+        'user_id',
+    ];
 }
