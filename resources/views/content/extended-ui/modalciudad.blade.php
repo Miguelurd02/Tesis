@@ -15,6 +15,7 @@
     <form class="modal-content" action="{{route('ciudad.editar',$ciudad->id)}}" method="POST">
       @csrf
       @method('PUT')
+      <input type="hidden" name="ciudad_id" value="{{ $ciudad->id}}">
       <div class="modal-header">
         <h2 class="modal-title" id="backDropModalTitle">Editar</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -23,7 +24,12 @@
         <div class="row">
           <div class="col-12 col-sm-12 mb-3 d-flex flex-column">
             <label for="exampleFormControlReadOnlyInput1" class="form-label">Nombre de la ciudad</label>
-            <input class="form-control" type="text" id="nombre" name="nombre" value="{{$ciudad->nombre}}" aria-describedby="defaultFormControlHelp" />
+            <input class="form-control" type="text" id="nombre" name="nombre" value="{{old('nombre',$ciudad->nombre)}}" aria-describedby="defaultFormControlHelp" />
+            @error('nombre')
+                      @if(old('ciudad_id') == $ciudad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
           </div>
         </div>
       </div>
@@ -33,6 +39,21 @@
     </form>
   </div>
 </div>
+
+@if($errors->hasAny('nombre') && old('ciudad_id') == $ciudad->id)
+  {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+  <input type='hidden' id="error-handler" value="{{$ciudad->id}}">
+
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Se busca el value contenido en el input hidden (el id del inmobiliaria)
+      const target = document.querySelector('#error-handler');
+
+      // Se busca el botón con la clase "editar" y el atributo data-id con el id del inmobiliaria y se aprieta
+      document.querySelector(`button.editar[data-id="${target.value}"]`).click();
+    });
+  </script>
+@endif
 
 <div class="modal fade" id="modalborrar{{$ciudad->id}}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

@@ -2,7 +2,6 @@
 @section('page-script')
 <link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
 <script src="{{ asset('assets/js/ui-modals.js') }}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Include Styles -->
 @include('layouts/sections/styles')
 
@@ -59,7 +58,7 @@
                                 <label for="dimension" class="form-label">Dimensiones</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="dimension" id="dimension"
-                                        aria-label="Username" value="{{$propiedad->dimension}}" readonly/>
+                                        aria-label="Username" value="<?= number_format($propiedad->dimension, 2, ',', '.'); ?>" readonly/>
                                         <span class="input-group-text" id="basic-addon11">m<sup>2</sup></span>
                                 </div>
                             </div>
@@ -67,7 +66,7 @@
                                 <label for="precio" class="form-label">Precio</label>
                                 <div class="input-group">
                                   <input type="text" class="form-control" name="precio" id="precio"
-                                      aria-label="Username" value="{{$propiedad->precio}}" readonly/>
+                                      aria-label="Username" value="<?= number_format($propiedad->precio, 2, ',', '.'); ?>" readonly/>
                                       <span class="input-group-text" id="basic-addon11">$</span>
                                 </div>
                             </div>
@@ -85,7 +84,7 @@
                   </div>
                   <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
                     <label for="agentes_id" class="form-label">Agente inmobiliario</label>
-                    <input class="form-control" type="text" name="agentes_id" id="agentes_id" value="{{$propiedad->agentes->nombre}}" readonly />
+                    <input class="form-control" type="text" name="agentes_id" id="agentes_id" value="{{$propiedad->agentes->nombre}} {{$propiedad->agentes->apellido}}" readonly />
                   </div>
                   
                 </div>
@@ -123,6 +122,7 @@
     <form class="modal-content" id="form" action="{{ route('propiedad.editar', $propiedad->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
+      <input type="hidden" name="propiedad_id" value="{{ $propiedad->id}}">
       <div class="modal-header">
         <h2 class="modal-title" id="backDropModalTitle">Editar</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -132,94 +132,164 @@
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
               <label for="imagen" class="form-label">Imagen promocional</label>
               <input class="form-control" name="imagen" type="file" id="formFile">
+              @error('imagen')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
                 <label for="titulo" class="form-label">Titulo</label>
-                <input class="form-control" type="text" name="titulo" id="titulo" />   
+                <input class="form-control" type="text" name="titulo" value="{{old('titulo',$propiedad->titulo)}}" id="titulo" />
+                @error('titulo')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-12 col-sm-2 mb-3 d-flex flex-column">
               <label for="contrato" class="form-label">Tipo de contrato</label>
               <select id="contrato" class="select2 form-select" name="contrato">
-                <option value="">Seleccionar</option>
+                <option value="{{$propiedad->contrato}}">{{$propiedad->contrato}}</option>
                 <option value="Venta">Venta</option>
                 <option value="Alquiler">Alquiler</option>
               </select>
+              @error('contrato')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-12 col-sm-2 mb-3 d-flex flex-column">
               <label for="tipo" class="form-label">Tipo de inmueble</label>
               <select id="tipo" class="select2 form-select" name="tipo">
-                <option value="">Seleccionar</option>
+                <option value="{{$propiedad->tipo}}">{{$propiedad->tipo}}</option>
                 <option value="Casa">Casa</option>
                 <option value="Apartamento">Apartamento</option>
                 <option value="Terreno">Terreno</option>
                 <option value="Local">Local Comercial</option>
                 <option value="Oficina">Oficina</option>
               </select>
+              @error('tipo')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
         </div>
         <div class="row g-2">
             <div class="col-6 col-sm-2 mb-3 d-flex flex-column">
                 <label for="banos" class="form-label">Baños</label>
-                <input class="form-control" type="text" name="banos" id="banos" />
+                <input class="form-control" type="text" value="{{old('banos',$propiedad->banos)}}" name="banos" id="banos" />
+                @error('banos')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-6 col-sm-2 mb-3 d-flex flex-column">
                 <label for="estacionamiento" class="form-label">Estacionamientos</label>
-                <input class="form-control" type="text" name="estacionamiento" id="estacionamiento" />
+                <input class="form-control" type="text" value="{{old('estacionamiento',$propiedad->estacionamiento)}}" name="estacionamiento" id="estacionamiento" />
+                @error('estacionamiento')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-6 col-sm-2 mb-3 d-flex flex-column">
                 <label for="habitaciones" class="form-label">Habitaciones</label>
-                <input class="form-control" type="text" name="habitaciones" id="habitaciones" />
+                <input class="form-control" type="text" name="habitaciones" value="{{old('habitaciones',$propiedad->habitaciones)}}" id="habitaciones" />
+                @error('habitaciones')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-6 col-sm-2 mb-3 d-flex flex-column">
                 <label for="plantas" class="form-label">Plantas</label>
-                <input class="form-control" type="text" name="plantas" id="plantas" />
+                <input class="form-control" type="text" name="plantas" value="{{old('plantas',$propiedad->plantas)}}" id="plantas" />
+                @error('plantas')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
             <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
               <label for="dimension" class="form-label">Dimensiones</label>
               <div class="input-group">
-                  <input type="text" class="form-control" name="dimension" id="dimension"
+                  <input type="text" class="form-control" name="dimension" value="{{old('dimension',$propiedad->dimension)}}" id="dimension"
                       aria-label="Username" />
                       <span class="input-group-text" id="basic-addon11">m<sup>2</sup></span>
               </div>
+              @error('dimension')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
         </div>
         <div class="row g-2">
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
             <label for="sector_id" class="form-label">Sector</label>
             <select id="sector_id" class="select2 form-select" name="sector_id" >
-              <option value="">Seleccionar Sector</option>
+              <option value="{{$propiedad->sector_id}}">{{$propiedad->sector->nombre}}</option>
               @foreach ($sectors as $sector)
               <option value="{{$sector->id}}">{{$sector->nombre}}</option>
               @endforeach
             </select>
+            @error('sector_id')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
           </div>
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
             <label for="agentes_id" class="form-label">Agente inmobiliario</label>
             <select id="agentes_id" class="select2 form-select" name="agentes_id" >
-              <option value="">Seleccionar Sector</option>
+              <option value="{{$propiedad->agentes_id}}">{{$propiedad->agentes->nombre}} {{$propiedad->agentes->apellido}}</option>
               @foreach ($agentes as $agente)
-              <option value="{{$agente->id}}">{{$agente->nombre}}</option>
+              <option value="{{$agente->id}}">{{$agente->nombre}} {{$agente->apellido}}</option>
               @endforeach
             </select>
+            @error('agentes_id')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
           </div>
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
             <label for="precio" class="form-label">Precio</label>
             <div class="input-group">
-              <input type="text" class="form-control" name="precio" id="precio"
+              <input type="text" class="form-control" value="{{old('precio',$propiedad->precio)}}" name="precio" id="precio"
                   aria-label="Username" />
                   <span class="input-group-text" id="basic-addon11">$</span>
           </div>
+          @error('precio')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
         </div>
         </div>
         <div class="row">
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
             <label for="imagenes" class="form-label">Imagenes de la propiedad</label>
             <input class="form-control" type="file" id="formFileMultiple" name="imagenes[]" multiple>
+            @error('imagenes')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
           </div>
             <div class="col-12 col-sm-8 mb-3 d-flex flex-column">
               <label for="exampleFormControlTextarea1" class="form-label"
               >Descripción</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" ></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" >{{old('descripcion',$propiedad->descripcion)}}</textarea>
+              @error('descripcion')
+                      @if(old('propiedad_id') == $propiedad->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
             </div>
         </div>
         <div class="row justify-content-center">
@@ -243,6 +313,21 @@
     </form>
   </div>
 </div>
+
+@if($errors->hasAny('titulo', 'imagen','tipo', 'contrato', 'banos', 'estacionamiento', 'habitaciones', 'plantas', 'dimension', 'sector_id', 'agentes_id', 'precio', 'descripcion', 'imagenes',) && old('propiedad_id') == $propiedad->id)
+  {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+  <input type='hidden' id="error-handler" value="{{$propiedad->id}}">
+
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Se busca el value contenido en el input hidden (el id del inmobiliaria)
+      const target = document.querySelector('#error-handler');
+
+      // Se busca el botón con la clase "editar" y el atributo data-id con el id del inmobiliaria y se aprieta
+      document.querySelector(`button.editar[data-id="${target.value}"]`).click();
+    });
+  </script>
+@endif
 
 <div class="modal fade" id="modalborrar{{ $propiedad->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">

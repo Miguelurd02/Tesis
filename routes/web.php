@@ -60,8 +60,8 @@ Route::group(['middleware' => 'auth'], function(){
          //CRUD RUTAS PROPIEDADES
          Route::get('/propiedades/listado', $controller_path . '\tables\Basic@index')->name('tables-basic'); // propiedades tablas
          Route::post('/propiedades/registro', $controller_path . '\tables\Basic@registrar')->name('propiedad.registrar'); // propiedades tablas
-         Route::put('/propiedades/editar', $controller_path . '\tables\Basic@editar')->name('propiedad.editar'); // propiedades tablas
-         Route::delete('/propiedades/borrar', $controller_path . '\tables\Basic@borrar')->name('propiedad.borrar'); // propiedades tablas
+         Route::put('/propiedades/editar/{id}', $controller_path . '\tables\Basic@editar')->name('propiedad.editar'); // propiedades tablas
+         Route::delete('/propiedades/borrar/{id}', $controller_path . '\tables\Basic@borrar')->name('propiedad.borrar'); // propiedades tablas
          Route::delete('/eliminar/imagen/{id}', $controller_path . '\tables\Basic@eliminar')->name('eliminar.imagen');
 
         //Usuario pantallas

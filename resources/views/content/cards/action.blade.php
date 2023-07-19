@@ -82,7 +82,7 @@
         <div class="row g-2">
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$suscriptor->nombre}}" aria-describedby="defaultFormControlHelp" />
+              <input type="text" class="form-control" id="nombre" name="nombre" value="{{old('nombre',$suscriptor->nombre)}}" aria-describedby="defaultFormControlHelp" /> 
             @error('nombre')
               @if(old('suscriptor_id') == $suscriptor->id)
                 <label class="mensaje-error">{{ $message }}</label>
@@ -91,7 +91,7 @@
           </div>
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="apellido" class="form-label">Apellido</label>
-            <input class="form-control" type="text" id="apellido" name="apellido" value="{{$suscriptor->apellido}}" aria-describedby="defaultFormControlHelp" />
+              <input type="text" class="form-control" id="apellido" name="apellido" value="{{old('apellido', $suscriptor->apellido)}}" aria-describedby="defaultFormControlHelp" />
             @error('apellido')
               @if(old('suscriptor_id') == $suscriptor->id)
                 <label class="mensaje-error">{{ $message }}</label>
@@ -102,7 +102,7 @@
         <div class="row g-2">
           <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
             <label for="email" class="form-label">Email</label>
-            <input class="form-control" type="email" id="email" name="email" value="{{$suscriptor->user->email}}" aria-describedby="defaultFormControlHelp" />
+            <input class="form-control" type="email" id="email" name="email" value="{{old('email', $suscriptor->user->email)}}" aria-describedby="defaultFormControlHelp" />
             @error('email')
               @if(old('suscriptor_id') == $suscriptor->id)
                 <label class="mensaje-error">{{ $message }}</label>
@@ -113,7 +113,7 @@
             <label for="telefono" class="form-label">Teléfono</label>
             <div class="input-group">
               <span class="input-group-text"  id="basic-addon11">+58</span>
-              <input type="text" class="form-control" name="telefono" value="{{$suscriptor->telefono}}" aria-label="Username" aria-describedby="basic-addon11" />
+              <input type="text" class="form-control" name="telefono" value="{{old('telefono', $suscriptor->telefono)}}" aria-label="Username" aria-describedby="basic-addon11" />
               @error('telefono')
                 @if(old('suscriptor_id') == $suscriptor->id)
                   <label class="mensaje-error">{{ $message }}</label>

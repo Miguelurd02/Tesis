@@ -82,6 +82,7 @@
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <input type="hidden" name="inmobiliaria_id" value="{{ $inmobiliaria->id}}">
             <div class="modal-header">
                 <h2 class="modal-title" id="backDropModalTitle">Editar</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -98,26 +99,46 @@
                     <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
                         <label for="imagen" class="form-label">Logo</label>
                         <input class="form-control" name="imagen" type="file" id="formFile">
+                        @error('imagen')
+                  @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                    <label class="mensaje-error">{{ $message }}</label>
+                  @endif
+                @enderror
                     </div>
                     <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
                         <label for="email" class="form-label">Correo Electrónico</label>
                         <input type="text" id="email" name="email" class="form-control"
-                            value="{{ $inmobiliaria->user->email }}">
+                            value="{{old('email', $inmobiliaria->user->email) }}">
+                            @error('email')
+                      @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
                         <label for="nombre" class="form-label">Nombre de la empresa</label>
                         <input type="text" id="nombre" name="nombre" class="form-control"
-                            value="{{ $inmobiliaria->nombre }}">
+                            value="{{ old('nombre',$inmobiliaria->nombre )}}">
+                            @error('nombre')
+                      @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
                     </div>
                     <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
                         <label for="rif" class="form-label">Rif</label>
                         <div class="input-group" bis_skin_checked="1">
                             <span class="input-group-text" id="basic-addon11">J-</span>
                             <input type="text" name="rif" class="form-control"
-                                value="{{ $inmobiliaria->rif }}" aria-label="Username"
+                                value="{{ old('rif',$inmobiliaria->rif) }}" aria-label="Username"
                                 aria-describedby="basic-addon11">
+                                @error('rif')
+                      @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
                         </div>
                     </div>
                     <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
@@ -125,8 +146,13 @@
                         <div class="input-group" bis_skin_checked="1">
                             <span class="input-group-text" id="basic-addon11">+58</span>
                             <input type="text" name="telefono" class="form-control"
-                                value="{{ $inmobiliaria->telefono }}" aria-label="Username"
+                                value="{{ old('telefono',$inmobiliaria->telefono) }}" aria-label="Username"
                                 aria-describedby="basic-addon11">
+                                @error('telefono')
+                      @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
                         </div>
                     </div>
                 </div>
@@ -134,13 +160,23 @@
                     <div class="col-12 col-sm-12 mb-3 d-flex flex-column">
                         <label for="direccion" class="form-label">Localización</label>
                         <input type="text" id="direccion" name="direccion" class="form-control"
-                            value="{{ $inmobiliaria->direccion }}">
+                            value="{{ old('direccion',$inmobiliaria->direccion) }}">
+                            @error('direccion')
+                      @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                        <label class="mensaje-error">{{ $message }}</label>
+                      @endif
+                    @enderror
                     </div>
                 </div>
                 <div class="row">
                     <div bis_skin_checked="1">
                         <label for="descripcion" class="form-label">Descripción</label>
-                        <textarea class="form-control" name="descripcion" id="descripcion" rows="3">{{ $inmobiliaria->descripcion }}</textarea>
+                        <textarea class="form-control" name="descripcion" id="descripcion" rows="3">{{ old('descripcion',$inmobiliaria->descripcion) }}</textarea>
+                        @error('descripcion')
+                  @if(old('inmobiliaria_id') == $inmobiliaria->id)
+                    <label class="mensaje-error">{{ $message }}</label>
+                  @endif
+                @enderror
                     </div>
                 </div>
             </div>
@@ -150,6 +186,21 @@
         </form>
     </div>
 </div>
+
+@if($errors->hasAny('nombre', 'imagen','rif', 'email', 'telefono','descripcion','direccion') && old('inmobiliaria_id') == $inmobiliaria->id)
+  {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+  <input type='hidden' id="error-handler" value="{{$inmobiliaria->id}}">
+
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Se busca el value contenido en el input hidden (el id del inmobiliaria)
+      const target = document.querySelector('#error-handler');
+
+      // Se busca el botón con la clase "editar" y el atributo data-id con el id del inmobiliaria y se aprieta
+      document.querySelector(`button.editar[data-id="${target.value}"]`).click();
+    });
+  </script>
+@endif
 
 <div class="modal fade" id="modalborrar{{ $inmobiliaria->id }}" data-bs-backdrop="static" tabindex="-1"
     aria-hidden="true">
