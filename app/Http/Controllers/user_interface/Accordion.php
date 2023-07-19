@@ -13,8 +13,11 @@ class Accordion extends Controller
 {
   public function index()
   {
-    $propiedades = Propiedades::with(['sector','sector.ciudad','agentes'])->get();
-    return view('content.user-interface.ui-accordion', compact('propiedades'));
+    $propiedades = Propiedades::with(['sector','agentes','agentes.inmobiliaria'])->get();
+    $inmobiliarias = Inmobiliaria::all();
+    $ciudads = Ciudad::all();
+    $sectors = Sector::with(['ciudad'])->get();
+    return view('content.user-interface.ui-accordion', compact('propiedades', 'ciudads', 'sectors', 'inmobiliarias'));
 
   }
 

@@ -1,237 +1,80 @@
-@extends('layouts/contentNavbarLayout')
+@extends('layouts/blankLayout')
 
 @section('title', 'Tabs and pills - UI elements')
 
+@section('page-style')
+<!-- Page -->
+<link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-auth.css')}}">
+@endsection
+
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Tabs & Pills</h4>
 
-<!-- Tabs -->
-<h5 class="py-3 my-4">Tabs</h5>
+<div class="container-xxl">
+  <div class="authentication-basic container-p-y ">
+      <!-- Register Card -->
+      <div class="row justify-content-center">
+        <div class="col-md-5"> <!-- Ajusta el número de columnas según tus necesidades -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <img src="{{ asset('assets/img/img2/agente-inmobiliario.png')}}" width=30>
+                <a href="{{url('/')}}" class="app-brand-link gap-2">
+                  <span class="app-brand-text demo text-body fw-bolder">{{config('variables.templateName')}}</span>
+                </a>
+              </div>
+              <br>
+              <!-- /Logo -->
+              <h4 class="mb-2">Completa el perfil para la inmobiliaria</h4>
+              <p class="mb-4">Proporciona la información a continuación, la cual será necesaria para que la inmobiliaria pueda ser identificada correctamente por los suscriptores.</p>
 
-
-<div class="row">
-  <div class="col-xl-6">
-    <h6 class="text-muted">Basic</h6>
-    <div class="nav-align-top mb-4">
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">Home</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">Profile</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-messages" aria-controls="navs-top-messages" aria-selected="false">Messages</button>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="navs-top-home" role="tabpanel">
-          <p>
-            Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
-            claw
-            candy topping.
-          </p>
-          <p class="mb-0">
-            Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon jelly-o
-            jelly-o ice
-            cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow jujubes sweet.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
-          <p>
-            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice cream. Gummies
-            halvah
-            tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream cheesecake fruitcake.
-          </p>
-          <p class="mb-0">
-            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah cotton candy
-            liquorice caramels.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-top-messages" role="tabpanel">
-          <p>
-            Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies cupcake gummi
-            bears
-            cake chocolate.
-          </p>
-          <p class="mb-0">
-            Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet roll icing
-            sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly jelly-o tart brownie
-            jelly.
-          </p>
+              <form id="formAuthentication" class="mb-3" action="/auth/register-basic" method="POST">
+                @csrf
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Nombre de la Inmobiliaria</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa tu nombre">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastname" class="form-label">RIF</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Ingresa tu apellido">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label" for="phoneNumber">Teléfono</label>
+                    <div class="input-group input-group-merge">
+                      <span class="input-group-text">VE (+58)</span>
+                      <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="" />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label" for="imagen">Seleccionar imagen:</label>
+                    <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*" >
+                  </div>
+                </div>
+                <div class="mb-3 col-md-12">
+                  <label for="direccion" class="form-label">Dirección</label>
+                  <input class="form-control" type="text" id="direccion" name="direccion" value="" placeholder="" />
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea name="descripcion" class="form-control" rows="10" cols="80"></textarea>
+                  </div>
+                </div>
+    
+                <input type="submit" class="btn btn-primary d-grid w-100" value="Guardar Información">
+              </form>
+              <p class="text-center">
+                <span>Podrás editar esta información más adelante si lo deseas</span>
+              </p>
+    
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="col-xl-6">
-    <h6 class="text-muted">Filled Tabs</h6>
-    <div class="nav-align-top mb-4">
-      <ul class="nav nav-tabs nav-fill" role="tablist">
-        <li class="nav-item">
-          <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-home" aria-controls="navs-justified-home" aria-selected="true"><i class="tf-icons bx bx-home"></i> Home <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-label-danger">3</span></button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile" aria-selected="false"><i class="tf-icons bx bx-user"></i> Profile</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-messages" aria-controls="navs-justified-messages" aria-selected="false"><i class="tf-icons bx bx-message-square"></i> Messages</button>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="navs-justified-home" role="tabpanel">
-          <p>
-            Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
-            claw
-            candy topping.
-          </p>
-          <p class="mb-0">
-            Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon jelly-o
-            jelly-o ice
-            cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow jujubes sweet.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
-          <p>
-            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice cream. Gummies
-            halvah
-            tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream cheesecake fruitcake.
-          </p>
-          <p class="mb-0">
-            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah cotton candy
-            liquorice caramels.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-justified-messages" role="tabpanel">
-          <p>
-            Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies cupcake gummi
-            bears
-            cake chocolate.
-          </p>
-          <p class="mb-0">
-            Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet roll icing
-            sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly jelly-o tart brownie
-            jelly.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Tabs -->
 
-<hr class="container-m-nx border-light mt-5" />
+      <!-- Register Card -->
 
-<!-- Pills -->
-<h5 class="py-3 my-4">Pills</h5>
-
-<div class="row">
-  <div class="col-xl-6">
-    <h6 class="text-muted">Basic</h6>
-    <div class="nav-align-top mb-4">
-      <ul class="nav nav-pills mb-3" role="tablist">
-        <li class="nav-item">
-          <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home" aria-controls="navs-pills-top-home" aria-selected="true">Home</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-profile" aria-controls="navs-pills-top-profile" aria-selected="false">Profile</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-messages" aria-controls="navs-pills-top-messages" aria-selected="false">Messages</button>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
-          <p>
-            Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
-            claw
-            candy topping.
-          </p>
-          <p class="mb-0">
-            Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon jelly-o
-            jelly-o ice
-            cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow jujubes sweet.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-pills-top-profile" role="tabpanel">
-          <p>
-            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice cream. Gummies
-            halvah
-            tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream cheesecake fruitcake.
-          </p>
-          <p class="mb-0">
-            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah cotton candy
-            liquorice caramels.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-pills-top-messages" role="tabpanel">
-          <p>
-            Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies cupcake gummi
-            bears
-            cake chocolate.
-          </p>
-          <p class="mb-0">
-            Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet roll icing
-            sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly jelly-o tart brownie
-            jelly.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xl-6">
-    <h6 class="text-muted">Filled Pills</h6>
-    <div class="nav-align-top mb-4">
-      <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
-        <li class="nav-item">
-          <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-home" aria-controls="navs-pills-justified-home" aria-selected="true"><i class="tf-icons bx bx-home"></i> Home <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">3</span></button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false"><i class="tf-icons bx bx-user"></i> Profile</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-messages" aria-controls="navs-pills-justified-messages" aria-selected="false"><i class="tf-icons bx bx-message-square"></i> Messages</button>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
-          <p>
-            Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
-            claw
-            candy topping.
-          </p>
-          <p class="mb-0">
-            Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon jelly-o
-            jelly-o ice
-            cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow jujubes sweet.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
-          <p>
-            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice cream. Gummies
-            halvah
-            tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream cheesecake fruitcake.
-          </p>
-          <p class="mb-0">
-            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah cotton candy
-            liquorice caramels.
-          </p>
-        </div>
-        <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
-          <p>
-            Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies cupcake gummi
-            bears
-            cake chocolate.
-          </p>
-          <p class="mb-0">
-            Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet roll icing
-            sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly jelly-o tart brownie
-            jelly.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Pills -->
 @endsection

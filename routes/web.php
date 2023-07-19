@@ -69,20 +69,25 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/propiedades/buscar',$controller_path .'\icons\Boxicons@buscar')->name('propiedades.buscar');
         Route::get('/perfil/usuario', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account'); //Perfil usuario
         Route::get('/perfil/usuario/favoritos', $controller_path . '\pages\AccountSettingsNotifications@mostrarFavoritos')->name('pages-account-settings-notifications.mostrarFavoritos'); 
+        Route::get('/perfil/usuario/seguridad', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
         Route::get('/favoritos/eliminar/{id}', $controller_path . '\pages\AccountSettingsNotifications@eliminarFavoritos')->name('pages-account-settings-notifications.eliminarFavoritos');
           //VISTA DE PROPIEDADES Y SUS FUNCIONES
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion'); //Propiedades
-        Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@buscar')->name('propiedades-catalogo.buscar'); //FUNCION BUSCAR PROPIEDADES
 
         Route::get('/informacion/inmobiliarias', $controller_path . '\user_interface\Alerts@index')->name('ui-alerts'); // Inmobiliarias información
         Route::get('/informacion/agentes', $controller_path . '\user_interface\Badges@index')->name('ui-badges'); // Agentes informacion
 
         //Inmobiliaria pantallas
         Route::get('/inicio/inmobiliaria', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups'); //Inicio inmobiliarias
+        Route::get('/inicio/inmobiliaria', $controller_path . '\form_elements\InputGroups@show')->name('forms-input-groups.show'); //Inicio inmobiliarias
         Route::get('/perfil/inmobiliaria', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs'); //Perfil inmobiliaria
+        Route::get('/perfil/seguridad', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
         Route::get('/publicacion/registrar', $controller_path . '\user_interface\Collapse@index')->name('ui-collapse'); //Registrar propiedad
+        Route::post('/publicacion/registrar', $controller_path . '\user_interface\Collapse@publicar')->name('ui-collapse.publicar'); //Registrar propiedad
         Route::get('/publicacion/ver', $controller_path . '\user_interface\Dropdowns@index')->name('ui-dropdowns'); //Ver propiedades
+        Route::get('/publicacion/ver', $controller_path . '\user_interface\Dropdowns@publicacionesPorAgente')->name('ui-dropdowns.publicacionesPorAgente'); //Ver propiedades
         Route::get('/agentes/ver', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');
+        Route::get('/agentes/ver', $controller_path . '\form_layouts\VerticalForm@agentesPorPropiedad')->name('form-layouts-vertical.agentesPorPropiedad');
 
     });
    
@@ -93,13 +98,13 @@ Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar
 Route::get('/', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
 Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar@index')->name('layouts-without-navbar');
 
-Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank');
+
 
 // pages
 
 
-Route::get('/pages/account-settings-connections', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
-Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
+
+
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
 
 // authentication
@@ -124,7 +129,10 @@ Route::get('/ui/offcanvas', $controller_path . '\user_interface\Offcanvas@index'
 Route::get('/ui/pagination-breadcrumbs', $controller_path . '\user_interface\PaginationBreadcrumbs@index')->name('ui-pagination-breadcrumbs');
 Route::get('/ui/progress', $controller_path . '\user_interface\Progress@index')->name('ui-progress');
 Route::get('/ui/spinners', $controller_path . '\user_interface\Spinners@index')->name('ui-spinners');
-Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills');
+
+//DETALLES
+Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills'); //DETALLES INMOBILIARIAS
+Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank'); //DETALLES USUARIO
 
 //PERFIL DE PROPIEDAD
 Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');

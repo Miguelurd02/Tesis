@@ -24,13 +24,13 @@ class Boxicons extends Controller
   }
   //FUNCION PARA BUSCAR Y FILTRAR
   public function buscar(Request $request)
-{   
+{  
     $propiedades = Propiedades::with(['sector','agentes','agentes.inmobiliaria'])->get();
     $inmobiliarias = Inmobiliaria::all();
     $ciudads = Ciudad::all();
     $sectors = Sector::with(['ciudad'])->get();
-    
-    //PEDIR LOS DATOS INGRESADOS EN EL FORMULARIO
+  
+  //PEDIR LOS DATOS INGRESADOS EN EL FORMULARIO
     $contrato = $request->input('contrato');
     $tipo = $request->input('tipo');
     $sectorId = $request->input('sector_id');
@@ -107,13 +107,12 @@ class Boxicons extends Controller
             + (IF(agentes_id IN (" . ($agenteIds ? implode(',', $agenteIds) : "0") . "), 1, 0))
         ) DESC"
     );
- 
-   
-      
 
-    return view('content.user-interface.ui-accordion', compact('propiedades','ciudads','sectors','inmobiliarias'));
+
+        $propiedades = $query->get();
+
+return view('content.user-interface.ui-accordion', compact('propiedades', 'ciudads', 'sectors', 'inmobiliarias'));       
 } 
-
 
   
 }

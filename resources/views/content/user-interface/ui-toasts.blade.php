@@ -129,7 +129,7 @@
               <label for="mensaje">Mensaje:</label>
             </div>
             <div class="d-flex flex-column align-items-center">
-              <textarea id="mensaje" name="mensaje" rows="5" readonly>Hola! Estoy interesado en esta propiedad.</textarea>
+              <textarea id="mensaje" name="mensaje" rows="5" cols="70" >Hola! Estoy interesado en esta propiedad.</textarea>
               <button id="btnEnviar" type="submit" class="btn btn-primary mt-3">Enviar</button>
             </div>
           </form>

@@ -149,6 +149,7 @@
 <hr>
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
 
+@if (count($propiedades) > 0)
   @foreach ($propiedades as $propiedad)
 <div class="col">
   <a href="{{ route('ui-toasts.show', ['id' => $propiedad->id]) }}">
@@ -178,8 +179,21 @@
   </div>
 </a>
 </div>
-
 @endforeach
+@else
+<div class="center-text row">
+  <div class="col md-12" style=" position: absolute;
+    padding-top: 50px;
+    padding-left:370px ;
+   
+    
+  }">
+ <h3 class="no-favoritos">Ninguna propiedad coincide con su busqueda...</h3>
+</div>
+</div>
+@endif
+</div>
+
 @endsection
  
   <!-- SCRIPTS USADOS -->
