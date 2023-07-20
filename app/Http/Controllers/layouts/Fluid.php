@@ -23,14 +23,14 @@ class Fluid extends Controller
     $inmobiliarias = Inmobiliaria::with('user')->find($id);
     $userId = $inmobiliarias->user_id;
     $users = User::find($userId);
-
+    
     $rules = [
       'nombre' => ['required', 'min:2', 'max:25', 'regex:/^[A-Z].*$/'],
       'imagen' => ['image', 'mimes:jpeg,png,jpg'],
       'telefono' => ['required', 'numeric', 'digits:10'],
       'rif' => ['required', 'numeric', 'digits:9'],
       'email' => ['required', 'email', 'ends_with:.com'],
-      'direccion' => ['required', 'min:20', 'max:150'],
+      'direccion' => ['required', 'min:10', 'max:150'],
       'descripcion' => ['required', 'min:50', 'max:400'],
       // Resto de las reglas de validación para otros campos
   ];
@@ -80,6 +80,12 @@ class Fluid extends Controller
     $inmobiliarias->telefono = $request->telefono;
     $inmobiliarias->direccion = $request->direccion;
     $inmobiliarias->descripcion = $request->descripcion;
+
+    if($request->acceso != null){
+      $users->acceso = 1;
+    }else{
+      $users->acceso = 0;
+    };
 
     if ($request->hasFile('imagen')) {
       $archivo = $request->file('imagen');

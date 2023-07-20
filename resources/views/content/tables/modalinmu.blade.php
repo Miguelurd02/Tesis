@@ -336,8 +336,9 @@
         @csrf
         @method('DELETE')
         <div class="modal-header center col-12 col-sm-12 mb-3 d-flex flex-column">
-          <h2 class="modal-title" id="exampleModalLabel2">¿Está seguro de eliminar la propiedad seleccionada?</h2>
+          <h2 class="modal-title" style="position:fixed" id="exampleModalLabel2">¿Está seguro de eliminar la propiedad seleccionada?</h2>
         </div>
+        <br>
         <div class="modal-body">
           <center>
             <button type="submit" class="btn btn-primary">

@@ -28,7 +28,7 @@
       <h4 class="card-header">Cambiar la contraseña</h4>
       <!-- Account -->
       <div class="card-body">
-        <form id="formAccountSettings" method="POST" onsubmit="return false">
+        <form id="formAccountSettings" method="POST">
           <div class="row">
             <div class="mb-3 col-md-6">
               <label for="contr-actual" class="form-label">Contraseña actual</label>

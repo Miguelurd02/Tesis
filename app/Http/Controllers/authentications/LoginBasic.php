@@ -40,15 +40,19 @@ class LoginBasic extends Controller
     if($user->rol=='inmobiliaria'){
 
       $detallesInmobiliaria = Inmobiliaria::where('user_id', $user->id)->first();
-
+ 
         if ($detallesInmobiliaria) {
-          // Si el usuario está registrado, redirigir a la página de detalles
-          return redirect('/inicio/inmobiliaria')->with('rol', $user->rol);
+          if($user->acceso == 0){
+            // Si el usuario está registrado, redirigir a la página de detalles
+            return redirect('/detalles/desactivada')->with('rol', $user->rol);
+          } else {
+            return redirect('/inicio/inmobiliaria')->with('rol', $user->rol);
+            dd($detallesInmobiliaria->acceso);
+          }
       } else {
           // Si el usuario no está registrado, redirigir al formulario de registro
           return redirect('/detalles/inmobiliarias')->with('rol', $user->rol);
-      }
-      return redirect('/inicio/inmobiliaria')->with('rol', $user->rol);
+      };
     }
     elseif($user->rol=='suscriptor'){
 

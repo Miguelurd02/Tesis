@@ -20,6 +20,7 @@ class Container extends Controller
   
   public function registrar(AgenteRequest $request)
   {
+    $user = auth()->user();
     $data = $request->validated();
 
     if ($request->hasFile('imagen')) {
@@ -35,7 +36,12 @@ class Container extends Controller
     $agente = new Agentes($data);
     $agente->save();
 
-    return redirect(to: '/inmobiliarias/agentes');
+    if($user->rol=='inmobiliaria'){
+      return redirect(to: '/agentes/ver');
+    } else{
+      return redirect(to: '/inmobiliarias/agentes');
+    }
+    
 
   }
 

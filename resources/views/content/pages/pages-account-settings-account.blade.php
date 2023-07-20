@@ -56,7 +56,7 @@
         <hr>
         <div class="row" bis_skin_checked="1">
           <div class="col-sm-12" bis_skin_checked="1">
-            <p class="mb-0">Teléfono: {{$user->suscriptor->telefono}}</p>
+            <p class="mb-0">Teléfono: +58-{{$user->suscriptor->telefono}}</p>
           </div>
         </div>
         <hr>
@@ -92,7 +92,7 @@
           
                 <!-- Account -->
                 <div>
-                  <form id="formAccountSettings"id="editarForm" action="{{route('suscriptor.editar',$user->suscriptor->id)}}" method="POST">
+                  <form id="formAccountSettings" id="editarForm" action="{{route('suscriptor.editar',$user->suscriptor->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="editar_suscriptor" value="{{$user->suscriptor->id}}">
@@ -140,7 +140,6 @@
                     </div>
                     <div class="mt-2">
                       <button type="submit" class="btn btn-primary me-2">Guardar cambios</button>
-                      <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                     </div>
                   </form>
                 </div>

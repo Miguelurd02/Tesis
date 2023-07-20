@@ -89,10 +89,20 @@
             </div>
             <div class="modal-body form-group">
                 <div class="row">
-                    <div class="col-12 col-sm-12 mb-3 d-flex flex-column">
+                    <div class="col-12 col-sm-9 mb-3 d-flex flex-column">
                         <label for="usuario" class="form-label">Nombre de usuario</label>
                         <input type="text" id="usuario" name="usuario" class="form-control"
                             value="{{ $inmobiliaria->user->username }}" readonly>
+                    </div>
+                    <div class="col-12 col-sm-3 mb-3 d-flex flex-column">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Activar cuenta</label>
+                        <div class="form-check form-switch mb-2" bis_skin_checked="1">
+                            @if($inmobiliaria->user->acceso == 1)
+                                <input class="form-check-input" type="checkbox" name="acceso" checked value="1" id="flexSwitchCheckDefault">
+                            @else
+                                <input class="form-check-input" type="checkbox" name="acceso" value="0" id="flexSwitchCheckDefault">
+                            @endif 
+                        </div>
                     </div>
                 </div>
                 <div class="row">
