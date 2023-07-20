@@ -174,7 +174,7 @@
           <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
         </div>
       </div>
-      <div class="price">{{$propiedad->precio}}</div>
+      <div class="price">U$S {{$propiedad->precio}}</div>
     </div>
   </div>
 </a>
@@ -198,9 +198,47 @@
  
   <!-- SCRIPTS USADOS -->
 
-<!-- SCRIPT PARA MOSTRAR LOS SECTORES SEGUN LA CIUDAD -->
+<!-- RECARGAR ELEMENTOS DEL FILTRO -->
+
 <script>
-  function mostrarSectores() {
+  document.addEventListener("DOMContentLoaded", function() {
+    function cargarFiltrosDesdeURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Obtener los parámetros del filtro de la URL
+      const contrato = urlParams.get('contrato');
+      const tipoInmueble = urlParams.get('tipo');
+      const ciudad = urlParams.get('ciudad');
+      const sector = urlParams.get('sector');
+      const rangoDimensionDesde = urlParams.get('rango-dimension-desde');
+      const rangoDimensionHasta = urlParams.get('rango-dimension-hasta');
+      const rangoPrecioDesde = urlParams.get('rango-precio-desde');
+      const rangoPrecioHasta = urlParams.get('rango-precio-hasta');
+      const plantas = urlParams.get('plantas');
+      const habitaciones = urlParams.get('habitaciones');
+      const banos = urlParams.get('banos');
+      const estacionamiento = urlParams.get('estacionamiento');
+      const inmobiliaria = urlParams.get('inmobiliaria');
+      // Otros campos
+
+      // Establecer los valores en los elementos "select" correspondientes
+      document.getElementById('contrato').value = contrato || '';
+      document.getElementById('tipo-inmueble').value = tipoInmueble || '';
+      document.getElementById('ciudad').value = ciudad || '';
+      document.getElementById('rango-dimension-desde').value = rangoDimensionDesde || '';
+      document.getElementById('rango-dimension-hasta').value = rangoDimensionHasta || '';
+      document.getElementById('rango-precio-desde').value = rangoPrecioDesde || '';
+      document.getElementById('rango-precio-hasta').value = rangoPrecioHasta || '';
+      document.getElementById('n-plantas').value = plantas || '';
+      document.getElementById('n-habitaciones').value = habitaciones || '';
+      document.getElementById('n-baños').value = banos || '';
+      document.getElementById('n-garage').value = estacionamiento || '';
+      document.getElementById('inmobiliaria').value = inmobiliaria || '';
+     
+      mostrarSectores(); // Llamada a la función para mostrar los sectores después de cargar los valores
+    }
+
+    function mostrarSectores() {
       var ciudadId = document.getElementById('ciudad').value;
       var sectorSelect = document.getElementById('sector');
       sectorSelect.innerHTML = ''; // Limpiar opciones anteriores
@@ -212,8 +250,31 @@
               @endforeach
           }
       @endforeach
+
+        // Obtener el valor del sector de la URL
+        var sectorIdEnURL = getUrlParameter('sector');
+      if (sectorIdEnURL) {
+        // Seleccionar automáticamente el sector que coincide con el valor en la URL
+        sectorSelect.value = sectorIdEnURL;
+      }
+    }
+
+    // Llamada para cargar los valores al cargar la página
+    cargarFiltrosDesdeURL();
+
+    // Agregar el evento de escucha para el cambio de ciudad y llamar a la función mostrarSectores
+    document.getElementById('ciudad').addEventListener('change', mostrarSectores);
+  });
+
+   // Función para obtener el valor de un parámetro en la URL
+   function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
 </script>
+
 
 <!--/ Card layout -->
 <script>

@@ -100,7 +100,7 @@
                   <span class="material-icons">local_parking</span> {{$propiedad->estacionamiento}}
                 </div>
               </div>
-              <div class="price">{{$propiedad->precio}}</div>
+              <div class="price">U$S {{$propiedad->precio}}</div>
             </div>
           </div>
         </a>

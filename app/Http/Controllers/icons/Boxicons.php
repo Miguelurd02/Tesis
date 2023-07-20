@@ -33,7 +33,7 @@ class Boxicons extends Controller
   //PEDIR LOS DATOS INGRESADOS EN EL FORMULARIO
     $contrato = $request->input('contrato');
     $tipo = $request->input('tipo');
-    $sectorId = $request->input('sector_id');
+    $sectorId = $request->input('sector');
     $ciudadId = $request->input('ciudad');
     $rangoDimensionDesde = $request->input('rango-dimension-desde');
     $rangoDimensionHasta = $request->input('rango-dimension-hasta');

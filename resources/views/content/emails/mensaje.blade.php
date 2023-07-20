@@ -218,6 +218,7 @@
         
   <div class="v-text-align v-font-size" style="font-size: 14px; color: #333333; line-height: 320%; text-align: justify; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 320%; text-align: center;"><span style="font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 44.8px;">{{$mensaje}}</span></p>
+    <p style="font-size: 14px; line-height: 320%; text-align: center;"><span style="font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 44.8px;">Nombre: {{$nombre}} {{$apellido}}</span></p>
 <p style="font-size: 14px; line-height: 320%; text-align: center;"><span style="font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 44.8px;">Teléfono de contacto: {{$telefono}}</span></p>
   </div>
 
