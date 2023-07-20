@@ -31,6 +31,14 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'username.required' => 'El campo usuario no puede estar vacío.',
+            'password.required' => 'El campo contraseña no puede estar vacío',
+        ];
+    }
+
     public function getCredentials(){
         $username = $this->get('username');
         

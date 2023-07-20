@@ -42,7 +42,7 @@ $navbarDetached = ($navbarDetached ?? '');
 
           <!-- Place this tag where you want the button to render. -->
           <div class="" bis_skin_checked="1">
-            <a href="/logout" class="btn btn-danger btn-buy-now">Desconexión</a>
+            <a href="/logout" class="btn btn-danger btn-buy-now">Cerrar sesión</a>
           </div>
           <!-- User -->
           <!--/ User -->

@@ -8,16 +8,21 @@ use App\Models\User;
 use App\Models\Inmobiliaria;
 use App\Models\Agentes;
 use App\Models\Propiedades;
+use App\Models\Sector;
 
 class Dropdowns extends Controller
 {
   public function index()
   {
-    return view('content.user-interface.ui-dropdowns');
+    $sectors = Sector::with('ciudad');
+    $agentes = Agentes::with('inmobiliaria');
+    return view('content.user-interface.ui-dropdowns', compact('sectors','agentes'));
   }
 
   public function publicacionesPorAgente()
 {
+    $sectors = Sector::with('ciudad');
+    $agentes = Agentes::with('inmobiliaria');
     $user = auth()->user();
     $inmobiliaria = Inmobiliaria::where('user_id', $user->id)->first();
     
@@ -33,6 +38,6 @@ class Dropdowns extends Controller
       $propiedadesPorAgente[$nombreCompleto] = $propiedades;
   }
 
-    return view('content.user-interface.ui-dropdowns', compact('propiedadesPorAgente'));
+    return view('content.user-interface.ui-dropdowns', compact('propiedadesPorAgente','sectors','agentes'));
 }
 }

@@ -9,6 +9,7 @@ class MiscError extends Controller
 {
   public function index()
   {
-    return view('content.pages.pages-misc-error');
+    $user = auth()->user();
+    return view('content.pages.pages-misc-error',compact('user'));
   }
 }

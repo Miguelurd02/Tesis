@@ -46,18 +46,10 @@
             <p class="mb-0">Teléfono</p>
           </div>
           <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0">{{$agentes->telefono}}</p>
+            <p class="text-muted mb-0">+58-{{$agentes->telefono}}</p>
           </div>
         </div>
         <hr>
-        <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Sobre mi</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0">{{$agentes->descripcion}}</p>
-          </div>
-        </div>
       </div>
       <br>
      

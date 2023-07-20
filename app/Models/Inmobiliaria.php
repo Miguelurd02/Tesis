@@ -17,4 +17,15 @@ class Inmobiliaria extends Model
     public function agentes(){
         return $this->hasMany('App\Models\Agentes');
     }
+
+    protected $fillable = [
+            'nombre',
+            'imagen',
+            'telefono',
+            'rif',
+            'email',
+            'direccion',
+            'descripcion',
+            'user_id',  
+    ];
 }

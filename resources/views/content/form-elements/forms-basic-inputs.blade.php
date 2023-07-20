@@ -3,6 +3,7 @@
 @section('title', 'Basic Inputs - Forms')
 
 @section('page-script')
+<link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 <link rel="stylesheet" href="{{ asset('assets/css/perfil/perfil.css') }}" />
 @endsection
@@ -24,9 +25,9 @@
     <div class="row">
     <div class="col-md-4">
       <div class="card mb-4 card-body text-center" bis_skin_checked="1">
-        <img src="{{asset('assets/img/avatars/user-image.png')}}" alt="user imagen" class="card-img-top-agente">
+        <img src="{{asset('assets/img/inmobiliarias/' . $user->inmobiliaria->imagen)}}" alt="user imagen" class="imagen-inmo">
         <h2 class="card-title-agente"> </h2>
-          <p class=" mb-4 inmo-detail">REMAX</p>
+          <p class=" mb-4 inmo-detail">{{$user->inmobiliaria->nombre}}</p>
       </div>
     </div> 
 
@@ -35,47 +36,32 @@
       <div class="card-body" bis_skin_checked="1">
         <div class="row" bis_skin_checked="1">
           <h3>Información del perfil</h3>
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">RIF</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">RIF: J-{{$user->inmobiliaria->rif}}</p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Teléfono</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Teléfono: +58-{{$user->inmobiliaria->telefono}} </p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Correo electrónico</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Correo electrónico: {{$user->email}}</p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Dirección</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Dirección: {{$user->inmobiliaria->direccion}}</p>
           </div>
         </div>
         <hr>
         <div class="row" bis_skin_checked="1">
-          <div class="col-sm-3" bis_skin_checked="1">
-            <p class="mb-0">Descripción</p>
-          </div>
-          <div class="col-sm-9" bis_skin_checked="1">
-            <p class="text-muted mb-0"></p>
+          <div class="col-sm-12" bis_skin_checked="1">
+            <p class="mb-0">Descripción: {{$user->inmobiliaria->descripcion}}</p>
           </div>
         </div>
         <hr>
@@ -98,7 +84,7 @@
             <h3>Cambiar información del perfil</h3>
             </div>
             <div class="col col-md-2">
-            <button class="btn btn-primary me-1 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-primary me-1 collapsed editar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" data-id="{{$user->inmobiliaria->id}}" aria-expanded="false" aria-controls="collapseExample">
               Editar Cuenta
             </button>
           </div>
@@ -111,38 +97,66 @@
           
                 <!-- Account -->
                 <div>
-                  <form id="formAccountSettings" method="POST" onsubmit="return false">
+                  <form id="formAccountSettings" id="editarForm" action="{{route('inmobiliaria.editar',$user->inmobiliaria->id)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="editar_inmobiliaria" value="{{$user->inmobiliaria->id}}">
                     <div class="row">
                       <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input class="form-control" type="text" id="email" name="email" value="" placeholder="" />
+                        <input class="form-control" type="text" id="email" name="email" value="{{ old('email',$user->email)}}" placeholder="" />
+                        @error('email')
+                          @if(old('editar_inmobiliaria') == $user->inmobiliaria->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label class="form-label" for="phoneNumber">Teléfono</label>
+                        <label class="form-label" for="telefono">Teléfono</label>
                         <div class="input-group input-group-merge">
                           <span class="input-group-text">VE (+58)</span>
-                          <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="" />
+                          <input type="text" id="telefono" name="telefono" class="form-control" value="{{ old('telefono',$user->inmobiliaria->telefono)}}" placeholder="" />
                         </div>
+                        @error('telefono')
+                          @if(old('editar_inmobiliaria') == $user->inmobiliaria->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="direccion" class="form-label">Dirección</label>
-                        <input class="form-control" type="text" id="direccion" name="direccion" value="" placeholder="" />
+                        <input class="form-control" type="text" id="direccion" name="direccion" value="{{ old('direccion',$user->inmobiliaria->direccion)}}" placeholder="" />
+                        @error('direccion')
+                          @if(old('editar_inmobiliaria') == $user->inmobiliaria->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                       <div class="col col-md-6">
                         <label class="form-label" for="imagen">Seleccionar imagen de perfil:</label>
-                        <input class="form-control mb-3" type="file" id="imagen" name="imagen" accept="image/*" multiple>
+                        <input class="form-control mb-3" type="file" id="imagen" name="imagen">
+                        @error('imagen')
+                          @if(old('editar_inmobiliaria') == $user->inmobiliaria->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
                     </div>
-                      <div class="col col-md-6">
+                      <div class="col col-md-12">
                         <label for="descripcion" class="form-label">Descripcion</label>
-                        <textarea name="descripcion" class="form-control mb-3" rows="10" cols="80">
+                        <textarea name="descripcion" class="form-control mb-3" rows="5" cols="80">{{ old('descripcion',$user->inmobiliaria->descripcion)}}
                          </textarea>
+                         @error('descripcion')
+                          @if(old('editar_inmobiliaria') == $user->inmobiliaria->id)
+                            <label class="mensaje-error">{{ $message }}</label>
+                          @endif
+                        @enderror
                       </div>
        
                     </div>
                     <div class="mt-2">
                       <button type="submit" class="btn btn-primary me-2">Guardar cambios</button>
-                      <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
+                      
                     </div>
                   </form>
                 </div>
@@ -153,5 +167,20 @@
       </div>
     </div>
   </div>
+
+  @if($errors->hasAny('email', 'telefono', 'imagen', 'direccion','descripcion') && old('editar_inmobiliaria') == $user->inmobiliaria->id)
+  {{-- Se genera un input hidden para tener una referencia a cual botón apuntar para reabrir el modal en caso de error --}}
+  <input type='hidden' id="error-handler" value="{{$user->inmobiliaria->id}}">
+
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Se busca el value contenido en el input hidden (el id del suscriptor)
+      const target = document.querySelector('#error-handler');
+
+      // Se busca el botón con la clase "editar" y el atributo data-id con el id del suscriptor y se aprieta
+      document.querySelector(`button.editar[data-id="${target.value}"]`).click();
+    });
+  </script>
+@endif
 
 @endsection

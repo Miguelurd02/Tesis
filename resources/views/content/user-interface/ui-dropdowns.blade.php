@@ -22,6 +22,7 @@
         <a href="{{ route('ui-toasts.show', ['id' => $propiedad->id]) }}">
         <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
           <img class="card-img-top" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
+        </a>
           <div class="card-body">
             <h5 class="card-title">{{$propiedad->titulo}}</h5>
             <p class="card-direccion">{{$propiedad->sector->nombre}}, {{$propiedad->sector->ciudad->nombre}}</p>
@@ -42,24 +43,23 @@
               </div>
             </div>
             <div class="price">{{$propiedad->precio}} U$S</div>
-            <div class="row">
-              <div class="col-md-1 delete-button">
-                <a href="" class="btn-delete">
-                  <span class="material-icons">delete</span>
-                </a>
+              <div class="row">
+                <div class="col-md-1 delete-button" style="margin-right: 2%">
+                  <button type="button" class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$propiedad->id}}" data-id="{{$propiedad->id}}">
+                    <span class="tf-icons bx bx-trash"></span>
+                  </button>
                 </div>
                 <div class="col-md-1 edit-button">
-                  <a href="" class="btn-edit">
-                    <span class="material-icons">
-                      edit_note</span>
-                  </a>
+                  <button type="button" class="btn btn-icon btn-sm btn-primary editar" data-bs-toggle="modal" data-bs-target="#modaleditar{{$propiedad->id}}" data-id="{{$propiedad->id}}">
+                    <span class="tf-icons bx bx-edit"></span>
+                  </button>
+                </div>
               </div>
-            </div>
           </div>
         </div>
-      </a>
-      </div>
       
+      </div>
+      @include('content.tables.modalinmu')
       @endforeach
       </div>
       @endif

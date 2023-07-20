@@ -27,6 +27,7 @@ class Basic extends Controller
 
   public function registrar(PropiedadRequest $request, ImagenesRequest $imagenesRequest)
   {
+    $user = auth()->user();
     $data = $request->validated();
 
     if ($request->hasFile('imagen')) {
@@ -55,12 +56,18 @@ class Basic extends Controller
       }
     }
 
-    return redirect(to: '/propiedades/listado');
+    if($user->rol=='inmobiliaria'){
+      return redirect(to: '/publicacion/registrar');
+    } else{
+      return redirect(to: '/propiedades/listado');
+    }
+
 
   }
 
   public function editar(Request $request, $id)
   {
+    $user = auth()->user();
     $propiedades = Propiedades::with('sector','sector.ciudad','agentes.inmobiliaria')->find($id);
     $imagenes = Imagenes::with('propiedades_id');
     $agentes = Agentes::with('inmobiliaria');
@@ -74,7 +81,7 @@ class Basic extends Controller
       'imagenes' => ['array', 'max:'. $remainingImageCount],
       'imagenes.*' => ['mimes:jpeg,png,jpg'],
 
-      'titulo' => ['required', 'min:4', 'max:50', 'regex:/^[A-Z][A-Za-z\s]+$/'],
+      'titulo' => ['required', 'min:4', 'max:50', 'regex:/^[A-ZÁÉÍÓÚÑ][\p{L}\d\s.,]+$/u'],
       'imagen' => ['image', 'mimes:jpeg,png,jpg'],
       'tipo' => ['required'],
       'dimension' => ['required', 'numeric'],
@@ -177,7 +184,11 @@ class Basic extends Controller
     }
 
     if ($propiedades->save()) {
-      return redirect(to: '/propiedades/listado');
+      if($user->rol=='inmobiliaria'){
+        return redirect(to: '/publicacion/ver');
+      } else{
+        return redirect(to: '/propiedades/listado');
+      }
     } else {
       return view('content.tables.tables-basic', compact('propiedades'));
     }
@@ -185,11 +196,16 @@ class Basic extends Controller
 
   public function borrar($id)
   {
+    $user = auth()->user();
     $propiedades = Propiedades::with('sector','sector.ciudad','agentes.inmobiliaria')->find($id);
 
 
     if (Propiedades::destroy($id)) {
-      return redirect(to: '/propiedades/listado');
+      if($user->rol=='inmobiliaria'){
+        return redirect(to: '/publicacion/ver');
+      } else{
+        return redirect(to: '/propiedades/listado');
+      }
     } else {
       return view('content.tables.tables-basic', compact('propiedades'));
     }

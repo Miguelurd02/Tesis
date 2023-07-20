@@ -12,7 +12,13 @@
   }
   
 
-    
+    .imagen-inmo{
+        display: flex;
+        object-fit: cover;
+        width: 100%;
+        justify-content: center;
+        height: 200px;
+    }
   
   /* Estilo para ajustar el tamaño de las fotos */
   .card-img-top-agente {

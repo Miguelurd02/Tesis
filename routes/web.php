@@ -68,6 +68,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/inicio/filtro', $controller_path . '\icons\Boxicons@index')->name('icons-boxicons'); //Inicio usuario filtro
         Route::get('/propiedades/buscar',$controller_path .'\icons\Boxicons@buscar')->name('propiedades.buscar');
         Route::get('/perfil/usuario', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account'); //Perfil usuario
+
+        Route::put('/editar/usuario/{id}', $controller_path . '\pages\AccountSettingsAccount@editar')->name('suscriptor.editar'); //Perfil usuario
+
         Route::get('/perfil/usuario/favoritos', $controller_path . '\pages\AccountSettingsNotifications@mostrarFavoritos')->name('pages-account-settings-notifications.mostrarFavoritos'); 
         Route::get('/perfil/usuario/seguridad', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
         Route::get('/favoritos/eliminar/{id}', $controller_path . '\pages\AccountSettingsNotifications@eliminarFavoritos')->name('pages-account-settings-notifications.eliminarFavoritos');
@@ -81,14 +84,34 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/inicio/inmobiliaria', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups'); //Inicio inmobiliarias
         Route::get('/inicio/inmobiliaria', $controller_path . '\form_elements\InputGroups@show')->name('forms-input-groups.show'); //Inicio inmobiliarias
         Route::get('/perfil/inmobiliaria', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs'); //Perfil inmobiliaria
+
+        Route::put('/editar/inmobiliaria/{id}', $controller_path . '\form_elements\BasicInput@editar')->name('inmobiliaria.editar'); //Perfil inmobiliaria
+
         Route::get('/perfil/seguridad', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
         Route::get('/publicacion/registrar', $controller_path . '\user_interface\Collapse@index')->name('ui-collapse'); //Registrar propiedad
         Route::post('/publicacion/registrar', $controller_path . '\user_interface\Collapse@publicar')->name('ui-collapse.publicar'); //Registrar propiedad
         Route::get('/publicacion/ver', $controller_path . '\user_interface\Dropdowns@index')->name('ui-dropdowns'); //Ver propiedades
         Route::get('/publicacion/ver', $controller_path . '\user_interface\Dropdowns@publicacionesPorAgente')->name('ui-dropdowns.publicacionesPorAgente'); //Ver propiedades
         Route::get('/agentes/ver', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');
+
+        Route::put('/editar/agente/{id}', $controller_path . '\form_layouts\VerticalForm@editar')->name('editar.agente');
+        Route::delete('/borrar/agente/{id}', $controller_path . '\form_layouts\VerticalForm@borrar')->name('borrar.agente');
+
         Route::get('/agentes/ver', $controller_path . '\form_layouts\VerticalForm@agentesPorPropiedad')->name('form-layouts-vertical.agentesPorPropiedad');
 
+        Route::get('/detalles/desactivada', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
+        //AGREGAR O QUITAR FAVORITO
+        Route::post('/marcar-desmarcar-favorito', $controller_path . '\user_interface\Toasts@marcarDesmarcarFavorito')->name('ui-toasts.marcarDesmarcarFavorito');//FUNCION PARA MARCAR O DESMARCAR FAVORITOS
+
+        //PERFIL DE PROPIEDAD
+        Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');
+        Route::get('/ui/toasts/{id}', $controller_path . '\user_interface\Toasts@show')->name('ui-toasts.show');//FUNCION PARA QUE SE MUESTRE LA PROPIEDAD SEGUN EL ID PASADO
+
+        //DETALLES
+        Route::get('/detalles/inmobiliarias', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills'); //DETALLES INMOBILIARIAS
+        Route::post('/registrar/inmobiliarias', $controller_path . '\user_interface\TabsPills@registrar')->name('detalles.inmobiliaria'); //DETALLES INMOBILIARIAS
+        Route::get('/detalles/suscriptor', $controller_path . '\layouts\Blank@index')->name('layouts-blank'); //DETALLES USUARIO
+        Route::post('/detalles/suscriptor/suscriptor', $controller_path . '\layouts\Blank@registrar')->name('detalles.suscriptor'); //DETALLES USUARIO
     });
    
 });
@@ -105,7 +128,7 @@ Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar
 
 
 
-Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
+
 
 // authentication
 Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('login');
@@ -130,17 +153,13 @@ Route::get('/ui/pagination-breadcrumbs', $controller_path . '\user_interface\Pag
 Route::get('/ui/progress', $controller_path . '\user_interface\Progress@index')->name('ui-progress');
 Route::get('/ui/spinners', $controller_path . '\user_interface\Spinners@index')->name('ui-spinners');
 
-//DETALLES
-Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills'); //DETALLES INMOBILIARIAS
-Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank'); //DETALLES USUARIO
 
-//PERFIL DE PROPIEDAD
-Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');
-Route::get('/ui/toasts/{id}', $controller_path . '\user_interface\Toasts@show')->name('ui-toasts.show');//FUNCION PARA QUE SE MUESTRE LA PROPIEDAD SEGUN EL ID PASADO
+
+
 //ENVIAR CORREO
 Route::get('/enviar-mensaje', $controller_path . '\user_interface\Toasts@send')->name('ui-toasts.send')->middleware('web');//FUNCION PARA ENVIAR CORREO
-//AGREGAR O QUITAR FAVORITO
-  Route::post('/marcar-desmarcar-favorito', $controller_path . '\user_interface\Toasts@marcarDesmarcarFavorito')->name('ui-toasts.marcarDesmarcarFavorito');//FUNCION PARA MARCAR O DESMARCAR FAVORITOS
+
+  
 
 
 

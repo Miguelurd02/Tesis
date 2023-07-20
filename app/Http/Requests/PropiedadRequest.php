@@ -26,7 +26,7 @@ class PropiedadRequest extends FormRequest
         return [
             //
             
-            'titulo' => ['required', 'min:4', 'max:50', 'regex:/^[A-Z][A-Za-z\s]+$/'],
+            'titulo' => ['required', 'min:4', 'max:50', 'regex:/^[A-ZÁÉÍÓÚÑ][\p{L}\d\s.,]+$/u'],
             'imagen' => ['required','image', 'mimes:jpeg,png,jpg'],
             'tipo' => ['required'],
             'dimension' => ['required', 'numeric'],
@@ -50,7 +50,7 @@ class PropiedadRequest extends FormRequest
             'titulo.required' => 'El campo de título es obligatorio.',
             'titulo.min' => 'El campo de título debe tener al menos :min caracteres.',
             'titulo.max' => 'El campo de título no debe exceder los :max caracteres.',
-            'titulo.regex' => 'El formato del campo de título debe comenzar con mayúscula y solo puede contener letras y espacios en blanco',
+            'titulo.regex' => 'El formato del campo de título debe comenzar con mayúscula',
 
             'imagen.image' => 'El campo de imagen debe ser una imagen.',
             'imagen.mimes' => 'El campo de imagen debe ser un archivo de tipo JPEG, PNG o JPG.',
