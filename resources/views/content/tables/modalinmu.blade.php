@@ -21,38 +21,38 @@
             <div class="modal-body">
                 <div class="row">
                   <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
-                      <label for="imagen" class="form-label">Imagen promocional</label>
-                      <img class="rounded modal-propiedad" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
+                      <label class="form-label">Imagen promocional</label>
+                      <img id="imagen" class="rounded modal-propiedad" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
                     </div>
                     <div class="col-12 col-sm-8 mb-3 d-flex flex-column">
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
                                 <label for="titulo" class="form-label">Titulo</label>
-                                <input class="form-control" type="text" name="titulo" id="titulo" value="{{$propiedad->titulo}}" readonly/>   
+                                <input id="titulo" class="form-control" type="text" name="titulo" id="titulo" value="{{$propiedad->titulo}}" readonly/>   
                             </div>
                             <div class="col-12 col-sm-3 mb-3 d-flex flex-column">
                               <label for="contrato" class="form-label">Tipo de contrato</label>
-                              <input class="form-control" type="text" name="contrato" id="contrato" value="{{$propiedad->contrato}}" readonly/>   
+                              <input id="contrato" class="form-control" type="text" name="contrato" id="contrato" value="{{$propiedad->contrato}}" readonly/>   
                             </div>
                             <div class="col-12 col-sm-3 mb-3 d-flex flex-column">
                               <label for="tipo" class="form-label">Tipo de inmueble</label>
-                              <input class="form-control" type="text" name="tipo" id="tipo" value="{{$propiedad->tipo}}" readonly/>   
+                              <input id="tipo" class="form-control" type="text" name="tipo" id="tipo" value="{{$propiedad->tipo}}" readonly/>   
                             </div>
                             <div class="col-6 col-sm-3 mb-3 d-flex flex-column">
                                 <label for="banos" class="form-label">Baños</label>
-                                <input class="form-control" type="text" name="banos" id="banos" value="{{$propiedad->banos}}" readonly />
+                                <input id="banos" class="form-control" type="text" name="banos" id="banos" value="{{$propiedad->banos}}" readonly />
                             </div>
                             <div class="col-6 col-sm-3 mb-3 d-flex flex-column">
                                 <label for="estacionamiento" class="form-label">Estacionamientos</label>
-                                <input class="form-control" type="text" name="estacionamiento" id="estacionamiento" value="{{$propiedad->estacionamiento}}" readonly />
+                                <input id="estacionamiento" class="form-control" type="text" name="estacionamiento" id="estacionamiento" value="{{$propiedad->estacionamiento}}" readonly />
                             </div>
                             <div class="col-6 col-sm-3 mb-3 d-flex flex-column">
                                 <label for="habitaciones" class="form-label">Habitaciones</label>
-                                <input class="form-control" type="text" name="habitaciones" id="habitaciones" value="{{$propiedad->habitaciones}}" readonly/>
+                                <input id="habitaciones" class="form-control" type="text" name="habitaciones" id="habitaciones" value="{{$propiedad->habitaciones}}" readonly/>
                             </div>
                             <div class="col-6 col-sm-3 mb-3 d-flex flex-column">
                                 <label for="plantas" class="form-label">Plantas</label>
-                                <input class="form-control" type="text" name="plantas" id="plantas" value="{{$propiedad->plantas}}" readonly />
+                                <input id="plantas" class="form-control" type="text" name="plantas" id="plantas" value="{{$propiedad->plantas}}" readonly />
                             </div>
                             <div class="col-12 col-sm-6 mb-3 d-flex flex-column">
                                 <label for="dimension" class="form-label">Dimensiones</label>
@@ -130,7 +130,7 @@
       <div class="modal-body form-group">
         <div class="row">
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
-              <label for="imagen" class="form-label">Imagen promocional</label>
+              <label for="formFile" class="form-label">Imagen promocional</label>
               <input class="form-control" name="imagen" type="file" id="formFile">
               @error('imagen')
                       @if(old('propiedad_id') == $propiedad->id)
@@ -273,7 +273,7 @@
         </div>
         <div class="row">
           <div class="col-12 col-sm-4 mb-3 d-flex flex-column">
-            <label for="imagenes" class="form-label">Imagenes de la propiedad</label>
+            <label for="formFileMultiple" class="form-label">Imagenes de la propiedad</label>
             <input class="form-control" type="file" id="formFileMultiple" name="imagenes[]" multiple>
             @error('imagenes')
                       @if(old('propiedad_id') == $propiedad->id)

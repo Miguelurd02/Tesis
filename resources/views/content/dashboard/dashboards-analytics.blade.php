@@ -22,7 +22,7 @@
         <div class="col-sm-7">
           <div class="card-body">
             <h5 class="card-title text-primary">¡Bienvenido administrador! 🎉</h5>
-            <p class="mb-4">Recuerda ser sumamente <span class="fw-bold">CUIDADOSO</span> con la información presente en las bases de dato y realizar las respectivas copias de seguridad.</p>
+            <p class="mb-4">Recuerda ser sumamente <span class="fw-bold">CUIDADOSO</span> con la información presente en las bases de datos y realizar las respectivas copias de seguridad.</p>
 
           </div>
         </div>
@@ -49,8 +49,8 @@
               <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> Registrados</small>
-              <h3 class="mb-0">$84,686k</h3>
+              <small class="text-success text-nowrap fw-semibold"></i> Registrados</small>
+              <h3 class="mb-0">{{ $usuariosCount }}</h3>
             </div>
           </div>
           <div>
@@ -69,12 +69,12 @@
         <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
           <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
             <div class="card-title">
-              <h5 class="text-nowrap mb-2">Empresas</h5>
-              <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+              <h5 class="text-nowrap mb-2">Empresas Inmobiliarias</h5>
+              <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> 68.2%</small>
-              <h3 class="mb-0">$84,686k</h3>
+              <small class="text-success text-nowrap fw-semibold">Registrados</small>
+              <h3 class="mb-0">{{ $inmobiliariasCount }}</h3>
             </div>
           </div>
           <div>
@@ -93,12 +93,12 @@
         <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
           <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
             <div class="card-title">
-              <h5 class="text-nowrap mb-2">Agentes</h5>
-              <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+              <h5 class="text-nowrap mb-2">Agentes Inmobiliarios</h5>
+              <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> 68.2%</small>
-              <h3 class="mb-0">$84,686k</h3>
+              <small class="text-success text-nowrap fw-semibold">Registrados</small>
+              <h3 class="mb-0">{{ $agentesCount }}</h3>
             </div>
           </div>
           <div>
@@ -119,11 +119,11 @@
           <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
             <div class="card-title">
               <h5 class="text-nowrap mb-2">Ciudades</h5>
-              <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+              <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> 68.2%</small>
-              <h3 class="mb-0">$84,686k</h3>
+              <small class="text-success text-nowrap fw-semibold">Registrados</small>
+              <h3 class="mb-0">{{ $ciudadesCount }}</h3>
             </div>
           </div>
           <div>
@@ -143,11 +143,11 @@
           <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
             <div class="card-title">
               <h5 class="text-nowrap mb-2">Sectores</h5>
-              <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+              <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> 68.2%</small>
-              <h3 class="mb-0">$84,686k</h3>
+              <small class="text-success text-nowrap fw-semibold">Registrados</small>
+              <h3 class="mb-0">{{ $sectoresCount }}</h3>
             </div>
           </div>
           <div>
@@ -167,11 +167,11 @@
           <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
             <div class="card-title">
               <h5 class="text-nowrap mb-2">Propiedades</h5>
-              <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+              <span class="badge bg-label-warning rounded-pill">Año 2023</span>
             </div>
             <div class="mt-sm-auto">
-              <small class="text-success text-nowrap fw-semibold"><i class='bx bx-chevron-up'></i> 68.2%</small>
-              <h3 class="mb-0">$84,686k</h3>
+              <small class="text-success text-nowrap fw-semibold">Registrados</small>
+              <h3 class="mb-0">{{ $propiedadesCount }}</h3>
             </div>
           </div>
           <div>

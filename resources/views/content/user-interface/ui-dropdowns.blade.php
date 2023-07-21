@@ -22,7 +22,7 @@
         <a href="{{ route('ui-toasts.show', ['id' => $propiedad->id]) }}">
         <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
           <img class="card-img-top" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
-        </a>
+        
           <div class="card-body">
             <h5 class="card-title">{{$propiedad->titulo}}</h5>
             <p class="card-direccion">{{$propiedad->sector->nombre}}, {{$propiedad->sector->ciudad->nombre}}</p>
@@ -42,7 +42,8 @@
                 <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
               </div>
             </div>
-            <div class="price">{{$propiedad->precio}} U$S</div>
+            <div class="price">U$S <?= number_format($propiedad->precio, 2, ',', '.'); ?></div>
+          </a>
               <div class="row">
                 <div class="col-md-1 delete-button" style="margin-right: 2%">
                   <button type="button" class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalborrar{{$propiedad->id}}" data-id="{{$propiedad->id}}">
@@ -67,4 +68,17 @@
 
 
 
+@endsection
+
+
+@section('page-script')
+<script>
+  function addShadow(element) {
+    element.classList.add("shadow-effect");
+  }
+
+  function removeShadow(element) {
+    element.classList.remove("shadow-effect");
+  }
+</script>
 @endsection

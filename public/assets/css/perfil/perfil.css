@@ -26,5 +26,9 @@
     object-fit: contain;
   
   }
+  .imagen-inmo {
+    height: 334px; /* Ajusta la altura deseada para la imagen */
+    object-fit: cover;
   
+  }
   

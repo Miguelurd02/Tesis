@@ -18,8 +18,8 @@
     <div class="col-md-4">
       <div class="card-body-profile text-center" bis_skin_checked="1">
         <img src="{{ asset('assets/img/inmobiliarias/' . $inmobiliaria->imagen) }}" alt="inmobiliaria imagen" class="rounded-circle img-fluid" style="width: 200px;">
-        <h2 class="my-3">{{$inmobiliaria->nombre}}</h2>
-        <p class="text-muted mb-1">{{$inmobiliaria->rif}}</p>
+        <h2 class="card-title-inmo">{{$inmobiliaria->nombre}}</h2>
+        <p class="text-muted mb-1">J-{{$inmobiliaria->rif}}</p>
         <p class="text-muted mb-4"> <span class="material-icons">location_on</span> {{$inmobiliaria->direccion}}</p>
         <div class="d-flex justify-content-center mb-2" bis_skin_checked="1">
           <a href="#propiedades" type="button" class="btn btn-primary ms-1" fdprocessedid="zcv1ay">Ver propiedades</a>
@@ -78,7 +78,7 @@
     @foreach ($inmobiliaria->agentes as $agente)
         @foreach ($agente->propiedades as $propiedad)
         <div class="col">
-          <a href="">
+          <a href="{{ route('ui-toasts.show', ['id' => $propiedad->id]) }}">
           <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
             <img class="card-img-top" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
             <div class="card-body">
@@ -100,7 +100,7 @@
                   <span class="material-icons">local_parking</span> {{$propiedad->estacionamiento}}
                 </div>
               </div>
-              <div class="price">U$S {{$propiedad->precio}}</div>
+              <div class="price">U$S <?= number_format($propiedad->precio, 2, ',', '.'); ?></div>
             </div>
           </div>
         </a>

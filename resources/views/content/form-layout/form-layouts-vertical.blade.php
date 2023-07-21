@@ -89,29 +89,8 @@
     </div>
   </div>
 
-  <!-- SCRIPT PARA MOSTRAR LOS SECTORES SEGUN LA CIUDAD -->
-<script>
-  function mostrarSectores() {
-      var ciudadId = document.getElementById('ciudad').value;
-      var sectorSelect = document.getElementById('sector_id');
-      sectorSelect.innerHTML = ''; // Limpiar opciones anteriores
-      sectorSelect.innerHTML = '<option value="">Seleccionar Sector</option>'; // Opción predeterminada
-      @foreach($ciudads as $ciudad)
-          if (ciudadId === "{{ $ciudad->id }}") {
-              @foreach($ciudad->sectores as $sector)
-                  sectorSelect.innerHTML += '<option value="{{ $sector->id }}">{{ $sector->nombre }}</option>';
-              @endforeach
-          }
-      @endforeach
-  }
-</script>
 <br>
-<!-- Search bar -->
-<div class="mb-4">
-  <input type="text" id="search-input" class="form-control" placeholder="Buscar agente">
-</div>
 
-<!-- Grid Card -->
 <div class="row row-cols-1 row-cols-md-4 g-4 mb-5" id="agentes-grid">
   @foreach ($agentes as $agente)
   <div class="col grid-item">
@@ -144,7 +123,6 @@
           
         </div>
       </div>
-    
   </div>
   @include('content.form-layout.modaleditar')
   @endforeach
@@ -163,26 +141,5 @@
     element.classList.remove("shadow-effect");
   }
 
-  // Inicializar Isotope después de que se cargue la página
-  $(window).on('load', function() {
-    var agentesGrid = $('#agentes-grid');
-    agentesGrid.isotope({
-      itemSelector: '.grid-item',
-      layoutMode: 'fitRows'
-    });
-  });
-
-  // Manejar el evento de búsqueda en vivo
-  document.getElementById('search-input').addEventListener('input', function() {
-    var searchQuery = this.value.toLowerCase().trim();
-    var agentesGrid = $('#agentes-grid');
-
-    agentesGrid.isotope({ filter: function() {
-      var agenteNombre = $(this).find('.card-title').text().toLowerCase();
-      var agenteInmobiliaria = $(this).find('.card-inmo').text().toLowerCase();
-
-      return agenteNombre.includes(searchQuery) || agenteInmobiliaria.includes(searchQuery);
-    }});
-  });
-</script>
+  
 @endsection

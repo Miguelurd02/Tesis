@@ -62,7 +62,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
   @foreach ($propiedades as $propiedad)
   <div class="col">
-    <a href="">
+    <a href="{{ route('ui-toasts.show', ['id' => $propiedad->id]) }}">
       <div class="card h-100" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">
         <img class="card-img-top" src="{{ asset('assets/img/propiedades/' . $propiedad->imagen) }}" alt="Card image cap" />
         <div class="card-body">
@@ -84,7 +84,7 @@
               <span class="material-icons">local_parking</span> {{$propiedad->estacionamiento}}
             </div>
           </div>
-          <div class="price">U$S {{$propiedad->precio}}</div>
+          <div class="price">U$S <?= number_format($propiedad->precio, 2, ',', '.'); ?></div>
         </div>
       </div>
     </a>

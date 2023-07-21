@@ -107,7 +107,7 @@
               
                     </div>
          </div>
-          <div class="price">{{$propiedades->precio}} U$S</div>
+          <div class="price">U$S <?= number_format($propiedades->precio, 2, ',', '.'); ?></div>
           <br>
           <div class="descripcion" style="height: 200px; overflow-y: auto;">
             {!! nl2br($propiedades->descripcion) !!}
@@ -189,7 +189,7 @@
                 </div>
                 <div class="mb-3 col-md-2">
                   <h3>Contrato</h3>
-                  <span class="detallesrow2">{{$propiedades->contrato}}</span>
+                  <span class="detallesrow2 mayuscula">{{$propiedades->contrato}}</span>
                 </div>
                 <div class="mb-3 col-md-2">
                   <h3>Publicación</h3>

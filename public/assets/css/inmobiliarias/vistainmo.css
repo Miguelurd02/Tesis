@@ -4,21 +4,13 @@
   height: 450px;
 }
 
-.card-title{
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 40px;
-    color:rgb(105, 122, 140);
+.card-title-inmo{
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 10px;
+  color:rgb(105, 122, 140);
   }
-
-.card-description {
-    font-size: 20px;
-    text-align: justify;
-    color:rgb(105, 122, 140);
-    margin: 20px;
-    line-height:1.5;
-  }
-
 
 .card-body {
   padding: 20px;

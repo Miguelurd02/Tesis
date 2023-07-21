@@ -52,7 +52,7 @@
             <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
           </div>
         </div>
-        <div class="price">{{$propiedad->precio}}</div>
+        <div class="price">U$S <?= number_format($propiedad->precio, 2, ',', '.'); ?></div>
       </div>
     </div>
   </a>
@@ -68,4 +68,16 @@
       </a>
     </div>
   </div>
+@endsection
+
+@section('page-script')
+<script>
+  function addShadow(element) {
+    element.classList.add("shadow-effect");
+  }
+
+  function removeShadow(element) {
+    element.classList.remove("shadow-effect");
+  }
+</script>
 @endsection
