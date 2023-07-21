@@ -73,6 +73,9 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::get('/perfil/usuario/favoritos', $controller_path . '\pages\AccountSettingsNotifications@mostrarFavoritos')->name('pages-account-settings-notifications.mostrarFavoritos'); 
         Route::get('/perfil/usuario/seguridad', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
+
+        Route::put('/perfil/usuario/seguridad', $controller_path . '\pages\AccountSettingsConnections@cambiarContrasena')->name('cambiar.clave'); 
+
         Route::get('/favoritos/eliminar/{id}', $controller_path . '\pages\AccountSettingsNotifications@eliminarFavoritos')->name('pages-account-settings-notifications.eliminarFavoritos');
           //VISTA DE PROPIEDADES Y SUS FUNCIONES
         Route::get('/catalogo/propiedades', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion'); //Propiedades

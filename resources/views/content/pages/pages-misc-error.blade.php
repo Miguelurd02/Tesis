@@ -5,6 +5,7 @@
 
 
 @section('page-script')
+<link rel="stylesheet" href="{{ asset('assets/css/administrador/admincc.css') }}" />
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 <link rel="stylesheet" href="{{ asset('assets/css/perfil/perfil.css') }}" />
 @endsection
@@ -26,24 +27,39 @@
     <div class="col-md-12">
     <div class="card mb-4">
       <h4 class="card-header">Cambiar la contraseña</h4>
+      @if (session('success'))
+    <div class="alert alert-success mt-4">
+        {{ session('success') }}
+    </div>
+@endif
+@if (session('error'))
+    <div class="alert alert-danger mt-4">
+        {{ session('error') }}
+    </div>
+@endif
       <!-- Account -->
       <div class="card-body">
-        <form id="formAccountSettings" method="POST">
+        <form id="formAccountSettings" method="POST" action="{{ route('cambiar.clave') }}" >
+          @csrf
+          @method('PUT')
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label for="contr-actual" class="form-label">Contraseña actual</label>
-              <input class="form-control" type="text" id="contr-actual" name="contr-actual"  autofocus />
+              <label for="password" class="form-label">Contraseña actual</label>
+              <input class="form-control" type="password" id="password" name="password"  autofocus />
             </div>
             <div class="mb-3 col-md-6">
-              <label for="contr-nueva" class="form-label">Contraseña nueva</label>
-              <input class="form-control" type="text" name="contr-nueva" id="contr-nueva"  />
+              <label for="new_password" class="form-label">Contraseña nueva</label>
+              <input class="form-control" type="password" name="new_password" id="new_password"  />
+              @error('new_password')
+                        <label class="mensaje-error">{{ $message }}</label>
+                    @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label for="contr-nueva-rept" class="form-label">Repetir contraseña nueva</label>
-              <input class="form-control" type="text" id="contr-nueva-rept" name="contr-nueva-rept"  placeholder="" />
+              <label for="confirm_password" class="form-label">Repetir contraseña nueva</label>
+              <input class="form-control" type="password" id="confirm_password" name="confirm_password"  placeholder="" />
             </div>
            <!--<div class="mb-3 col-md-6">
-              <label class="form-label" for="phoneNumber">Código de confirmación</label>
+              <label class="form-label" for="phoneNumber">Código de confirmationación</label>
               <div class="input-group input-group-merge">
                 <button id="show_password" class="btn btn-success" type="button" onclick="">
                   <i class='bx bx-mail-send'></i>
