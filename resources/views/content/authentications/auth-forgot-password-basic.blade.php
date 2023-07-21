@@ -24,15 +24,10 @@
             </div>
           <!-- /Logo -->
           <h4 class="mb-2">¿Olvidó su contraseña? </h4>
-          <p class="mb-4">Ingrese su correo electrónico para enviar un código de autentificación de cuenta</p>
-          <form id="formAuthentication" class="mb-3" action="javascript:void(0)" method="GET">
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" autofocus>
-            </div>
-            <button class="btn btn-primary d-grid w-100">Enviar</button>
-          </form>
+          <p class="mb-4">Para reestablecer su contraseña, puede comunicarse con un agente de soporte técnico de Laria, a través del siguiente correo, para ser atendido en el menor tiempo posible:</p>
           <div class="text-center">
+            <h5>SOPORTE@LARIA.COM</h3>
+              <br>
             <a href="{{url('auth/login-basic')}}" class="d-flex align-items-center justify-content-center">
               <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
               Volver al inicio de sesión

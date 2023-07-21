@@ -21,7 +21,9 @@
   width: 100%;
   height: 100%;
 }
-
+.mayuscula{
+  text-transform: capitalize;
+}
 /*ESTILOS BOTON DE FAVORITOS*/
 
 

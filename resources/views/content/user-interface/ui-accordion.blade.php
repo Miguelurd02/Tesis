@@ -174,7 +174,7 @@
           <span class="material-icons">directions_car</span> {{$propiedad->estacionamiento}}
         </div>
       </div>
-      <div class="price">U$S {{$propiedad->precio}}</div>
+      <div class="price">U$S <?= number_format($propiedad->precio, 2, ',', '.'); ?></div>
     </div>
   </div>
 </a>
