@@ -57,7 +57,7 @@ class Basic extends Controller
     }
 
     if($user->rol=='inmobiliaria'){
-      return redirect(to: '/publicacion/registrar');
+      return redirect()->back()->with('success', '¡Se ha registrado la propiedad correctamente!');
     } else{
       return redirect(to: '/propiedades/listado');
     }

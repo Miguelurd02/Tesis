@@ -11,6 +11,11 @@
   <div class="col-md-12">
     <div class="card mb-4">
       <h5 class="card-header">Ingrese los datos de la propiedad</h5>
+      @if (session('success'))
+    <div class="alert alert-success mt-4">
+        {{ session('success') }}
+    </div>
+@endif
       <div class="card-body">
         <form class="form-publicar-propiedad" action="{{ route('propiedad.registrar') }}" method="POST" enctype="multipart/form-data">
           @csrf
